@@ -1,0 +1,7 @@
+@use "sass:color";
+
+$almost-black: #445;
+$bloody-red: #c91c1c;
+$hint-of-chili: #f07070;
+$white: #fff;
+$white-a90: color.change($white, $alpha: 0.9);

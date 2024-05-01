@@ -1,0 +1,9 @@
+node_modules
+dist
+
+.svelte-kit
+.sanity
+.vercel
+
+.DS_Store
+.env

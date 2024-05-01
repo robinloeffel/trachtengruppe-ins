@@ -1,0 +1,42 @@
+@forward "font-face";
+@use "colors";
+@use "scales";
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+html {
+  font-family: "Inter Variable", system-ui;
+  font-size: 100%;
+	font-weight: 600;
+  line-height: 1.6;
+  text-rendering: optimizelegibility;
+}
+
+body {
+  font-size: scales.font("20");
+	color: colors.$almost-black;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+h1,
+h2,
+h3 {
+	hyphens: auto;
+	line-height: 1.2;
+  text-wrap: balance;
+}
+
+#app {
+  display: contents;
+}

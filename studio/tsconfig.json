@@ -1,0 +1,14 @@
+{
+  "extends": "@tsconfig/strictest",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "preserve",
+    "moduleDetection": "force"
+  },
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

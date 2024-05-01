@@ -1,0 +1,9 @@
+{
+	"extends": [
+		"@tsconfig/strictest",
+		"./.svelte-kit/tsconfig.json"
+	],
+	"compilerOptions": {
+		"moduleDetection": "force"
+	}
+}

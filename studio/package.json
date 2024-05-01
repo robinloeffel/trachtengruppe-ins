@@ -1,0 +1,27 @@
+{
+  "name": "trachtengruppe-ins",
+  "version": "0.0.1",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "dev": "sanity dev",
+    "start": "sanity start"
+  },
+  "dependencies": {
+    "@sanity/vision": "^3.40.0",
+    "@tsconfig/strictest": "^2.0.5",
+    "@types/react": "^18.3.1",
+    "eslint": "^8.6.0",
+    "eslint-config-sweet": "^20.0.0",
+    "eslint-define-config": "^2.1.0",
+    "prettier": "^3.2.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sanity": "^3.40.0",
+    "styled-components": "^6.1.9",
+    "typescript": "^5.4.5"
+  }
+}
