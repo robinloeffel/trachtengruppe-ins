@@ -1,9 +1,6 @@
 {
 	"extends": [
-		"@tsconfig/strictest",
+		"robins-tsconfig",
 		"./.svelte-kit/tsconfig.json"
-	],
-	"compilerOptions": {
-		"moduleDetection": "force"
-	}
+	]
 }

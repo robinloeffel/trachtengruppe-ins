@@ -1,41 +1,41 @@
 @use "sass:map";
 
 $spaces: (
-  "2": 0.125rem,
-  "4": 0.25rem,
-  "8": 0.5rem,
-  "16": 1rem,
-  "24": 1.5rem,
-  "32": 2rem,
-  "48": 3rem,
-  "64": 4rem,
-  "96": 6rem,
-  "128": 8rem,
-  "192": 12rem,
-  "256": 16rem,
-  "384": 24rem,
-  "512": 32rem,
-  "640": 40rem,
-  "768": 48rem
+	"2": 0.125rem,
+	"4": 0.25rem,
+	"8": 0.5rem,
+	"16": 1rem,
+	"24": 1.5rem,
+	"32": 2rem,
+	"48": 3rem,
+	"64": 4rem,
+	"96": 6rem,
+	"128": 8rem,
+	"192": 12rem,
+	"256": 16rem,
+	"384": 24rem,
+	"512": 32rem,
+	"640": 40rem,
+	"768": 48rem
 );
 $font-sizes: (
-  "12": 0.75rem,
-  "14": 0.875rem,
-  "16": 1rem,
-  "18": 1.125rem,
-  "20": 1.25rem,
-  "24": 1.5rem,
-  "30": 1.875rem,
-  "36": 2.25rem,
-  "48": 3rem,
-  "60": 3.75rem,
-  "72": 4.5rem
+	"12": 0.75rem,
+	"14": 0.875rem,
+	"16": 1rem,
+	"18": 1.125rem,
+	"20": 1.25rem,
+	"24": 1.5rem,
+	"30": 1.875rem,
+	"36": 2.25rem,
+	"48": 3rem,
+	"60": 3.75rem,
+	"72": 4.5rem
 );
 
 @function space($key) {
-  @return map.get($spaces, $key);
+	@return map.get($spaces, $key);
 }
 
 @function font($key) {
-  @return map.get($font-sizes, $key);
+	@return map.get($font-sizes, $key);
 }

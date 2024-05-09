@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { Footer, Header, Navigation } from "$lib/components";
-  import "$styles/base.scss";
+	import { Footer, Header, Navigation } from "$lib/components";
+	import "$styles/base.scss";
 </script>
 
 <Navigation />
 <Header />
 
 <main>
-  <slot />
+	<slot />
 </main>
 
 <Footer />

@@ -11,15 +11,15 @@
 }
 
 html {
-  font-family: "Inter Variable", system-ui;
-  font-size: 100%;
+	font-family: "Inter Variable", system-ui;
+	font-size: 100%;
 	font-weight: 600;
-  line-height: 1.6;
-  text-rendering: optimizelegibility;
+	line-height: 1.6;
+	text-rendering: optimizelegibility;
 }
 
 body {
-  font-size: scales.font("20");
+	font-size: scales.font("20");
 	color: colors.$almost-black;
 }
 
@@ -34,9 +34,9 @@ h2,
 h3 {
 	hyphens: auto;
 	line-height: 1.2;
-  text-wrap: balance;
+	text-wrap: balance;
 }
 
 #app {
-  display: contents;
+	display: contents;
 }
