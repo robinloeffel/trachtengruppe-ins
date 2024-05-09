@@ -1,3 +1,4 @@
+import { deDELocale } from "@sanity/locale-de-de";
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
@@ -10,7 +11,8 @@ export default defineConfig({
 	dataset: "production",
 	plugins: [
 		structureTool(),
-		visionTool()
+		visionTool(),
+		deDELocale()
 	],
 	schema: {
 		types

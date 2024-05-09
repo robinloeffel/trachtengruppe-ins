@@ -1,23 +1,30 @@
+<script context="module" lang="ts">
+	interface NavigationItem {
+		title: string;
+		href: string;
+	}
+</script>
+
+<script lang="ts">
+	export let items: NavigationItem[];
+</script>
+
 <nav class="navigation" aria-label="Hauptnavigation">
 	<ul class="navigation-list">
-		<li class="navigation-item">
-			<a class="navigation-link active" href="/">
-				<img class="navigation-logo" alt="" src="/logo.svg" />
-				<span>Home</span>
-			</a>
-		</li>
-		<li class="navigation-item">
-			<a class="navigation-link" href="/">Verein</a>
-		</li>
-		<li class="navigation-item">
-			<a class="navigation-link" href="/">Agenda</a>
-		</li>
-		<li class="navigation-item">
-			<a class="navigation-link" href="/">Galerie</a>
-		</li>
-		<li class="navigation-item">
-			<a class="navigation-link" href="/">Kontakt</a>
-		</li>
+		{#each items as item}
+			{#if item.href === "/"}
+				<li class="navigation-item">
+					<a class="navigation-link" href={item.href}>
+						<img class="navigation-logo" alt="" src="/logo.svg" />
+						<span>{item.title}</span>
+					</a>
+				</li>
+			{:else}
+				<li class="navigation-item">
+					<a class="navigation-link" href={item.href}>{item.title}</a>
+				</li>
+			{/if}
+		{/each}
 	</ul>
 </nav>
 
@@ -28,6 +35,7 @@
 	.navigation {
 		position: sticky;
 		inset: 0 0 auto;
+		z-index: 9;
 		background-color: colors.$white-a90;
 		background-blend-mode: soft-light;
 		backdrop-filter: blur(scales.space("24"));
@@ -64,11 +72,6 @@
 			align-items: center;
 		}
 
-		&.active {
-			color: colors.$bloody-red;
-		}
-
-		&.active,
 		&:hover,
 		&:focus-visible {
 			text-decoration: underline scales.space("2");

@@ -22,5 +22,8 @@ module.exports = defineConfig({
 			"svelte/mustache-spacing": "error",
 			"svelte/sort-attributes": "error"
 		}
-	}]
+	}],
+	ignorePatterns: [
+		"src/lib/sanity/types.ts"
+	]
 });

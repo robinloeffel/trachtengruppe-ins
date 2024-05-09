@@ -6,7 +6,7 @@
 
 	const { page } = data;
 
-	const metaTitle = page?.meta?.title ?? "Trachtengruppe Ins und Umgebung";
+	const metaTitle = `${page?.meta?.title} — Trachtengruppe Ins und Umgebung`;
 	const pageTitle = page?.content?.pageTitle;
 	const pageImage = page?.content?.pageImage
 		? urlFor(page?.content?.pageImage)

@@ -1,8 +1,12 @@
+<script lang="ts">
+	export let source: HTMLImageElement["src"];
+</script>
+
 <header class="header">
 	<img
 		class="header-image"
 		alt=""
-		src="https://supportculture.customstorage.cloud/supportculture-migros-ch/media/images/ecbc3598-c7fe-4c7c-af18-a15d15.min-1200x1200.format-jpeg.jpg"
+		src={source}
 	>
 </header>
 
@@ -16,7 +20,7 @@
 
 	.header-image {
 		width: 100%;
-		max-height: 85dvh;
+		max-height: 85vh;
 		aspect-ratio: 2 / 1;
 		object-fit: cover;
 	}

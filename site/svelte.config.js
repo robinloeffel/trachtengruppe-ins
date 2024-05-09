@@ -7,7 +7,9 @@ export default defineConfig({
 	kit: {
 		adapter: adapter(),
 		alias: {
-			$styles: "./src/lib/styles"
+			$styles: "./src/lib/styles",
+			$components: "./src/lib/components/index.ts",
+			$sanity: "./src/lib/sanity/index.ts"
 		},
 		typescript: {
 			config: config => {
