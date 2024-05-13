@@ -7,3 +7,6 @@ dist
 
 .DS_Store
 .env
+
+site/src/lib/sanity/types.ts
+studio/schema.json
