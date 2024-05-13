@@ -60,6 +60,12 @@ export const page = defineType({
 				description: "Versteckt die Seite in der Navigation.",
 				type: "boolean",
 				initialValue: false
+			}, {
+				name: "order",
+				title: "Reihenfolge",
+				description: "Die Reihenfolge der Seite in der Navigation.",
+				type: "number",
+				initialValue: 1
 			}]
 		}),
 		defineField({

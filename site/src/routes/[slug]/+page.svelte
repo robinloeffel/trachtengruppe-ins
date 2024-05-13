@@ -1,35 +1,23 @@
 <script lang="ts">
 	import { Main, PageImage, PageTeaserList, PageTitle } from "$components";
-	import { urlFor } from "$sanity";
 
 	export let data;
-
-	const { page } = data;
-
-	const metaTitle = `${page?.meta?.title} — Trachtengruppe Ins und Umgebung`;
-	const pageTitle = page?.content?.pageTitle;
-	const pageImage = page?.content?.pageImage
-		? urlFor(page?.content?.pageImage)
-			.auto("format")
-			.url()
-		: null;
-	const pageTeasers = page?.content?.pageTeaser;
 </script>
 
 <svelte:head>
-	<title>{metaTitle}</title>
+	<title>{`${data.page?.meta?.title} — Trachtengruppe Ins und Umgebung`}</title>
 </svelte:head>
 
-{#if pageImage}
-	<PageImage source={pageImage} />
+{#if data.page?.content?.pageImage}
+	<PageImage {...data.page.content.pageImage}/>
 {/if}
 
 <Main>
-	{#if pageTitle}
-		<PageTitle title={pageTitle} />
+	{#if data.page?.content?.pageTitle}
+		<PageTitle title={data.page.content.pageTitle} />
 	{/if}
 
-	{#if pageTeasers}
-		<PageTeaserList items={pageTeasers} />
+	{#if data.page?.content?.pageTeaser}
+		<PageTeaserList {...data.page.content.pageTeaser} />
 	{/if}
 </Main>

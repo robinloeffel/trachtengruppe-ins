@@ -1,23 +1,24 @@
+<script context="module" lang="ts">
+	interface NavigationItem {
+		title: string;
+		href: string;
+	}
+</script>
+
+<script lang="ts">
+	export let items: NavigationItem[] = [];
+</script>
+
 <footer class="footer">
 	<div class="footer-content">
 		<a class="footer-mailto-link" href="mailto:info@trachtengruppe-ins.ch">info@trachtengruppe-ins.ch</a>
 		<nav class="footer-navigation" aria-label="Navigation in der Fusszeile">
 			<ul class="footer-navigation-list">
-				<li class="footer-navigation-item">
-					<a class="footer-navigation-link" href="/">Home</a>
-				</li>
-				<li class="footer-navigation-item">
-					<a class="footer-navigation-link" href="/">Verein</a>
-				</li>
-				<li class="footer-navigation-item">
-					<a class="footer-navigation-link" href="/">Agenda</a>
-				</li>
-				<li class="footer-navigation-item">
-					<a class="footer-navigation-link" href="/">Galerie</a>
-				</li>
-				<li class="footer-navigation-item">
-					<a class="footer-navigation-link" href="/">Kontakt</a>
-				</li>
+				{#each items as item}
+					<li class="footer-navigation-item">
+						<a class="footer-navigation-link" href={item.href}>{item.title}</a>
+					</li>
+				{/each}
 			</ul>
 		</nav>
 	</div>

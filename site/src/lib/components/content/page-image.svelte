@@ -1,12 +1,24 @@
 <script lang="ts">
-	export let source: HTMLImageElement["src"];
+	import { urlFor, type SanityPageImage } from "$sanity";
+
+	export let image: SanityPageImage["image"];
+	export let small: SanityPageImage["small"];
+
+	const imageSource = urlFor(image)
+		.auto("format")
+		.size(1280, 720)
+		.url();
 </script>
 
-<header class="header">
+<header class="header" class:small>
 	<img
 		class="header-image"
 		alt=""
-		src={source}
+		decoding="async"
+		fetchpriority="high"
+		height="720"
+		src={imageSource}
+		width="1280"
 	>
 </header>
 
@@ -23,5 +35,10 @@
 		max-height: 85vh;
 		aspect-ratio: 2 / 1;
 		object-fit: cover;
+
+		.small & {
+			max-height: 40vh;
+			aspect-ratio: 3 / 1;
+		}
 	}
 </style>

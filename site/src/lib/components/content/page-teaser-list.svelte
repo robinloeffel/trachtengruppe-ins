@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { GetPageBySlugResult } from "$sanity";
+	import type { SanityPageTeasers } from "$sanity";
 
-	export let items: GetPageBySlugResult["content"]["pageTeaser"];
+	export let items: SanityPageTeasers;
 </script>
 
 <ul class="page-teaser-list">

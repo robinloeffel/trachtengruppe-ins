@@ -4,14 +4,12 @@
 
 	export let data;
 
-	const { pages } = data;
-
-	const navigationItems = pages.map(item => ({
-		title: item.title,
-		href: item.meta?.slug.current ?? ""
+	const navigationItems = data.pages.map(page => ({
+		title: page.title,
+		href: page.meta?.slug.current ?? ""
 	})).filter(Boolean);
 </script>
 
 <Navigation items={navigationItems} />
 <slot />
-<Footer />
+<Footer items={navigationItems} />

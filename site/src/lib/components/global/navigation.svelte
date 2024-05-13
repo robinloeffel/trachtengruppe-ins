@@ -6,6 +6,8 @@
 </script>
 
 <script lang="ts">
+	import { page } from "$app/stores";
+
 	export let items: NavigationItem[];
 </script>
 
@@ -14,14 +16,14 @@
 		{#each items as item}
 			{#if item.href === "/"}
 				<li class="navigation-item">
-					<a class="navigation-link" href={item.href}>
+					<a class="navigation-link" class:active={!$page.params.slug} href={item.href}>
 						<img class="navigation-logo" alt="" src="/logo.svg" />
 						<span>{item.title}</span>
 					</a>
 				</li>
 			{:else}
 				<li class="navigation-item">
-					<a class="navigation-link" href={item.href}>{item.title}</a>
+					<a class="navigation-link" class:active={$page.params.slug?.includes(item.href)} href={item.href}>{item.title}</a>
 				</li>
 			{/if}
 		{/each}
@@ -72,9 +74,14 @@
 			align-items: center;
 		}
 
+		&.active,
 		&:hover,
 		&:focus-visible {
 			text-decoration: underline scales.space("2");
+		}
+
+		&.active {
+			color: colors.$bloody-red;
 		}
 	}
 
