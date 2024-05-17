@@ -4,13 +4,19 @@
 	export let image: SanityPageImage["image"];
 	export let small: SanityPageImage["small"];
 
+	let height: number;
 	let imageSource: string;
 
-	$: imageSource = urlFor(image)
-		.auto("format")
-		.width(1280)
-		.height(small ? 360 : 720)
-		.url();
+	$: {
+		height = small
+			? Math.round(1280 * 1 / 3)
+			: Math.round(1280 * 1 / 2);
+
+		imageSource = urlFor(image)
+			.auto("format")
+			.size(1280, height)
+			.url();
+	}
 </script>
 
 <header class="header" class:small>
@@ -19,7 +25,7 @@
 		alt=""
 		decoding="async"
 		fetchpriority="high"
-		height="720"
+		{height}
 		src={imageSource}
 		width="1280"
 	>
