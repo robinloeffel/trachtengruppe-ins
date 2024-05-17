@@ -4,9 +4,12 @@
 	export let image: SanityPageImage["image"];
 	export let small: SanityPageImage["small"];
 
-	const imageSource = urlFor(image)
+	let imageSource: string;
+
+	$: imageSource = urlFor(image)
 		.auto("format")
-		.size(1280, 720)
+		.width(1280)
+		.height(small ? 360 : 720)
 		.url();
 </script>
 
