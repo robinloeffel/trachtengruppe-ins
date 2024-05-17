@@ -9,7 +9,7 @@ export const getPageBySlug = groq`*[_type == "page" && meta.slug.current == $slu
 	},
 	content {
 		...,
-		pageTeaser[] {
+		pageTeasers[] {
 			title,
 			description,
 			linkLabel,
@@ -17,3 +17,5 @@ export const getPageBySlug = groq`*[_type == "page" && meta.slug.current == $slu
 		}
 	}
 }[0]`;
+
+export const getSettings = groq`*[_type == "settings"][0]`;

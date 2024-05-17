@@ -1,6 +1,7 @@
-import { allPages } from "$sanity";
+import { allPages, settings } from "$sanity";
 import type { LayoutServerLoad } from "./$types";
 
 export const load: LayoutServerLoad = async() => ({
-	pages: await allPages()
+	pages: await allPages(),
+	settings: await settings()
 });

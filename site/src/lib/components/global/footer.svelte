@@ -7,11 +7,12 @@
 
 <script lang="ts">
 	export let items: NavigationItem[] = [];
+	export let email: string;
 </script>
 
 <footer class="footer">
 	<div class="footer-content">
-		<a class="footer-mailto-link" href="mailto:info@trachtengruppe-ins.ch">info@trachtengruppe-ins.ch</a>
+		<a class="footer-mailto-link" href={`mailto:${email}`}>{email}</a>
 		<nav class="footer-navigation" aria-label="Navigation in der Fusszeile">
 			<ul class="footer-navigation-list">
 				{#each items as item}

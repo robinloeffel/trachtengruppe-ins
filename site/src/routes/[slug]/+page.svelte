@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Main, PageImage, PageTeaserList, PageTitle } from "$components";
+	import { BlockRenderer } from "$components";
 
 	export let data;
 </script>
@@ -8,16 +8,6 @@
 	<title>{`${data.page?.meta?.title} — Trachtengruppe Ins und Umgebung`}</title>
 </svelte:head>
 
-{#if data.page?.content?.pageImage}
-	<PageImage {...data.page.content.pageImage}/>
+{#if data.page?.content}
+	<BlockRenderer blocks={data.page.content} />
 {/if}
-
-<Main>
-	{#if data.page?.content?.pageTitle}
-		<PageTitle title={data.page.content.pageTitle} />
-	{/if}
-
-	{#if data.page?.content?.pageTeaser}
-		<PageTeaserList {...data.page.content.pageTeaser} />
-	{/if}
-</Main>

@@ -1,9 +1,10 @@
-export { allPages, pageBySlug } from "./client";
+export { allPages, pageBySlug, settings } from "./client";
 export { urlFor } from "./image";
 
 export type {
 	GetAllPagesResult,
 	GetPageBySlugResult,
+	GetSettingsResult,
 	PageImage as SanityPageImage,
 	PageTeasers as SanityPageTeasers,
 	PageTitle as SanityPageTitle,

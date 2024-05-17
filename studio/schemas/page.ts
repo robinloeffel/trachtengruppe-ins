@@ -88,7 +88,7 @@ export const page = defineType({
 				description: "Der Titel, der über dem Inhalt angezeigt wird.",
 				type: "pageTitle"
 			}, {
-				name: "pageTeaser",
+				name: "pageTeasers",
 				title: "Seitenteaser",
 				description: "Kacheln, die auf andere Seiten zeigen.",
 				type: "pageTeasers"
