@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-	<title>{`${data.page?.meta?.title} — Trachtengruppe Ins und Umgebung`}</title>
+	<title>Trachtengruppe Ins und Umgebung</title>
 </svelte:head>
 
 {#if data.page?.content?.pageImage}

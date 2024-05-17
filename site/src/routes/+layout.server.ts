@@ -1,5 +1,3 @@
-export const prerender = true;
-
 import { allPages } from "$sanity";
 import type { LayoutServerLoad } from "./$types";
 

@@ -10,12 +10,6 @@ export default defineConfig({
 			$styles: "./src/lib/styles",
 			$components: "./src/lib/components/index.ts",
 			$sanity: "./src/lib/sanity/index.ts"
-		},
-		typescript: {
-			config: config => {
-				config.include = [ ...config.include, "../markuplint.config.ts" ];
-				return config;
-			}
 		}
 	}
 });
