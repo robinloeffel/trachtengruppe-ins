@@ -8,16 +8,14 @@
 	let height: number;
 	let imageSource: string;
 
-	$: {
-		height = small
-			? Math.round(width * 1 / 3)
-			: Math.round(width * 1 / 2);
+	$: height = small
+		? Math.round(width * 1 / 3)
+		: Math.round(width * 1 / 2);
 
-		imageSource = urlFor(image)
+	$: imageSource = urlFor(image)
 			.auto("format")
 			.size(width, height)
 			.url();
-	}
 </script>
 
 <header class="header" class:small>

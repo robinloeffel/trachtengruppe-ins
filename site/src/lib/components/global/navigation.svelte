@@ -9,6 +9,10 @@
 	import { page } from "$app/stores";
 
 	export let items: NavigationItem[];
+
+	let slug: string;
+
+	$: ({ slug = "" } = $page.params);
 </script>
 
 <nav class="navigation" aria-label="Hauptnavigation">
@@ -16,14 +20,22 @@
 		{#each items as item (item.title)}
 			{#if item.href === "/"}
 				<li class="navigation-item">
-					<a class="navigation-link" class:active={!$page.params.slug} href={item.href}>
+					<a
+						class="navigation-link"
+						class:active={slug === ""}
+						href={item.href}
+					>
 						<img class="navigation-logo" alt="" src="/logo.svg" />
 						<span>{item.title}</span>
 					</a>
 				</li>
 			{:else}
 				<li class="navigation-item">
-					<a class="navigation-link" class:active={$page.params.slug?.includes(item.href)} href={item.href}>{item.title}</a>
+					<a
+						class="navigation-link"
+						class:active={slug.includes(item.href)}
+						href={item.href}
+					>{item.title}</a>
 				</li>
 			{/if}
 		{/each}

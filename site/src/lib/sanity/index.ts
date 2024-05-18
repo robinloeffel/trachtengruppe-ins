@@ -5,6 +5,7 @@ export type {
 	GetAllPagesResult,
 	GetPageBySlugResult,
 	GetSettingsResult,
+	Agenda as SanityAgenda,
 	PageImage as SanityPageImage,
 	PageTeasers as SanityPageTeasers,
 	PageTitle as SanityPageTitle,

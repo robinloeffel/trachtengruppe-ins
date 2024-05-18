@@ -9,7 +9,8 @@ export default defineConfig({
 		alias: {
 			$styles: "./src/lib/styles",
 			$components: "./src/lib/components/index.ts",
-			$sanity: "./src/lib/sanity/index.ts"
+			$sanity: "./src/lib/sanity/index.ts",
+			$utils: "./src/lib/utils/index.ts"
 		}
 	}
 });

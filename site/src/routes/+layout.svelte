@@ -3,7 +3,6 @@
 	import { Footer, Navigation } from "$components";
 	import { urlFor } from "$sanity";
 	import "$styles/base.scss";
-	import { VERSION as svelteKitVersion } from "@sveltejs/kit";
 
 	export let data;
 
@@ -22,7 +21,7 @@
 </script>
 
 <svelte:head>
-	<meta name="generator" content={`SvelteKit v${svelteKitVersion}`} />
+	<base href="/" />
 
 	{#if favicon}
 		<link href={favicon} rel="icon" />

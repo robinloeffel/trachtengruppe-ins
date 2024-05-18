@@ -14,7 +14,8 @@ export const getPageBySlug = groq`*[_type == "page" && meta.slug.current == $slu
 			description,
 			linkLabel,
 			"link": linkReference->
-		}
+		},
+		agenda[] | order(date asc)
 	}
 }[0]`;
 

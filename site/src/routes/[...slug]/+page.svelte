@@ -13,6 +13,8 @@
 
 <svelte:head>
 	<title>{pageTitle}</title>
+	<meta name="description" content={data.page?.meta?.description} />
+	<meta name="keywords" content={data.page?.meta?.keywords.join(" ")} />
 </svelte:head>
 
 {#if data.page?.content}
