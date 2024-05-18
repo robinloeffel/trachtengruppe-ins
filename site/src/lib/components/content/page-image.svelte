@@ -3,18 +3,19 @@
 
 	export let image: SanityPageImage["image"];
 	export let small: SanityPageImage["small"];
+	export let width = 1280;
 
 	let height: number;
 	let imageSource: string;
 
 	$: {
 		height = small
-			? Math.round(1280 * 1 / 3)
-			: Math.round(1280 * 1 / 2);
+			? Math.round(width * 1 / 3)
+			: Math.round(width * 1 / 2);
 
 		imageSource = urlFor(image)
 			.auto("format")
-			.size(1280, height)
+			.size(width, height)
 			.url();
 	}
 </script>
@@ -27,8 +28,8 @@
 		fetchpriority="high"
 		{height}
 		src={imageSource}
-		width="1280"
-	>
+		{width}
+	/>
 </header>
 
 <style lang="scss">

@@ -5,11 +5,11 @@
 </script>
 
 <ul class="page-teaser-list">
-	{#each items as item}
+	{#each items as item (item.title)}
 		<li class="page-teaser-item">
 			<article class="page-teaser">
 				<h2 class="page-teaser-title">{item.title}</h2>
-				<p class="page-teaser-text">{item.description}</p>
+				<p>{item.description}</p>
 				<a class="page-teaser-link" href={item.link.meta?.slug.current}>{item.linkLabel}</a>
 			</article>
 		</li>

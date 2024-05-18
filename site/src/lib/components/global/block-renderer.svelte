@@ -6,7 +6,7 @@
 </script>
 
 {#if blocks?.pageImage}
-	<PageImage {...blocks.pageImage}/>
+	<PageImage {...blocks.pageImage} />
 {/if}
 
 <Main>

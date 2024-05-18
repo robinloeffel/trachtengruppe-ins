@@ -12,12 +12,12 @@
 
 <footer class="footer">
 	<div class="footer-content">
-		<a class="footer-mailto-link" href={`mailto:${email}`}>{email}</a>
+		<a href={`mailto:${email}`}>{email}</a>
 		<nav class="footer-navigation" aria-label="Navigation in der Fusszeile">
 			<ul class="footer-navigation-list">
-				{#each items as item}
+				{#each items as item (item.title)}
 					<li class="footer-navigation-item">
-						<a class="footer-navigation-link" href={item.href}>{item.title}</a>
+						<a href={item.href}>{item.title}</a>
 					</li>
 				{/each}
 			</ul>

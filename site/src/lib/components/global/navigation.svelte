@@ -13,7 +13,7 @@
 
 <nav class="navigation" aria-label="Hauptnavigation">
 	<ul class="navigation-list">
-		{#each items as item}
+		{#each items as item (item.title)}
 			{#if item.href === "/"}
 				<li class="navigation-item">
 					<a class="navigation-link" class:active={!$page.params.slug} href={item.href}>

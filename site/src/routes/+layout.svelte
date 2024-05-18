@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { dev } from "$app/environment";
 	import { Footer, Navigation } from "$components";
 	import { urlFor } from "$sanity";
 	import "$styles/base.scss";
@@ -21,10 +22,19 @@
 </script>
 
 <svelte:head>
-	<meta name="generator" content={`SvelteKit v${svelteKitVersion}`}/>
+	<meta name="generator" content={`SvelteKit v${svelteKitVersion}`} />
 
 	{#if favicon}
-		<link href={favicon} rel="icon"/>
+		<link href={favicon} rel="icon" />
+	{/if}
+
+	{#if !dev}
+		<script
+			async
+			data-domains="trachtengruppe-ins.ch"
+			data-website-id="72b46aef-9fd1-4e04-8748-c110329b3faa"
+			src="/stats/script.js"
+		/>
 	{/if}
 </svelte:head>
 
