@@ -8,9 +8,6 @@
 		"prepare": "svelte-kit sync",
 		"start": "vite dev"
 	},
-	"simple-git-hooks": {
-		"commit-msg": "echo 'commit-msg hook' && exit 1"
-	},
 	"dependencies": {
 		"@fontsource-variable/inter": "^5.0.18",
 		"@sanity/client": "^6.18.2",
@@ -30,7 +27,6 @@
 		"postcss-preset-env": "^9.5.13",
 		"robins-tsconfig": "^1.0.0",
 		"sass": "^1.77.2",
-		"simple-git-hooks": "^2.11.1",
 		"stylelint": "^16.5.0",
 		"stylelint-config-sweet": "^1.0.3",
 		"stylelint-define-config": "^1.5.0",
