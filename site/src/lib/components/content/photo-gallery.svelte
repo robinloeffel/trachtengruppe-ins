@@ -2,6 +2,7 @@
 	import { browser } from "$app/environment";
 	import { Icon } from "$components";
 	import { urlFor, type SanityPhotoGallery } from "$sanity";
+	import { transparentPixel } from "$utils";
 	import type { KeyboardEventHandler } from "svelte/elements";
 
 	export let items: SanityPhotoGallery;
@@ -100,9 +101,7 @@
 	<button class="lightbox-close" type="button" on:click={closeLightbox}>
 		<Icon name="x-mark" size="large" />
 	</button>
-	{#if openGalleryItem?.full}
-		<img class="lightbox-image" alt="" src={openGalleryItem.full} />
-	{/if}
+	<img class="lightbox-image" alt="" src={openGalleryItem?.full ?? transparentPixel} />
 	<div class="lightbox-controls">
 		<button class="lightbox-prev" type="button" on:click={openPreviousImage}>
 			<Icon name="arrow-left" size="large" />
@@ -145,7 +144,7 @@
 		z-index: 9;
 		display: grid;
 		place-items: center;
-		padding: scales.space("128");
+		padding: scales.space("64");
 		pointer-events: none;
 		backdrop-filter: blur(scales.space("32")) brightness(20%);
 		opacity: 0;
@@ -185,7 +184,7 @@
 
 	.lightbox-close {
 		position: absolute;
-		top: scales.space("48");
+		top: scales.space("8");
 		color: colors.$white;
 		cursor: pointer;
 		background: 0;
@@ -194,7 +193,7 @@
 
 	.lightbox-controls {
 		position: absolute;
-		bottom: scales.space("48");
+		bottom: scales.space("8");
 		display: flex;
 		column-gap: scales.space("16");
 	}
