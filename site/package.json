@@ -6,6 +6,7 @@
 		"build": "vite build",
 		"dev": "vite dev",
 		"prepare": "svelte-kit sync",
+		"preview": "vite preview",
 		"start": "vite dev"
 	},
 	"dependencies": {

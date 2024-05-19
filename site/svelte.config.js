@@ -6,6 +6,9 @@ export default defineConfig({
 	preprocess: vitePreprocess(),
 	kit: {
 		adapter: adapter(),
+		prerender: {
+			entries: [ "/" ]
+		},
 		alias: {
 			$styles: "./src/lib/styles",
 			$components: "./src/lib/components/index.ts",
