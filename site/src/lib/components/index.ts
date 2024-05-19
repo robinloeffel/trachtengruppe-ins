@@ -1,4 +1,5 @@
 export { default as Agenda } from "./content/agenda.svelte";
+export { default as Contacts } from "./content/contacts.svelte";
 export { default as Icon } from "./content/icon.svelte";
 export { default as PageImage } from "./content/page-image.svelte";
 export { default as PageTeaserList } from "./content/page-teaser-list.svelte";

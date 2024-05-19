@@ -1,12 +1,16 @@
 <script lang="ts">
 	import ArrowUpRight from "iconoir/icons/regular/arrow-up-right.svg?raw";
 	import Calendar from "iconoir/icons/regular/calendar.svg?raw";
+	import Mail from "iconoir/icons/regular/mail.svg?raw";
 	import MapPin from "iconoir/icons/regular/map-pin.svg?raw";
+	import Phone from "iconoir/icons/regular/phone.svg?raw";
 
 	const icons = {
 		"arrow-up-right": ArrowUpRight,
 		"map-pin": MapPin,
-		calendar: Calendar
+		calendar: Calendar,
+		mail: Mail,
+		phone: Phone
 	};
 
 	export let name: keyof typeof icons;
