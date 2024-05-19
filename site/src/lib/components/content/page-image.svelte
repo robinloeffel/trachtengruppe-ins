@@ -3,7 +3,7 @@
 
 	export let image: SanityPageImage["image"];
 	export let small: SanityPageImage["small"];
-	export let width = 1280;
+	export let width = 1920;
 
 	let height: number;
 	let imageSource: string;

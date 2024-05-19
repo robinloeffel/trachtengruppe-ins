@@ -1,7 +1,14 @@
 <script lang="ts">
-	import { Agenda, Main, PageImage, PageTeaserList, PageTitle } from "$components";
+	import {
+		Agenda,
+		Contacts,
+		Main,
+		PageImage,
+		PageTeaserList,
+		PageTitle,
+		PhotoGallery
+	} from "$components";
 	import type { GetPageBySlugResult } from "$sanity";
-	import Contacts from "../content/contacts.svelte";
 
 	export let blocks: NonNullable<GetPageBySlugResult>["content"];
 </script>
@@ -25,5 +32,9 @@
 
 	{#if blocks?.contacts}
 		<Contacts items={blocks.contacts} />
+	{/if}
+
+	{#if blocks?.photoGallery}
+		<PhotoGallery items={blocks.photoGallery} />
 	{/if}
 </Main>

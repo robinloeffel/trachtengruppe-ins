@@ -3,6 +3,7 @@
 	import { Footer, Navigation } from "$components";
 	import { urlFor } from "$sanity";
 	import "$styles/base.scss";
+	import "$styles/utils.scss";
 
 	export let data;
 
