@@ -33,10 +33,10 @@
 			data-domains="trachtengruppe-ins.ch"
 			data-website-id="72b46aef-9fd1-4e04-8748-c110329b3faa"
 			src="/stats/script.js"
-		/>
+		></script>
 	{/if}
 </svelte:head>
 
 <Navigation items={navigationItems} />
-<slot />
+<slot></slot>
 <Footer email={footerMail} items={navigationItems} />

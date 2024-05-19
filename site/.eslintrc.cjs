@@ -13,13 +13,27 @@ module.exports = defineConfig({
 			"init-declarations": "off",
 			"unicorn/no-null": "off",
 
-			"svelte/block-lang": [ "error", { script: "ts", style: "scss" }],
+			"svelte/block-lang": [
+				"error",
+				{
+					script: "ts",
+					style: "scss"
+				}
+			],
 			"svelte/button-has-type": "error",
 			"svelte/derived-has-same-inputs-outputs": "error",
 			"svelte/first-attribute-linebreak": "error",
 			"svelte/html-closing-bracket-spacing": "error",
 			"svelte/html-quotes": "error",
-			"svelte/html-self-closing": "error",
+			"svelte/html-self-closing": [
+				"error",
+				{
+					normal: "never",
+					component: "always",
+					svelte: "always",
+					void: "always"
+				}
+			],
 			"svelte/infinite-reactive-loop": "error",
 			"svelte/mustache-spacing": "error",
 			"svelte/no-dom-manipulating": "error",

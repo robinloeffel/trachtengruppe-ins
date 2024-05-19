@@ -7,4 +7,3 @@ export const load: LayoutServerLoad = async() => ({
 });
 
 export const prerender = true;
-export const csr = false;
