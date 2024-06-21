@@ -11,7 +11,7 @@
 			<article class="contact">
 				<h2 class="contact-title">{item.name}</h2>
 				<span class="contact-email">
-					<Icon name="mail" />
+					<Icon name="email" />
 					<a href="mailto:{item.email}">Email</a>
 				</span>
 				<span class="contact-phone">
