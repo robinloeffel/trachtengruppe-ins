@@ -99,15 +99,15 @@
 
 <div class="lightbox" class:open={isGalleryOpen} aria-hidden="true">
 	<button class="lightbox-close" type="button" on:click={closeLightbox}>
-		<Icon name="x-mark" size="large" />
+		<Icon name="x-mark" size="medium" />
 	</button>
 	<img class="lightbox-image" alt="" src={openGalleryItem?.full ?? transparentPixel} />
 	<div class="lightbox-controls">
 		<button class="lightbox-prev" type="button" on:click={openPreviousImage}>
-			<Icon name="arrow-left" size="large" />
+			<Icon name="arrow-left" size="medium" />
 		</button>
 		<button class="lightbox-next" type="button" on:click={openNextImage}>
-			<Icon name="arrow-right" size="large" />
+			<Icon name="arrow-right" size="medium" />
 		</button>
 	</div>
 </div>
@@ -182,15 +182,6 @@
 		}
 	}
 
-	.lightbox-close {
-		position: absolute;
-		top: scales.space("8");
-		color: colors.$white;
-		cursor: pointer;
-		background: 0;
-		border: 0;
-	}
-
 	.lightbox-controls {
 		position: absolute;
 		bottom: scales.space("8");
@@ -198,11 +189,20 @@
 		column-gap: scales.space("16");
 	}
 
+	.lightbox-close,
 	.lightbox-prev,
 	.lightbox-next {
+		display: grid;
+		place-items: center;
+		padding: scales.space("16");
 		color: colors.$white;
 		cursor: pointer;
 		background: 0;
 		border: 0;
+	}
+
+	.lightbox-close {
+		position: absolute;
+		top: scales.space("8");
 	}
 </style>

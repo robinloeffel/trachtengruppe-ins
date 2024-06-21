@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { Icon } from "$components";
 	import type { SanityAgenda } from "$sanity";
+
+	import { Icon } from "$components";
 	import { formatLongFullDate, formatShortFullDate } from "$utils";
 
 	export let items: SanityAgenda;
@@ -20,7 +21,7 @@
 						{formatLongFullDate(item.date)}
 					</span>
 					<span class="agenda-item-place">
-						<Icon name="map-pin" />
+						<Icon name="pin" />
 						{item.place}
 					</span>
 					{#if item.link}

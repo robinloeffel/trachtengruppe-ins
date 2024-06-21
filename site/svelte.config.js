@@ -9,11 +9,22 @@ export default defineConfig({
 		prerender: {
 			entries: [ "/" ]
 		},
+		typescript: {
+			config: config => {
+				config.include = [
+					...config.include,
+					"../tasks/**/*.ts"
+				];
+
+				return config;
+			}
+		},
 		alias: {
 			$styles: "./src/lib/styles",
 			$components: "./src/lib/components/index.ts",
 			$sanity: "./src/lib/sanity/index.ts",
-			$utils: "./src/lib/utils/index.ts"
+			$utils: "./src/lib/utils/index.ts",
+			$generated: "./src/lib/generated"
 		}
 	}
 });

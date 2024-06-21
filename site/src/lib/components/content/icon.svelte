@@ -1,34 +1,14 @@
 <script lang="ts">
-	import ArrowLeft from "iconoir/icons/regular/arrow-left.svg?raw";
-	import ArrowRight from "iconoir/icons/regular/arrow-right.svg?raw";
-	import ArrowUpRight from "iconoir/icons/regular/arrow-up-right.svg?raw";
-	import Calendar from "iconoir/icons/regular/calendar.svg?raw";
-	import Mail from "iconoir/icons/regular/mail.svg?raw";
-	import MapPin from "iconoir/icons/regular/map-pin.svg?raw";
-	import Phone from "iconoir/icons/regular/phone.svg?raw";
-	import XMark from "iconoir/icons/regular/xmark.svg?raw";
-
-	const icons = {
-		"arrow-left": ArrowLeft,
-		"arrow-right": ArrowRight,
-		"arrow-up-right": ArrowUpRight,
-		"map-pin": MapPin,
-		"x-mark": XMark,
-		calendar: Calendar,
-		mail: Mail,
-		phone: Phone
-	};
+	import { icons } from "$generated/icons";
 
 	export let name: keyof typeof icons;
 	export let size: "small" | "medium" | "large" = "small";
-
-	const content = icons[name];
 </script>
 
-<i class="icon {size}">
+<span class="icon {size}">
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-	{@html content}
-</i>
+	{@html icons[name]}
+</span>
 
 <style lang="scss">
 	@use "$styles/scales";

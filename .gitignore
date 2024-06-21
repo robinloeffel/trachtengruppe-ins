@@ -9,4 +9,5 @@ dist
 .env
 
 site/src/lib/sanity/types.ts
+site/src/lib/generated
 studio/schema.json
