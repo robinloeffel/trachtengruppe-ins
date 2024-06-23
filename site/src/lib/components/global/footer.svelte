@@ -40,6 +40,7 @@
 	}
 
 	.footer {
+		overflow-x: auto;
 		font-size: scales.font("18");
 		border-top: scales.space("4") solid colors.$hint-of-chili;
 	}

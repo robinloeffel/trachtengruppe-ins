@@ -1,6 +1,7 @@
 @forward "font-face";
 @use "colors";
 @use "scales";
+@use "breakpoints";
 
 *,
 *::before,
@@ -19,8 +20,13 @@ html {
 }
 
 body {
+	margin-top: 84px;
 	font-size: scales.font("20");
 	color: colors.$almost-black;
+
+	@include breakpoints.above-sm {
+		margin-top: 96px;
+	}
 }
 
 img {

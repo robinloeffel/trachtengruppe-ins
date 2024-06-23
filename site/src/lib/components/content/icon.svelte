@@ -5,7 +5,7 @@
 	export let size: "small" | "medium" | "large" = "small";
 </script>
 
-<span class="icon {size}">
+<span class="icon {size}" data-name={name}>
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html icons[name]}
 </span>
