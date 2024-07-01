@@ -21,6 +21,8 @@ const icons = await Promise.all(files.map(async file => {
 
 	return [ name, optimized ];
 }));
+
+// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 const map = Object.fromEntries(icons) as Record<string, string>;
 
 await fs.mkdir("src/lib/generated", { recursive: true });

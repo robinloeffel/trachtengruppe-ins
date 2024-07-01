@@ -18,11 +18,11 @@
 					<h2 class="agenda-item-title">{item.title}</h2>
 					<span class="agenda-item-date">
 						<Icon name="calendar" />
-						{formatLongFullDate(item.date)}
+						<span>{formatLongFullDate(item.date)}</span>
 					</span>
 					<span class="agenda-item-place">
 						<Icon name="pin" />
-						{item.place}
+						<span>{item.place}</span>
 					</span>
 					{#if item.link}
 						<span class="agenda-item-link">
@@ -43,9 +43,14 @@
 <style lang="scss">
 	@use "$styles/scales";
 	@use "$styles/colors";
+	@use "$styles/breakpoints";
 
 	.agenda {
-		grid-column: 2 / -2;
+		grid-column: 1 / -1;
+
+		@include breakpoints.above-sm {
+			grid-column: 2 / -2;
+		}
 	}
 
 	.agenda-list {
@@ -56,12 +61,15 @@
 
 	.agenda-item {
 		display: grid;
-		grid-template-columns: 1fr 3fr;
 		border: scales.space("4") solid colors.$misty-rose;
 		border-radius: scales.space("16");
 
 		&.special {
 			border-color: colors.$hint-of-chili;
+		}
+
+		@include breakpoints.above-sm {
+			grid-template-columns: 1fr 3fr;
 		}
 	}
 
@@ -81,33 +89,64 @@
 
 	.agenda-item-right {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
 		gap: scales.space("16");
 		padding: scales.space("24") scales.space("32");
+
+		@include breakpoints.above-sm {
+			grid-template-columns: repeat(2, 1fr);
+		}
 	}
 
 	.agenda-item-title {
-		grid-row: 2 / 3;
-		grid-column: 1 / -1;
 		font-size: scales.font("36");
+
+		@include breakpoints.above-sm {
+			grid-row: 2 / 3;
+			grid-column: 1 / -1;
+		}
 	}
 
 	.agenda-item-date {
-		grid-row: 1 / 2;
-		grid-column: 1 / -1;
+		display: grid;
+		grid-template-columns: auto 1fr;
+		column-gap: scales.space("8");
+		align-items: baseline;
+
+		@include breakpoints.above-sm {
+			grid-row: 1 / 2;
+			grid-column: 1 / -1;
+		}
 	}
 
 	.agenda-item-place {
-		grid-row: 3 / 4;
-		grid-column: 1 / 2;
+		display: grid;
+		grid-template-columns: auto 1fr;
+		column-gap: scales.space("8");
+		align-items: baseline;
+
+		@include breakpoints.above-sm {
+			grid-row: 3 / 4;
+			grid-column: 1 / 3;
+
+			.agenda-item:has(.agenda-item-link) & {
+				grid-column: 1 / 2;
+			}
+		}
 	}
 
 	.agenda-item-link {
-		grid-row: 3 / 4;
-		grid-column: 2 / 3;
+		display: grid;
+		grid-template-columns: auto 1fr;
+		column-gap: scales.space("8");
+		align-items: baseline;
 
 		a {
 			color: colors.$bloody-red;
+		}
+
+		@include breakpoints.above-sm {
+			grid-row: 3 / 4;
+			grid-column: 2 / 3;
 		}
 	}
 </style>

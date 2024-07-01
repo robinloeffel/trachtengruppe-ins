@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Image } from "$components";
 	import { urlFor, type SanityPageImage } from "$sanity";
 
 	export let image: SanityPageImage["image"];
@@ -19,11 +20,9 @@
 </script>
 
 <header class="header" class:small>
-	<img
-		class="header-image"
+	<Image
 		alt=""
-		decoding="async"
-		fetchpriority="high"
+		extraClasses={[ "header-image" ]}
 		{height}
 		src={imageSource}
 		{width}
@@ -38,7 +37,7 @@
 		border-bottom: scales.space("4") solid colors.$hint-of-chili;
 	}
 
-	.header-image {
+	:global(.header-image) {
 		width: 100%;
 		max-height: 85vh;
 		aspect-ratio: 2 / 1;

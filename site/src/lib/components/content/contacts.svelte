@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { SanityContacts } from "$sanity";
-	import Icon from "./icon.svelte";
+
+	import { Icon } from "$components";
 
 	export let items: SanityContacts;
 </script>
@@ -25,16 +26,22 @@
 <style lang="scss">
 	@use "$styles/scales";
 	@use "$styles/colors";
+	@use "$styles/breakpoints";
 
 	.contacts {
-		display: flex;
-		grid-column: 2 / -2;
-		column-gap: scales.space("24");
+		display: grid;
+		grid-column: 1 / -1;
+		gap: scales.space("24");
 		list-style: none;
-	}
 
-	.contacts-item {
-		flex: 1;
+		@include breakpoints.above-sm {
+			grid-template-columns: 1fr 1fr;
+			grid-column: 2 / -2;
+		}
+
+		@include breakpoints.above-md {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
 	}
 
 	.contact {

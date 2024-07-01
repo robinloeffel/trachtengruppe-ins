@@ -5,8 +5,8 @@
 		Main,
 		PageImage,
 		PageTeaserList,
-		PageTitle,
-		PhotoGallery
+		PhotoGallery,
+		Title
 	} from "$components";
 	import type { GetPageBySlugResult } from "$sanity";
 
@@ -19,7 +19,7 @@
 
 <Main>
 	{#if blocks?.pageTitle}
-		<PageTitle title={blocks.pageTitle} />
+		<Title title={blocks.pageTitle} />
 	{/if}
 
 	{#if blocks?.pageTeasers}

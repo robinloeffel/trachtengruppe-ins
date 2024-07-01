@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from "$app/environment";
-	import { Icon } from "$components";
+	import { Icon, Image } from "$components";
 	import { urlFor, type SanityPhotoGallery } from "$sanity";
 	import { transparentPixel } from "$utils";
 	import type { KeyboardEventHandler } from "svelte/elements";
@@ -88,12 +88,7 @@
 					openLightbox(galleryItem.id);
 				}}
 			>
-				<img
-					alt=""
-					decoding="async"
-					loading="lazy"
-					src={galleryItem.thumbnail}
-				/>
+				<Image alt="" src={galleryItem.thumbnail} />
 			</button>
 		</li>
 	{/each}
@@ -103,7 +98,11 @@
 	<button class="lightbox-close" type="button" on:click={closeLightbox}>
 		<Icon name="x-mark" size="medium" />
 	</button>
-	<img class="lightbox-image" alt="" src={openGalleryItem?.full ?? transparentPixel} />
+	<Image
+		alt=""
+		extraClasses={[ "lightbox-image" ]}
+		src={openGalleryItem?.full ?? transparentPixel}
+	/>
 	<div class="lightbox-controls">
 		<button class="lightbox-prev" type="button" on:click={openPreviousImage}>
 			<Icon name="arrow-left" size="medium" />
@@ -117,6 +116,7 @@
 <style lang="scss">
 	@use "$styles/scales";
 	@use "$styles/colors";
+	@use "$styles/breakpoints";
 
 	.photo-gallery {
 		display: grid;
@@ -127,7 +127,11 @@
 	}
 
 	.photo-gallery-item {
-		grid-column: span 4;
+		grid-column: span 3;
+
+		@include breakpoints.above-sm {
+			grid-column: span 4;
+		}
 	}
 
 	.photo-gallery-thumb {
@@ -146,7 +150,7 @@
 		z-index: 9;
 		display: grid;
 		place-items: center;
-		padding: scales.space("64");
+		padding: scales.space("24");
 		pointer-events: none;
 		backdrop-filter: blur(scales.space("32")) brightness(20%);
 		opacity: 0;
@@ -158,9 +162,13 @@
 			opacity: 1;
 			transition-delay: 0s;
 		}
+
+		@include breakpoints.above-sm {
+			padding: scales.space("64");
+		}
 	}
 
-	.lightbox-image {
+	:global(.lightbox-image) {
 		display: block;
 		width: 100%;
 		max-width: 100%;

@@ -12,7 +12,6 @@
 
 <footer class="footer">
 	<div class="footer-content">
-		<a href="mailto:${email}">{email}</a>
 		<nav class="footer-navigation" aria-label="Navigation in der Fusszeile">
 			<ul class="footer-navigation-list">
 				{#each items as item (item.title)}
@@ -22,6 +21,7 @@
 				{/each}
 			</ul>
 		</nav>
+		<a href="mailto:${email}">{email}</a>
 	</div>
 </footer>
 
@@ -40,26 +40,25 @@
 	}
 
 	.footer {
-		overflow-x: auto;
 		font-size: scales.font("18");
 		border-top: scales.space("4") solid colors.$hint-of-chili;
 	}
 
 	.footer-content {
 		display: flex;
-		align-items: center;
+		flex-wrap: wrap;
+		gap: scales.space("16");
+		justify-content: space-around;
 		width: min(100%, 1024px);
 		padding: scales.space("24");
 		margin: auto;
 	}
 
-	.footer-navigation {
-		margin-left: auto;
-	}
-
 	.footer-navigation-list {
 		display: flex;
-		gap: scales.space("24");
+		flex-wrap: wrap;
+		gap: scales.space("8") scales.space("24");
+		justify-content: center;
 		list-style: none;
 	}
 
