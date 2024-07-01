@@ -23,6 +23,7 @@ body {
 	margin-top: 84px;
 	font-size: scales.font("20");
 	color: colors.$almost-black;
+	touch-action: manipulation;
 
 	@include breakpoints.above-sm {
 		margin-top: 96px;

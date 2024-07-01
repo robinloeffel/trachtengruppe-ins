@@ -5,11 +5,63 @@
 	import { formatLongFullDate, formatShortFullDate } from "$utils";
 
 	export let items: SanityAgenda;
+
+	let filteredItems = items;
+	let activeFilter: "future" | "past" | null = null;
+
+	const resetFilter = () => {
+		filteredItems = items;
+		activeFilter = null;
+	};
+
+	const filterPastItems = () => {
+		if (activeFilter === "past") {
+			resetFilter();
+		} else {
+			filteredItems = items.filter(item => new Date(item.date) < new Date());
+			activeFilter = "past";
+		}
+	};
+
+	const filterFutureItems = () => {
+		if (activeFilter === "future") {
+			resetFilter();
+		} else {
+			filteredItems = items.filter(item => new Date(item.date) > new Date());
+			activeFilter = "future";
+		}
+	};
 </script>
 
 <section class="agenda">
+	<ul class="agenda-filter">
+		<li class="agenda-filter-item">
+			<button
+				class="agenda-filter-button"
+				class:active={activeFilter === null}
+				type="button"
+				on:click={resetFilter}
+			>Alle</button>
+		</li>
+		<li class="agenda-filter-item">
+			<button
+				class="agenda-filter-button"
+				class:active={activeFilter === "past"}
+				type="button"
+				on:click={filterPastItems}
+			>Vergangene</button>
+		</li>
+		<li class="agenda-filter-item">
+			<button
+				class="agenda-filter-button"
+				class:active={activeFilter === "future"}
+				type="button"
+				on:click={filterFutureItems}
+			>Zukünftige</button>
+		</li>
+	</ul>
 	<ul class="agenda-list">
-		{#each items as item (item.title)}
+		{#each filteredItems as item (item._key)}
 			<li class="agenda-item" class:special={item.special}>
 				<div class="agenda-item-left">
 					{formatShortFullDate(item.date)}
@@ -50,6 +102,37 @@
 
 		@include breakpoints.above-sm {
 			grid-column: 2 / -2;
+		}
+	}
+
+	.agenda-filter {
+		display: flex;
+		flex-wrap: wrap;
+		gap: scales.space("16");
+		justify-content: center;
+		margin-bottom: scales.space("48");
+		list-style: none;
+	}
+
+	.agenda-filter-item {
+		display: flex;
+	}
+
+	.agenda-filter-button {
+		display: flex;
+		column-gap: scales.space("4");
+		align-items: center;
+		padding: scales.space("16") scales.space("24");
+		font-size: scales.font("18");
+		font-weight: 600;
+		cursor: pointer;
+		background-color: colors.$misty-rose;
+		border: 0;
+		border-radius: 100px;
+
+		&.active {
+			color: colors.$white;
+			background-color: colors.$hint-of-chili;
 		}
 	}
 
