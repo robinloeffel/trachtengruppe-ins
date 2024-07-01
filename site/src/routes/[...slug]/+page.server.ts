@@ -2,12 +2,11 @@ import { pageBySlug } from "$sanity";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async({ params }) => {
-	const slug = params.slug === "" ? "/" : params.slug;
-	const data = await pageBySlug(slug);
+	const page = await pageBySlug(params.slug || "/");
 
-	if (data) {
-		return { page: data };
+	if (page) {
+		return { page };
 	}
 
-	throw new Error(`Not found: ${slug}`);
+	throw new Error(`Not found: ${params.slug}`);
 };

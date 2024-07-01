@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Main } from "$components";
+	import { Image, Main } from "$components";
 </script>
 
 <svelte:head>
@@ -8,8 +8,8 @@
 
 <Main>
 	<div>
-		<h1>Die gesuchte Seite gibt es nicht. 😪</h1>
-		<img alt="" src="https://i.giphy.com/3ohs81rDuEz9ioJzAA.webp" />
+		<h1>Die gesuchte Seite gibt es nicht</h1>
+		<Image alt="" src="https://i.giphy.com/12p3JXHJBgqqCk.webp" />
 	</div>
 </Main>
 
