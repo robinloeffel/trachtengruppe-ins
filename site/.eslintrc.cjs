@@ -11,8 +11,8 @@ module.exports = defineConfig({
 		extends: "plugin:svelte/recommended",
 		rules: {
 			"no-underscore-dangle": "off",
-			"init-declarations": "off",
 			"unicorn/no-null": "off",
+			"@typescript-eslint/init-declarations": "off",
 
 			"svelte/block-lang": [
 				"error",

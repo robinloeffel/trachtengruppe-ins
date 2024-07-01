@@ -2,7 +2,7 @@
 	import { icons } from "$generated/icons";
 
 	export let name: keyof typeof icons;
-	export let size: "small" | "medium" | "large" = "small";
+	export let size: "large" | "medium" | "small" = "small";
 </script>
 
 <span class="icon {size}" data-name={name}>

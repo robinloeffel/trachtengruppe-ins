@@ -84,7 +84,9 @@
 			<button
 				class="photo-gallery-thumb"
 				type="button"
-				on:click={() => openLightbox(galleryItem.id)}
+				on:click={() => {
+					openLightbox(galleryItem.id);
+				}}
 			>
 				<img
 					alt=""
