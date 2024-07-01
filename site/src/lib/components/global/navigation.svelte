@@ -59,7 +59,7 @@
 					<li class="navigation-item">
 						<a
 							class="navigation-link"
-							class:active={slug === item.href}
+							class:active={slug.includes(item.href)}
 							href={item.href}
 							on:click={closeMobileMenu}
 						>

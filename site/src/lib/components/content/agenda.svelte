@@ -125,6 +125,7 @@
 		padding: scales.space("16") scales.space("24");
 		font-size: scales.font("18");
 		font-weight: 600;
+		color: colors.$almost-black;
 		cursor: pointer;
 		background-color: colors.$misty-rose;
 		border: 0;
