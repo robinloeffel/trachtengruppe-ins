@@ -1,6 +1,6 @@
-const { defineConfig } = require("stylelint-define-config");
+import { defineConfig } from "stylelint-define-config";
 
-module.exports = defineConfig({
+export default defineConfig({
 	extends: "stylelint-config-sweet",
 	rules: {
 		"selector-pseudo-class-no-unknown": [
