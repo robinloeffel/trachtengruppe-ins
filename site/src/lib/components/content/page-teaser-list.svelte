@@ -5,7 +5,7 @@
 </script>
 
 <ul class="page-teaser-list">
-	{#each items as item (item.title)}
+	{#each items as item (item._key)}
 		<li class="page-teaser-item">
 			<article class="page-teaser">
 				<h2 class="page-teaser-title">{item.title}</h2>

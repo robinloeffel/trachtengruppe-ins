@@ -8,17 +8,16 @@
 
 <ul class="contacts">
 	{#each items as item (item.name)}
-		<li class="contacts-item">
-			<article class="contact">
-				<h2 class="contact-title">{item.name}</h2>
-				<span class="contact-email">
-					<Icon name="email" />
-					<a href="mailto:{item.email}">Email</a>
-				</span>
-				<span class="contact-phone">
-					<Icon name="phone" />
-					<a href="tel:{item.phone}">Telefon</a>
-				</span>
+		<li class="contact">
+			<h2 class="contact-title">{item.name}</h2>
+			<span class="contact-email">
+				<Icon name="email" />
+				<a href="mailto:{item.email}">Email</a>
+			</span>
+			<span class="contact-phone">
+				<Icon name="phone" />
+				<a href="tel:{item.phone}">Telefon</a>
+			</span>
 		</li>
 	{/each}
 </ul>
