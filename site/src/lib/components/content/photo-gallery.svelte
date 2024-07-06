@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { Image, Lightbox } from "$components";
-	import { urlFor, type SanityPhotoGallery } from "$sanity";
+	import { urlFor, type Result } from "$sanity";
 
-	export let items: SanityPhotoGallery;
+	export let images: Result<"imageGallery", "images">;
 
-	const galleryItems = items.map(item => ({
-		id: item._key,
+	const uiImages = images.map(item => ({
+		_key: item._key,
+		alt: item.alt,
 		thumbnail: urlFor(item)
 			.auto("format")
 			.size(600, 600)
@@ -26,7 +27,7 @@
 </script>
 
 <ul class="photo-gallery">
-	{#each galleryItems as galleryItem, index (galleryItem.id)}
+	{#each uiImages as galleryImage, index (galleryImage._key)}
 		<li class="photo-gallery-item">
 			<button
 				class="photo-gallery-thumb"
@@ -35,7 +36,7 @@
 					openLightbox(index);
 				}}
 			>
-				<Image alt="" src={galleryItem.thumbnail} />
+				<Image alt={galleryImage.alt} src={galleryImage.thumbnail} />
 			</button>
 		</li>
 	{/each}
@@ -44,11 +45,11 @@
 <Lightbox
 	bind:open={isLightboxOpen}
 	bind:index={openLightboxElementIndex}
-	bind:itemsCount={galleryItems.length}
+	bind:itemsCount={uiImages.length}
 >
-	{#each galleryItems as image (image.id)}
+	{#each uiImages as lightboxImage (lightboxImage._key)}
 		<li>
-			<Image alt="" src={image.full} />
+			<Image alt={lightboxImage.alt} src={lightboxImage.full} />
 		</li>
 	{/each}
 </Lightbox>

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { Image } from "$components";
-	import { urlFor, type SanityHero } from "$sanity";
+	import { urlFor, type Result } from "$sanity";
 
-	export let image: SanityHero["image"];
-	export let title: SanityHero["title"];
+	export let image: Result<"hero", "image">;
+	export let title: Result<"hero", "title">;
 	export let width = 1920;
 
 	let height: number;
@@ -19,7 +19,7 @@
 			.url();
 </script>
 
-<header class="header" class:image.small>
+<header class="header" class:small={image.small}>
 	<Image
 		alt=""
 		extraClasses={[ "header-image" ]}

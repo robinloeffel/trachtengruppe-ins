@@ -72,6 +72,6 @@ module.exports = defineConfig({
 		}
 	}],
 	ignorePatterns: [
-		"src/lib/sanity/types.ts"
+		"src/lib/generated"
 	]
 });

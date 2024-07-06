@@ -1,16 +1,15 @@
 <script lang="ts">
-	import type { SanityAgenda } from "$sanity";
-
 	import { Icon } from "$components";
+	import type { Result } from "$sanity";
 	import { formatLongFullDate, formatShortFullDate } from "$utils";
 
-	export let items: SanityAgenda;
+	export let events: Result<"agenda", "events">;
 
-	let filteredItems = items;
+	let filteredEvents = events;
 	let activeFilter: "future" | "past" | null = null;
 
 	const resetFilter = () => {
-		filteredItems = items;
+		filteredEvents = events;
 		activeFilter = null;
 	};
 
@@ -18,7 +17,7 @@
 		if (activeFilter === "past") {
 			resetFilter();
 		} else {
-			filteredItems = items.filter(item => new Date(item.date) < new Date());
+			filteredEvents = events.filter(item => new Date(item.date) < new Date());
 			activeFilter = "past";
 		}
 	};
@@ -27,7 +26,7 @@
 		if (activeFilter === "future") {
 			resetFilter();
 		} else {
-			filteredItems = items.filter(item => new Date(item.date) > new Date());
+			filteredEvents = events.filter(item => new Date(item.date) > new Date());
 			activeFilter = "future";
 		}
 	};
@@ -61,7 +60,7 @@
 		</li>
 	</ul>
 	<ul class="agenda-list">
-		{#each filteredItems as item (item._key)}
+		{#each filteredEvents as item (item._key)}
 			<li class="agenda-item" class:special={item.special}>
 				<div class="agenda-item-left">
 					{formatShortFullDate(item.date)}

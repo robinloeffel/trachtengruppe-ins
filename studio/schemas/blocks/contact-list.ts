@@ -13,7 +13,8 @@ export const contactList = defineType({
 				defineArrayMember({
 					type: "contact"
 				})
-			]
+			],
+			validation: Rule => Rule.required()
 		})
 	]
 });

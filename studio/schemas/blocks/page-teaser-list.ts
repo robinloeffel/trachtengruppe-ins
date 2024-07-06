@@ -13,7 +13,8 @@ export const pageTeaserList = defineType({
 				defineArrayMember({
 					type: "pageTeaser"
 				})
-			]
+			],
+			validation: Rule => Rule.required()
 		})
 	]
 });

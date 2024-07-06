@@ -75,7 +75,6 @@
 		visibility: hidden;
 		backdrop-filter: blur(scales.space("64"));
 		opacity: 0;
-		transition: opacity 0.5s, visibility 0.5s;
 
 		&.open {
 			pointer-events: unset;
@@ -91,7 +90,6 @@
 		height: 100%;
 		min-height: 0;
 		list-style: none;
-		transition: translate 0.5s;
 		translate: calc(var(--item) * -100%);
 
 		:global(> *) {

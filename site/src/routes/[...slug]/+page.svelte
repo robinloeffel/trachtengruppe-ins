@@ -18,5 +18,5 @@
 </svelte:head>
 
 {#if data.page?.pageBuilder}
-	<BlockRenderer bind:blocks={data.page.pageBuilder} />
+	<BlockRenderer blocks={data.page.pageBuilder} />
 {/if}

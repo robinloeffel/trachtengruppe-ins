@@ -13,7 +13,8 @@ export const richtext = defineType({
 				defineArrayMember({
 					type: "block"
 				})
-			]
+			],
+			validation: Rule => Rule.required()
 		})
 	]
 });

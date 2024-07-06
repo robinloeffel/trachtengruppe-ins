@@ -8,12 +8,14 @@ export const pageTeaser = defineType({
 		defineField({
 			name: "headline",
 			type: "string",
-			title: "Überschrift"
+			title: "Überschrift",
+			validation: Rule => Rule.required()
 		}),
 		defineField({
 			name: "lead",
 			type: "string",
-			title: "Lead"
+			title: "Lead",
+			validation: Rule => Rule.required()
 		}),
 		defineField({
 			name: "link",
@@ -21,7 +23,8 @@ export const pageTeaser = defineType({
 			title: "Link",
 			to: [{
 				type: "page"
-			}]
+			}],
+			validation: Rule => Rule.required()
 		})
 	]
 });

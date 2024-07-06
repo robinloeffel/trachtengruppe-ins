@@ -13,7 +13,8 @@ export const agenda = defineType({
 				defineArrayMember({
 					type: "event"
 				})
-			]
+			],
+			validation: Rule => Rule.required()
 		})
 	],
 	preview: {

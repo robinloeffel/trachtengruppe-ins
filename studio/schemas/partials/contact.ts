@@ -9,19 +9,22 @@ export const contact = defineType({
 			name: "name",
 			title: "Name",
 			description: "Der Name des Kontakts.",
-			type: "string"
+			type: "string",
+			validation: Rule => Rule.required()
 		}),
 		defineField({
 			name: "email",
 			title: "E-Mail",
 			description: "Die E-Mail-Adresse des Kontakts.",
-			type: "email"
+			type: "email",
+			validation: Rule => Rule.required()
 		}),
 		defineField({
 			name: "phone",
 			title: "Telefon",
 			description: "Die Telefonnummer des Kontakts.",
-			type: "string"
+			type: "string",
+			validation: Rule => Rule.required()
 		})
 	]
 });

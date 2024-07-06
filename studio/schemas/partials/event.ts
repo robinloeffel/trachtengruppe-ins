@@ -9,25 +9,29 @@ export const event = defineType({
 			name: "date",
 			title: "Datum",
 			description: "Das Datum und die Uhrzeit des Ereignisses.",
-			type: "datetime"
+			type: "datetime",
+			validation: Rule => Rule.required()
 		}),
 		defineField({
 			name: "title",
 			title: "Titel",
 			description: "Der Titel des Ereignisses.",
-			type: "string"
+			type: "string",
+			validation: Rule => Rule.required()
 		}),
 		defineField({
 			name: "place",
 			title: "Ort",
 			description: "Der Ort des Ereignisses.",
-			type: "string"
+			type: "string",
+			validation: Rule => Rule.required()
 		}),
 		defineField({
 			name: "special",
 			title: "Speziell",
 			description: "Ein spezielles Ereignis, das hervorgehoben werden soll.",
-			type: "boolean"
+			type: "boolean",
+			initialValue: false
 		}),
 		defineField({
 			name: "link",

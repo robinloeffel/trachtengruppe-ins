@@ -21,14 +21,17 @@ export const imageGallery = defineType({
 						defineField({
 							name: "alt",
 							type: "string",
-							title: "Alternativtext"
+							title: "Alternativtext",
+							validation: Rule => Rule.required()
 						})
-					]
+					],
+					validation: Rule => Rule.required()
 				})
 			],
 			options: {
 				layout: "grid"
-			}
+			},
+			validation: Rule => Rule.required()
 		})
 	]
 });

@@ -11,7 +11,8 @@ export const page = defineType({
 			name: "title",
 			type: "string",
 			title: "Titel",
-			description: "Der Titel der Seite in der Navigation."
+			description: "Der Titel der Seite in der Navigation.",
+			validation: Rule => Rule.required()
 		}),
 		defineField({
 			name: "meta",
@@ -35,11 +36,11 @@ export const page = defineType({
 					title: "URL-Segment",
 					description: "Das URL-Segment, das in der Adressleiste des Browsers angezeigt wird.",
 					type: "slug",
-					validation: Rule => Rule.required(),
 					options: {
 						source: "title",
 						maxLength: 96
-					}
+					},
+					validation: Rule => Rule.required()
 				}),
 				defineField({
 					name: "description",
@@ -54,8 +55,14 @@ export const page = defineType({
 					title: "Schlüsselwörter",
 					description: "Eine Liste von kurzen Wörtern, die beschreiben, worum es auf der Seite geht.",
 					type: "array",
-					of: [{ type: "string" }],
-					options: { layout: "tags" },
+					of: [
+						defineArrayMember({
+							type: "string"
+						})
+					],
+					options: {
+						layout: "tags"
+					},
 					validation: Rule => Rule.required()
 				}),
 				defineField({
@@ -63,16 +70,19 @@ export const page = defineType({
 					title: "Versteckt",
 					description: "Versteckt die Seite in der Navigation.",
 					type: "boolean",
-					initialValue: false
+					initialValue: false,
+					validation: Rule => Rule.required()
 				}),
 				defineField({
 					name: "order",
 					title: "Reihenfolge",
 					description: "Die Reihenfolge der Seite in der Navigation.",
 					type: "number",
-					initialValue: 1
+					initialValue: 1,
+					validation: Rule => Rule.required()
 				})
-			]
+			],
+			validation: Rule => Rule.required()
 		}),
 		defineField({
 			name: "pageBuilder",
@@ -98,7 +108,8 @@ export const page = defineType({
 				defineArrayMember({
 					type: "richtext"
 				})
-			]
+			],
+			validation: Rule => Rule.required()
 		})
 	]
 });
