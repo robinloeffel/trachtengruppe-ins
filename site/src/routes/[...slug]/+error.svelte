@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { Image, Main } from "$components";
+	import { Grid, Image } from "$components";
 </script>
 
 <svelte:head>
 	<title>404 - Seite nicht gefunden</title>
 </svelte:head>
 
-<Main>
+<Grid>
 	<div>
 		<h1>Die gesuchte Seite gibt es nicht</h1>
 		<Image alt="" src="https://i.giphy.com/12p3JXHJBgqqCk.webp" />
 	</div>
-</Main>
+</Grid>
 
 <style lang="scss">
 	div {
