@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Icon } from "$components";
+	import { Grid, Icon } from "$components";
 	import type { Result } from "$sanity";
 	import { formatLongFullDate, formatShortFullDate } from "$utils";
 
@@ -32,64 +32,66 @@
 	};
 </script>
 
-<section class="agenda">
-	<ul class="agenda-filter">
-		<li class="agenda-filter-item">
-			<button
-				class="agenda-filter-button"
-				class:active={activeFilter === null}
-				type="button"
-				on:click={resetFilter}
-			>Alle</button>
-		</li>
-		<li class="agenda-filter-item">
-			<button
-				class="agenda-filter-button"
-				class:active={activeFilter === "past"}
-				type="button"
-				on:click={filterPastItems}
-			>Vergangene</button>
-		</li>
-		<li class="agenda-filter-item">
-			<button
-				class="agenda-filter-button"
-				class:active={activeFilter === "future"}
-				type="button"
-				on:click={filterFutureItems}
-			>Zukünftige</button>
-		</li>
-	</ul>
-	<ul class="agenda-list">
-		{#each filteredEvents as item (item._key)}
-			<li class="agenda-item" class:special={item.special}>
-				<div class="agenda-item-left">
-					{formatShortFullDate(item.date)}
-				</div>
-				<div class="agenda-item-right">
-					<h2 class="agenda-item-title">{item.title}</h2>
-					<span class="agenda-item-date">
-						<Icon name="calendar" />
-						<span>{formatLongFullDate(item.date)}</span>
-					</span>
-					<span class="agenda-item-place">
-						<Icon name="pin" />
-						<span>{item.place}</span>
-					</span>
-					{#if item.link}
-						<span class="agenda-item-link">
-							<Icon name="arrow-up-right" />
-							<a
-								href={item.link}
-								rel="noopener noreferrer"
-								target="_blank"
-							>Mehr erfahren</a>
-						</span>
-					{/if}
-				</div>
+<Grid>
+	<section class="agenda">
+		<ul class="agenda-filter">
+			<li class="agenda-filter-item">
+				<button
+					class="agenda-filter-button"
+					class:active={activeFilter === null}
+					type="button"
+					on:click={resetFilter}
+				>Alle</button>
 			</li>
-		{/each}
-	</ul>
-</section>
+			<li class="agenda-filter-item">
+				<button
+					class="agenda-filter-button"
+					class:active={activeFilter === "past"}
+					type="button"
+					on:click={filterPastItems}
+				>Vergangene</button>
+			</li>
+			<li class="agenda-filter-item">
+				<button
+					class="agenda-filter-button"
+					class:active={activeFilter === "future"}
+					type="button"
+					on:click={filterFutureItems}
+				>Zukünftige</button>
+			</li>
+		</ul>
+		<ul class="agenda-list">
+			{#each filteredEvents as item (item._key)}
+				<li class="agenda-item" class:special={item.special}>
+					<div class="agenda-item-left">
+						{formatShortFullDate(item.date)}
+					</div>
+					<div class="agenda-item-right">
+						<h2 class="agenda-item-title">{item.title}</h2>
+						<span class="agenda-item-date">
+							<Icon name="calendar" />
+							<span>{formatLongFullDate(item.date)}</span>
+						</span>
+						<span class="agenda-item-place">
+							<Icon name="pin" />
+							<span>{item.place}</span>
+						</span>
+						{#if item.link}
+							<span class="agenda-item-link">
+								<Icon name="arrow-up-right" />
+								<a
+									href={item.link}
+									rel="noopener noreferrer"
+									target="_blank"
+								>Mehr erfahren</a>
+							</span>
+						{/if}
+					</div>
+				</li>
+			{/each}
+		</ul>
+	</section>
+</Grid>
 
 <style lang="scss">
 	@use "$styles/scales";

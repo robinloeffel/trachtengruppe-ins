@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Image, Lightbox } from "$components";
+	import { Grid, Image, Lightbox } from "$components";
 	import { urlFor, type Result } from "$sanity";
 
 	export let images: Result<"imageGallery", "images">;
@@ -26,21 +26,23 @@
 	};
 </script>
 
-<ul class="photo-gallery">
-	{#each uiImages as galleryImage, index (galleryImage._key)}
-		<li class="photo-gallery-item">
-			<button
-				class="photo-gallery-thumb"
-				type="button"
-				on:click={() => {
-					openLightbox(index);
-				}}
-			>
-				<Image alt={galleryImage.alt} src={galleryImage.thumbnail} />
-			</button>
-		</li>
-	{/each}
-</ul>
+<Grid>
+	<ul class="image-gallery">
+		{#each uiImages as galleryImage, index (galleryImage._key)}
+			<li class="image-gallery-item">
+				<button
+					class="image-gallery-thumb"
+					type="button"
+					on:click={() => {
+						openLightbox(index);
+					}}
+				>
+					<Image alt={galleryImage.alt} src={galleryImage.thumbnail} />
+				</button>
+			</li>
+		{/each}
+	</ul>
+</Grid>
 
 <Lightbox
 	bind:open={isLightboxOpen}
@@ -59,7 +61,7 @@
 	@use "$styles/colors";
 	@use "$styles/breakpoints";
 
-	.photo-gallery {
+	.image-gallery {
 		display: grid;
 		grid-template-columns: subgrid;
 		grid-column: 1 / -1;
@@ -67,7 +69,7 @@
 		list-style: none;
 	}
 
-	.photo-gallery-item {
+	.image-gallery-item {
 		grid-column: span 3;
 
 		@include breakpoints.above-sm {
@@ -75,7 +77,7 @@
 		}
 	}
 
-	.photo-gallery-thumb {
+	.image-gallery-thumb {
 		display: grid;
 		place-items: center;
 		overflow: hidden;

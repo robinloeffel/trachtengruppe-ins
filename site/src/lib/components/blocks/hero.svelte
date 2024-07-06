@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Image } from "$components";
+	import { Grid, Image } from "$components";
 	import { urlFor, type Result } from "$sanity";
 
 	export let image: Result<"hero", "image">;
@@ -19,32 +19,31 @@
 			.url();
 </script>
 
-<header class="header" class:small={image.small}>
+<header class:small={image.small}>
 	<Image
 		alt=""
-		extraClasses={[ "header-image" ]}
+		extraClasses={[ "hero-image" ]}
 		{height}
 		src={imageSource}
 		{width}
 	/>
-</header>
 
-<h1 class="title">{title}</h1>
+	<Grid>
+		<h1 class="hero-title">{title}</h1>
+	</Grid>
+</header>
 
 <style lang="scss">
 	@use "$styles/colors";
 	@use "$styles/scales";
 	@use "$styles/breakpoints";
 
-	.header {
-		border-bottom: scales.space("4") solid colors.$hint-of-chili;
-	}
-
-	:global(.header-image) {
+	:global(.hero-image) {
 		width: 100%;
 		max-height: 85vh;
 		aspect-ratio: 2 / 1;
 		object-fit: cover;
+		border-bottom: scales.space("4") solid colors.$hint-of-chili;
 
 		.small & {
 			max-height: 40vh;
@@ -52,7 +51,7 @@
 		}
 	}
 
-	.title {
+	.hero-title {
 		grid-column: 1 / -1;
 		font-size: scales.font("48");
 		text-align: center;

@@ -1,20 +1,23 @@
 <script lang="ts">
+	import { Grid } from "$components";
 	import type { Result } from "$sanity";
 
 	export let teasers: Result<"pageTeaserList", "teasers">;
 </script>
 
-<ul class="page-teaser-list">
-	{#each teasers as teaser (teaser._key)}
-		<li class="page-teaser-item">
-			<article class="page-teaser">
-				<h2 class="page-teaser-title">{teaser.headline}</h2>
-				<p>{teaser.lead}</p>
-				<a class="page-teaser-link" href={teaser.link}>Mehr erfahren</a>
-			</article>
-		</li>
-	{/each}
-</ul>
+<Grid>
+	<ul class="page-teaser-list">
+		{#each teasers as teaser (teaser._key)}
+			<li class="page-teaser-item">
+				<article class="page-teaser">
+					<h2 class="page-teaser-title">{teaser.headline}</h2>
+					<p>{teaser.lead}</p>
+					<a class="page-teaser-link" href={teaser.link}>Mehr erfahren</a>
+				</article>
+			</li>
+		{/each}
+	</ul>
+</Grid>
 
 <style lang="scss">
 	@use "$styles/scales";

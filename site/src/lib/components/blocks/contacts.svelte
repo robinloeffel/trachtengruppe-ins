@@ -1,25 +1,27 @@
 <script lang="ts">
-	import { Icon } from "$components";
+	import { Grid, Icon } from "$components";
 	import type { Result } from "$sanity";
 
 	export let contacts: Result<"contactList", "contacts">;
 </script>
 
-<ul class="contacts">
-	{#each contacts as contact (contact._key)}
-		<li class="contact">
-			<h2 class="contact-title">{contact.name}</h2>
-			<span class="contact-email">
-				<Icon name="email" />
-				<a href="mailto:{contact.email}">Email</a>
-			</span>
-			<span class="contact-phone">
-				<Icon name="phone" />
-				<a href="tel:{contact.phone}">Telefon</a>
-			</span>
-		</li>
-	{/each}
-</ul>
+<Grid>
+	<ul class="contacts">
+		{#each contacts as contact (contact._key)}
+			<li class="contact">
+				<h2 class="contact-title">{contact.name}</h2>
+				<span class="contact-email">
+					<Icon name="email" />
+					<a href="mailto:{contact.email}">Email</a>
+				</span>
+				<span class="contact-phone">
+					<Icon name="phone" />
+					<a href="tel:{contact.phone}">Telefon</a>
+				</span>
+			</li>
+		{/each}
+	</ul>
+</Grid>
 
 <style lang="scss">
 	@use "$styles/scales";
