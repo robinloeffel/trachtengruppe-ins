@@ -6,9 +6,8 @@ export type {
 	GetPageBySlugResult,
 	GetSettingsResult,
 	Agenda as SanityAgenda,
-	Contacts as SanityContacts,
-	PageImage as SanityPageImage,
-	PageTeasers as SanityPageTeasers,
-	PageTitle as SanityPageTitle,
-	PhotoGallery as SanityPhotoGallery
+	ContactList as SanityContactList,
+	Hero as SanityHero,
+	ImageGallery as SanityImageGallery,
+	PageTeaserList as SanityPageTeaserList
 } from "./types";

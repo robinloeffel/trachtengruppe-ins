@@ -1,40 +1,30 @@
 <script lang="ts">
-	import {
-		Agenda,
-		Contacts,
-		Main,
-		PageImage,
-		PageTeaserList,
-		PhotoGallery,
-		Title
-	} from "$components";
+	import { Agenda, Contacts, Hero, PageTeaserList, PhotoGallery } from "$components";
 	import type { GetPageBySlugResult } from "$sanity";
 
-	export let blocks: NonNullable<GetPageBySlugResult>["content"];
+	export let blocks: NonNullable<GetPageBySlugResult>["pageBuilder"];
 </script>
 
-{#if blocks?.pageImage}
-	<PageImage {...blocks.pageImage} />
+{#if blocks}
+	{#each blocks as block (block._key)}
+		{#if block._type === "hero"}
+			<Hero {...block} />
+		{/if}
+
+		{#if block._type === "pageTeaserList"}
+			<PageTeaserList {...block} />
+		{/if}
+
+		{#if block._type === "agenda"}
+			<Agenda {...block} />
+		{/if}
+
+		{#if block._type === "contactList"}
+			<Contacts {...block} />
+		{/if}
+
+		{#if block._type === "imageGallery"}
+			<PhotoGallery {...block} />
+		{/if}
+	{/each}
 {/if}
-
-<Main>
-	{#if blocks?.pageTitle}
-		<Title title={blocks.pageTitle} />
-	{/if}
-
-	{#if blocks?.pageTeasers}
-		<PageTeaserList items={blocks.pageTeasers} />
-	{/if}
-
-	{#if blocks?.agenda}
-		<Agenda items={blocks.agenda} />
-	{/if}
-
-	{#if blocks?.contacts}
-		<Contacts items={blocks.contacts} />
-	{/if}
-
-	{#if blocks?.photoGallery}
-		<PhotoGallery items={blocks.photoGallery} />
-	{/if}
-</Main>

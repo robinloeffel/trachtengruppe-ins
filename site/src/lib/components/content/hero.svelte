@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { Image } from "$components";
-	import { urlFor, type SanityPageImage } from "$sanity";
+	import { urlFor, type SanityHero } from "$sanity";
 
-	export let image: SanityPageImage["image"];
-	export let small: SanityPageImage["small"];
+	export let image: SanityHero["image"];
+	export let title: SanityHero["title"];
 	export let width = 1920;
 
 	let height: number;
 	let imageSource: string;
 
-	$: height = small
+	$: height = image.small
 		? Math.round(width * 1 / 3)
 		: Math.round(width * 1 / 2);
 
@@ -19,7 +19,7 @@
 			.url();
 </script>
 
-<header class="header" class:small>
+<header class="header" class:image.small>
 	<Image
 		alt=""
 		extraClasses={[ "header-image" ]}
@@ -29,9 +29,12 @@
 	/>
 </header>
 
+<h1 class="title">{title}</h1>
+
 <style lang="scss">
 	@use "$styles/colors";
 	@use "$styles/scales";
+	@use "$styles/breakpoints";
 
 	.header {
 		border-bottom: scales.space("4") solid colors.$hint-of-chili;
@@ -46,6 +49,16 @@
 		.small & {
 			max-height: 40vh;
 			aspect-ratio: 3 / 1;
+		}
+	}
+
+	.title {
+		grid-column: 1 / -1;
+		font-size: scales.font("48");
+		text-align: center;
+
+		@include breakpoints.above-sm {
+			grid-column: 2 / -2;
 		}
 	}
 </style>

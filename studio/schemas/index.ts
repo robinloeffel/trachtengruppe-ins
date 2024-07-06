@@ -1,21 +1,25 @@
-import { agenda } from "./agenda";
-import { contacts } from "./contacts";
-import { page } from "./page";
-import { pageImage } from "./page-image";
-import { pageTeasers } from "./page-teasers";
-import { pageTitle } from "./page-title";
-import { photoGallery } from "./photo-gallery";
-import { richtext } from "./richtext";
-import { settings } from "./settings";
+import { agenda } from "./blocks/agenda";
+import { contactList } from "./blocks/contact-list";
+import { hero } from "./blocks/hero";
+import { imageGallery } from "./blocks/image-gallery";
+import { pageTeaserList } from "./blocks/page-teaser-list";
+import { richtext } from "./blocks/richtext";
+import { contact } from "./partials/contact";
+import { event } from "./partials/event";
+import { pageTeaser } from "./partials/page-teaser";
+import { page } from "./singletons/page";
+import { settings } from "./singletons/settings";
 
 export const types = [
 	agenda,
-	contacts,
-	page,
-	pageImage,
-	pageTeasers,
-	pageTitle,
-	photoGallery,
+	contactList,
+	hero,
+	imageGallery,
+	pageTeaserList,
 	richtext,
+	contact,
+	event,
+	pageTeaser,
+	page,
 	settings
 ];

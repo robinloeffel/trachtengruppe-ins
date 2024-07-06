@@ -1,10 +1,9 @@
 export { default as Icon } from "./atoms/icon.svelte";
 export { default as Image } from "./atoms/image.svelte";
-export { default as Title } from "./atoms/title.svelte";
 export { default as Agenda } from "./content/agenda.svelte";
 export { default as Contacts } from "./content/contacts.svelte";
+export { default as Hero } from "./content/hero.svelte";
 export { default as Lightbox } from "./content/lightbox.svelte";
-export { default as PageImage } from "./content/page-image.svelte";
 export { default as PageTeaserList } from "./content/page-teaser-list.svelte";
 export { default as PhotoGallery } from "./content/photo-gallery.svelte";
 export { default as BlockRenderer } from "./global/block-renderer.svelte";

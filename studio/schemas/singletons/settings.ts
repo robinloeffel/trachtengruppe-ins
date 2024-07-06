@@ -4,8 +4,8 @@ import { defineField, defineType } from "sanity";
 export const settings = defineType({
 	name: "settings",
 	title: "Einstellungen",
-	icon: CogIcon,
 	type: "document",
+	icon: CogIcon,
 	fields: [
 		defineField({
 			name: "name",

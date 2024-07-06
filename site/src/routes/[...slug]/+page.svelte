@@ -17,6 +17,6 @@
 	<meta name="keywords" content={data.page?.meta?.keywords.join(" ")} />
 </svelte:head>
 
-{#if data.page?.content}
-	<BlockRenderer blocks={data.page.content} />
+{#if data.page?.pageBuilder}
+	<BlockRenderer bind:blocks={data.page.pageBuilder} />
 {/if}

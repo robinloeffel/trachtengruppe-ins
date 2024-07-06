@@ -7,16 +7,7 @@ export const getPageBySlug = groq`*[_type == "page" && meta.slug.current == $slu
 		...,
 		"slug": slug.current
 	},
-	content {
-		...,
-		pageTeasers[] {
-			title,
-			description,
-			linkLabel,
-			"link": linkReference->
-		},
-		agenda[]
-	}
+	pageBuilder[]
 }[0]`;
 
 export const getSettings = groq`*[_type == "settings"][0]`;

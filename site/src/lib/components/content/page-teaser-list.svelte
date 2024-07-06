@@ -1,20 +1,22 @@
 <script lang="ts">
-	import type { SanityPageTeasers } from "$sanity";
+	import type { SanityPageTeaserList } from "$sanity";
 
-	export let items: SanityPageTeasers;
+	export let teasers: SanityPageTeaserList["teasers"];
 </script>
 
-<ul class="page-teaser-list">
-	{#each items as item (item._key)}
-		<li class="page-teaser-item">
-			<article class="page-teaser">
-				<h2 class="page-teaser-title">{item.title}</h2>
-				<p>{item.description}</p>
-				<a class="page-teaser-link" href={item.link.meta?.slug.current}>{item.linkLabel}</a>
-			</article>
-		</li>
-	{/each}
-</ul>
+{#if teasers}
+	<ul class="page-teaser-list">
+		{#each teasers as teaser (teaser._key)}
+			<li class="page-teaser-item">
+				<article class="page-teaser">
+					<h2 class="page-teaser-title">{teaser.headline}</h2>
+					<p>{teaser.lead}</p>
+					<a class="page-teaser-link" href={teaser.link?.meta?.slug.current}>Mehr erfahren</a>
+				</article>
+			</li>
+		{/each}
+	</ul>
+{/if}
 
 <style lang="scss">
 	@use "$styles/scales";
