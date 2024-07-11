@@ -1,6 +1,7 @@
 <script context="module" lang="ts">
 	interface NavigationItem {
-		title: string;
+		_id: string;
+		name: string;
 		href: string;
 	}
 </script>
@@ -15,7 +16,8 @@
 	let isMobileMenuOpen = false;
 
 	const logoItem = items.find(item => item.href === "/");
-	const regularItems = items.filter(item => item.href !== "/");
+	const mainItems = items.filter(item => item.href !== "/" && !item.href.includes("/"));
+	const subItems = items.filter(item => item.href !== "/" && item.href.includes("/"));
 
 	$: ({ slug = "" } = $page.params);
 
@@ -42,7 +44,7 @@
 				on:click={closeMobileMenu}
 			>
 				<img class="navigation-logo" alt="" src="/logo.svg" />
-				<span>{logoItem?.title}</span>
+				<span>{logoItem?.name}</span>
 			</a>
 			<button
 				class="navigation-menu-toggle"
@@ -55,7 +57,7 @@
 		</div>
 		<div class="navigation-menu">
 			<ul class="navigation-items">
-				{#each regularItems as item (item.href)}
+				{#each mainItems as item (item._id)}
 					<li class="navigation-item">
 						<a
 							class="navigation-link"
@@ -63,8 +65,22 @@
 							href={item.href}
 							on:click={closeMobileMenu}
 						>
-							{item.title}
+							{item.name}
 						</a>
+						{#if subItems.find(subItem => subItem.href.includes(item.href))}
+							<ul class="navigation-subitems">
+								{#each subItems.filter(subItem => subItem.href.includes(item.href)) as subItem (subItem._id)}
+									<li class="navigation-subitem">
+										<a
+											class="navigation-sublink"
+											class:active={slug === subItem.href}
+											href={subItem.href}
+											on:click={closeMobileMenu}
+										>{subItem.name}</a>
+									</li>
+								{/each}
+							</ul>
+						{/if}
 					</li>
 				{/each}
 			</ul>
@@ -81,9 +97,7 @@
 		position: fixed;
 		inset: 0 0 auto;
 		z-index: 9;
-		background-color: colors.$white-a90;
-		background-blend-mode: soft-light;
-		backdrop-filter: blur(scales.space("24"));
+		background-color: colors.$white;
 		border-bottom: scales.space("4") solid colors.$hint-of-chili;
 	}
 
@@ -169,11 +183,19 @@
 	.navigation-items {
 		overflow: hidden;
 		list-style: none;
+
+		@include breakpoints.above-sm {
+			overflow: unset;
+		}
 	}
 
 	.navigation-item {
 		@include breakpoints.above-sm {
 			display: inline-block;
+		}
+
+		&:has(.navigation-subitems) {
+			position: relative;
 		}
 	}
 
@@ -183,14 +205,9 @@
 		color: inherit;
 		text-decoration: none;
 
-		&.active,
 		&:hover,
 		&:focus-visible {
 			text-decoration: underline scales.space("2");
-		}
-
-		&.active {
-			color: colors.$bloody-red;
 		}
 
 		&:has(.navigation-logo) {
@@ -202,5 +219,53 @@
 		@include breakpoints.above-sm {
 			padding: scales.space("24") scales.space("16");
 		}
+	}
+
+	.navigation-subitems {
+		padding: 0 scales.space("16");
+		list-style: none;
+
+		@include breakpoints.above-sm {
+			position: absolute;
+			inset: 100% auto auto 0;
+			display: none;
+			padding: scales.space("16");
+			background-color: colors.$white;
+			border: scales.space("4") solid colors.$hint-of-chili;
+
+			.navigation-item:hover > &,
+			.navigation-item:focus-within > & {
+				display: unset;
+			}
+		}
+	}
+
+	.navigation-subitem {
+		margin-left: scales.space("8");
+
+		@include breakpoints.above-sm {
+			margin-left: 0;
+		}
+	}
+
+	.navigation-sublink {
+		display: inline-block;
+		padding: scales.space("4");
+		color: inherit;
+		text-decoration: none;
+
+		&:hover,
+		&:focus-visible {
+			text-decoration: underline scales.space("2");
+		}
+
+		@include breakpoints.above-sm {
+			padding: scales.space("4") scales.space("16");
+		}
+	}
+
+	.active {
+		color: colors.$bloody-red;
+		text-decoration: underline scales.space("2");
 	}
 </style>

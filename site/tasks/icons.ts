@@ -28,5 +28,5 @@ const map = Object.fromEntries(icons) as Record<string, string>;
 await fs.mkdir("src/lib/generated", { recursive: true });
 await fs.writeFile(
 	"src/lib/generated/icons.ts",
-	`export const icons = ${JSON.stringify(map)} as const;`
+	`export const icons = ${JSON.stringify(map)} as const;\n`
 );

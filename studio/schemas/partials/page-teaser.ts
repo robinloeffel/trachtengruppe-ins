@@ -1,3 +1,4 @@
+import { LinkIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
 export const pageTeaser = defineType({
@@ -26,5 +27,15 @@ export const pageTeaser = defineType({
 			}],
 			validation: Rule => Rule.required()
 		})
-	]
+	],
+	preview: {
+		select: {
+			title: "headline"
+		},
+		prepare: ({ title }: Record<"title", string>) => ({
+			title,
+			subtitle: "Teaser",
+			media: LinkIcon
+		})
+	}
 });

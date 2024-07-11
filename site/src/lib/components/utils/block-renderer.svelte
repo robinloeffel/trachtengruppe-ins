@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Agenda, Contacts, Hero, ImageGallery, PageTeaserList } from "$components";
+	import { Agenda, Contacts, Hero, ImageGallery, PageTeaserList, Richtext } from "$components";
 	import type { PageBuilder } from "$sanity";
 
 	export let blocks: PageBuilder;
@@ -24,5 +24,9 @@
 
 	{#if block._type === "imageGallery"}
 		<ImageGallery {...block} />
+	{/if}
+
+	{#if block._type === "richtext"}
+		<Richtext {...block} />
 	{/if}
 {/each}

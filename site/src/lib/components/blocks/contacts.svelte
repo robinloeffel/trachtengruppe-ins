@@ -29,6 +29,8 @@
 	@use "$styles/breakpoints";
 
 	.contacts {
+		@extend %component-gap;
+
 		display: grid;
 		grid-column: 1 / -1;
 		gap: scales.space("24");

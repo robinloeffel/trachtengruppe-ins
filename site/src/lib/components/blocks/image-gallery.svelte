@@ -62,6 +62,8 @@
 	@use "$styles/breakpoints";
 
 	.image-gallery {
+		@extend %component-gap;
+
 		display: grid;
 		grid-template-columns: subgrid;
 		grid-column: 1 / -1;

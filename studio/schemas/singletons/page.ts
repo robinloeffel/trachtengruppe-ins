@@ -8,40 +8,33 @@ export const page = defineType({
 	icon: DocumentIcon,
 	fields: [
 		defineField({
-			name: "title",
+			name: "name",
 			type: "string",
-			title: "Titel",
-			description: "Der Titel der Seite in der Navigation.",
+			title: "Name",
+			description: "Der Name der Seite (in der Navigation).",
+			validation: Rule => Rule.required()
+		}),
+		defineField({
+			name: "slug",
+			title: "URL-Segment",
+			description: "Das URL-Segment, das in der Adressleiste des Browsers angezeigt wird.",
+			type: "slug",
+			options: {
+				source: "title",
+				maxLength: 96
+			},
 			validation: Rule => Rule.required()
 		}),
 		defineField({
 			name: "meta",
 			title: "Metadaten",
-			description: "Die Metadaten der Seite, die von Suchmaschinen verwendet werden.",
+			description: "Die Daten der Seite, die von Suchmaschinen verwendet werden.",
 			type: "object",
 			options: {
 				collapsible: true,
 				collapsed: true
 			},
 			fields: [
-				defineField({
-					name: "title",
-					title: "Titel",
-					description: "Der Titel der Seite, wie er im Browser-Tab angezeigt wird.",
-					type: "string",
-					validation: Rule => Rule.required()
-				}),
-				defineField({
-					name: "slug",
-					title: "URL-Segment",
-					description: "Das URL-Segment, das in der Adressleiste des Browsers angezeigt wird.",
-					type: "slug",
-					options: {
-						source: "title",
-						maxLength: 96
-					},
-					validation: Rule => Rule.required()
-				}),
 				defineField({
 					name: "description",
 					title: "Beschreibung",
@@ -63,14 +56,6 @@ export const page = defineType({
 					options: {
 						layout: "tags"
 					},
-					validation: Rule => Rule.required()
-				}),
-				defineField({
-					name: "hidden",
-					title: "Versteckt",
-					description: "Versteckt die Seite in der Navigation.",
-					type: "boolean",
-					initialValue: false,
 					validation: Rule => Rule.required()
 				}),
 				defineField({
@@ -109,6 +94,14 @@ export const page = defineType({
 					type: "richtext"
 				})
 			],
+			validation: Rule => Rule.required()
+		}),
+		defineField({
+			name: "hidden",
+			title: "Versteckt",
+			description: "Robin verwendet das, um Seiten, die zum Testen da sind, zu verstecken.",
+			type: "boolean",
+			initialValue: false,
 			validation: Rule => Rule.required()
 		})
 	]

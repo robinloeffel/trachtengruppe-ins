@@ -79,11 +79,7 @@
 						{#if item.link}
 							<span class="agenda-item-link">
 								<Icon name="arrow-up-right" />
-								<a
-									href={item.link}
-									rel="noopener noreferrer"
-									target="_blank"
-								>Mehr erfahren</a>
+								<a href={item.link}>Mehr erfahren</a>
 							</span>
 						{/if}
 					</div>
@@ -99,6 +95,8 @@
 	@use "$styles/breakpoints";
 
 	.agenda {
+		@extend %component-gap;
+
 		grid-column: 1 / -1;
 
 		@include breakpoints.above-sm {

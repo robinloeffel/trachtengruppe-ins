@@ -26,5 +26,20 @@ export const contact = defineType({
 			type: "string",
 			validation: Rule => Rule.required()
 		})
-	]
+	],
+	preview: {
+		select: {
+			name: "name",
+			email: "email",
+			phone: "phone"
+		},
+		prepare: ({
+			name,
+			email,
+			phone
+		}: Record<"email" | "name" | "phone", string>) => ({
+			title: name,
+			subtitle: `${email} / ${phone}`
+		})
+	}
 });

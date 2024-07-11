@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { dev } from "$app/environment";
 	import { Footer, Navigation } from "$components";
 	import { urlFor } from "$sanity";
 	import "$styles/base.scss";
@@ -8,8 +7,9 @@
 	export let data;
 
 	const navigationItems = data.pages.map(page => ({
-		title: page.title,
-		href: page.meta?.slug.current ?? ""
+		_id: page._id,
+		name: page.name,
+		href: page.slug.current ?? ""
 	}));
 
 	const favicon = data.settings?.favicon
@@ -22,19 +22,13 @@
 </script>
 
 <svelte:head>
+	<meta charset="utf-8" />
+	<meta name="author" content="Trachtengruppe Ins und Umgebung" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<base href="/" />
 
 	{#if favicon}
 		<link href={favicon} rel="icon" />
-	{/if}
-
-	{#if !dev}
-		<script
-			async
-			data-domains="trachtengruppe-ins.ch"
-			data-website-id="72b46aef-9fd1-4e04-8748-c110329b3faa"
-			src="/stats/script.js"
-		></script>
 	{/if}
 </svelte:head>
 

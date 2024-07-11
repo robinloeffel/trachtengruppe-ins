@@ -1,3 +1,4 @@
+import { CalendarIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
 export const event = defineType({
@@ -39,5 +40,15 @@ export const event = defineType({
 			description: "Ein Link zu weiteren Informationen über das Ereignis.",
 			type: "url"
 		})
-	]
+	],
+	preview: {
+		select: {
+			title: "title"
+		},
+		prepare: ({ title }: Record<"title", string>) => ({
+			title,
+			subtitle: "Event",
+			media: CalendarIcon
+		})
+	}
 });

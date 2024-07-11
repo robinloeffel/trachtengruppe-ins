@@ -1,6 +1,7 @@
 <script context="module" lang="ts">
 	interface NavigationItem {
-		title: string;
+		_id: string;
+		name: string;
 		href: string;
 	}
 </script>
@@ -8,20 +9,22 @@
 <script lang="ts">
 	export let items: NavigationItem[] = [];
 	export let email: string;
+
+	const mainItems = items.filter(item => item.href === "/" || !item.href.includes("/"));
 </script>
 
 <footer class="footer">
 	<div class="footer-content">
-		<nav class="footer-navigation" aria-label="Navigation in der Fusszeile">
+		<nav aria-label="Navigation in der Fusszeile">
 			<ul class="footer-navigation-list">
-				{#each items as item (item.title)}
+				{#each mainItems as item (item._id)}
 					<li class="footer-navigation-item">
-						<a href={item.href}>{item.title}</a>
+						<a href={item.href}>{item.name}</a>
 					</li>
 				{/each}
 			</ul>
 		</nav>
-		<a href="mailto:${email}">{email}</a>
+		<a href="mailto:{email}">{email}</a>
 	</div>
 </footer>
 

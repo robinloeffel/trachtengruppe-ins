@@ -24,6 +24,8 @@
 	@use "$styles/colors";
 
 	.page-teaser-list {
+		@extend %component-gap;
+
 		display: grid;
 		grid-template-columns: subgrid;
 		grid-column: 1 / -1;

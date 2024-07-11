@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { truncate } from "../../utils/truncate";
 
 export const hero = defineType({
 	name: "hero",
@@ -22,6 +23,7 @@ export const hero = defineType({
 					name: "small",
 					type: "boolean",
 					title: "Klein",
+					initialValue: false,
 					validation: Rule => Rule.required()
 				})
 			],
@@ -33,5 +35,19 @@ export const hero = defineType({
 			title: "Überschrift",
 			validation: Rule => Rule.required()
 		})
-	]
+	],
+	preview: {
+		select: {
+			title: "title",
+			media: "image"
+		},
+		prepare: ({
+			title,
+			media
+		}: Record<"media" | "title", string>) => ({
+			title: truncate(title),
+			subtitle: "Hero",
+			media
+		})
+	}
 });

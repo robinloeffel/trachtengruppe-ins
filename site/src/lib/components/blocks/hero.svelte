@@ -19,7 +19,7 @@
 			.url();
 </script>
 
-<header class:small={image.small}>
+<header class="hero" class:small={image.small}>
 	<Image
 		alt=""
 		extraClasses={[ "hero-image" ]}
@@ -38,7 +38,13 @@
 	@use "$styles/scales";
 	@use "$styles/breakpoints";
 
+	.hero {
+		@extend %component-gap;
+	}
+
 	:global(.hero-image) {
+		@extend %component-gap;
+
 		width: 100%;
 		max-height: 85vh;
 		aspect-ratio: 2 / 1;

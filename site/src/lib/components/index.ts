@@ -1,12 +1,13 @@
 export { default as Grid } from "./atoms/grid.svelte";
 export { default as Icon } from "./atoms/icon.svelte";
 export { default as Image } from "./atoms/image.svelte";
+export { default as Lightbox } from "./atoms/lightbox.svelte";
 export { default as Agenda } from "./blocks/agenda.svelte";
 export { default as Contacts } from "./blocks/contacts.svelte";
 export { default as Hero } from "./blocks/hero.svelte";
 export { default as ImageGallery } from "./blocks/image-gallery.svelte";
-export { default as Lightbox } from "./blocks/lightbox.svelte";
 export { default as PageTeaserList } from "./blocks/page-teaser-list.svelte";
+export { default as Richtext } from "./blocks/richtext.svelte";
 export { default as Footer } from "./global/footer.svelte";
 export { default as Navigation } from "./global/navigation.svelte";
 export { default as BlockRenderer } from "./utils/block-renderer.svelte";
