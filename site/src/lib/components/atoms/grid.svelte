@@ -1,6 +1,10 @@
-<div class="grid">
+<script lang="ts">
+	export let tag: "div" | "section" = "div";
+</script>
+
+<svelte:element this={tag} class="grid">
 	<slot></slot>
-</div>
+</svelte:element>
 
 <style lang="scss">
 	@use "$styles/scales";

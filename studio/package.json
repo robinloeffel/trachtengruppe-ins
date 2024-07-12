@@ -11,8 +11,8 @@
 	},
 	"dependencies": {
 		"@sanity/icons": "^3.3.0",
-		"@sanity/locale-de-de": "^1.1.4",
-		"@sanity/vision": "^3.49.0",
+		"@sanity/locale-de-de": "^1.1.5",
+		"@sanity/vision": "^3.50.0",
 		"@types/react": "^18.3.3",
 		"eslint": "^8.57.0",
 		"eslint-config-sweet": "^21.0.0",
@@ -21,7 +21,7 @@
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
 		"robins-tsconfig": "^1.0.0",
-		"sanity": "^3.49.0",
+		"sanity": "^3.50.0",
 		"styled-components": "^6.1.11",
 		"typescript": "^5.5.3"
 	}

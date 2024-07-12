@@ -5,7 +5,7 @@
 	export let contacts: Result<"contactList", "contacts">;
 </script>
 
-<Grid>
+<Grid tag="section">
 	<ul class="contacts">
 		{#each contacts as contact (contact._key)}
 			<li class="contact">

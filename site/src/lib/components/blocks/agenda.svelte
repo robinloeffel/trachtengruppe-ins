@@ -32,8 +32,8 @@
 	};
 </script>
 
-<Grid>
-	<section class="agenda">
+<Grid tag="section">
+	<div class="agenda">
 		<ul class="agenda-filter">
 			<li class="agenda-filter-item">
 				<button
@@ -86,7 +86,7 @@
 				</li>
 			{/each}
 		</ul>
-	</section>
+	</div>
 </Grid>
 
 <style lang="scss">

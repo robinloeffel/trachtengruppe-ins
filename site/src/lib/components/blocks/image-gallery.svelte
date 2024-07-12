@@ -26,7 +26,7 @@
 	};
 </script>
 
-<Grid>
+<Grid tag="section">
 	<ul class="image-gallery">
 		{#each uiImages as galleryImage, index (galleryImage._key)}
 			<li class="image-gallery-item">

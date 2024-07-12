@@ -6,10 +6,10 @@
 	export let text: Result<"richtext", "text">;
 </script>
 
-<Grid>
-	<section class="richtext">
+<Grid tag="section">
+	<div class="richtext">
 		<PortableText components={{}} value={text} />
-	</section>
+	</div>
 </Grid>
 
 <style lang="scss">

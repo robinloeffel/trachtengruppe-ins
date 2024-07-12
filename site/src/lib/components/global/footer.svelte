@@ -24,7 +24,7 @@
 				{/each}
 			</ul>
 		</nav>
-		<a href="mailto:{email}">{email}</a>
+		<a href={`mailto:${email}`}>{email}</a>
 	</div>
 </footer>
 

@@ -5,7 +5,7 @@
 	export let teasers: Result<"pageTeaserList", "teasers">;
 </script>
 
-<Grid>
+<Grid tag="section">
 	<ul class="page-teaser-list">
 		{#each teasers as teaser (teaser._key)}
 			<li class="page-teaser-item">

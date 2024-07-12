@@ -175,8 +175,9 @@
 		}
 
 		@include breakpoints.above-sm {
-			display: inline-flex;
-			grid-template-rows: 1fr;
+			display: block;
+			overflow-x: auto;
+			white-space: nowrap;
 		}
 	}
 

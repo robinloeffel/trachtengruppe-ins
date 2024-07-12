@@ -14,9 +14,9 @@
 		: Math.round(width * 1 / 2);
 
 	$: imageSource = urlFor(image)
-			.auto("format")
-			.size(width, height)
-			.url();
+		.auto("format")
+		.size(width, height)
+		.url();
 </script>
 
 <header class="hero" class:small={image.small}>

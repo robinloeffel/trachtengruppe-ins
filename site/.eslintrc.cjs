@@ -2,6 +2,9 @@ const { defineConfig } = require("eslint-define-config");
 
 module.exports = defineConfig({
 	extends: "sweet",
+	rules: {
+		"@stylistic/indent": [ "error", "tab" ]
+	},
 	overrides: [{
 		files: "*.svelte",
 		parser: "svelte-eslint-parser",
@@ -12,29 +15,27 @@ module.exports = defineConfig({
 		rules: {
 			"no-underscore-dangle": "off",
 			"unicorn/no-null": "off",
+			"@stylistic/indent": "off",
 			"@typescript-eslint/init-declarations": "off",
 
-			"svelte/block-lang": [
-				"error",
-				{
-					script: "ts",
-					style: "scss"
-				}
-			],
+			"svelte/block-lang": [ "error", {
+				script: "ts",
+				style: "scss"
+			}],
 			"svelte/button-has-type": "error",
 			"svelte/derived-has-same-inputs-outputs": "error",
 			"svelte/first-attribute-linebreak": "error",
 			"svelte/html-closing-bracket-spacing": "error",
 			"svelte/html-quotes": "error",
-			"svelte/html-self-closing": [
-				"error",
-				{
-					normal: "never",
-					component: "always",
-					svelte: "always",
-					void: "always"
-				}
-			],
+			"svelte/html-self-closing": [ "error", {
+				normal: "never",
+				component: "always",
+				svelte: "always",
+				void: "always"
+			}],
+			"svelte/indent": [ "error", {
+				indent: "tab"
+			}],
 			"svelte/infinite-reactive-loop": "error",
 			"svelte/mustache-spacing": "error",
 			"svelte/no-dom-manipulating": "error",
