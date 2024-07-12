@@ -173,12 +173,6 @@
 		.is-mobile-open & {
 			grid-template-rows: 1fr;
 		}
-
-		@include breakpoints.above-sm {
-			display: block;
-			overflow-x: auto;
-			white-space: nowrap;
-		}
 	}
 
 	.navigation-items {

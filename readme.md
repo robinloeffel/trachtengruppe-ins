@@ -1,4 +1,4 @@
 # trachtengruppe-ins.ch
 
-* [`studio`](studio): sanity studio schemas
+* [`sanity`](sanity): sanity studio schemas
 * [`sveltekit`](sveltekit): sveltekit app
