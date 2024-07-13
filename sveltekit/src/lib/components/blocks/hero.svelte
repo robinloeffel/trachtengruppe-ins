@@ -49,7 +49,7 @@
 		max-height: 85vh;
 		aspect-ratio: 2 / 1;
 		object-fit: cover;
-		border-bottom: scales.space("4") solid colors.$hint-of-chili;
+		border-bottom: scales.space("4") solid colors.$light-coral;
 
 		.small & {
 			max-height: 40vh;

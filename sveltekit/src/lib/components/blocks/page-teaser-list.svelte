@@ -49,14 +49,14 @@
 	.page-teaser-title {
 		font-size: scales.font("16");
 		font-weight: 800;
-		color: colors.$hint-of-chili;
+		color: colors.$cinereous;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
 	}
 
 	.page-teaser-link {
 		font-size: scales.font("18");
-		color: colors.$bloody-red;
+		color: colors.$fire-engine-red;
 		text-decoration: underline solid scales.space("2");
 	}
 </style>

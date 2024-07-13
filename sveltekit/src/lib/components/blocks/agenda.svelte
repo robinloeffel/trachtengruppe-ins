@@ -116,15 +116,21 @@
 		padding: scales.space("16") scales.space("24");
 		font-size: scales.font("18");
 		font-weight: 600;
-		color: colors.$almost-black;
+		color: colors.$charcoal;
 		cursor: pointer;
-		background-color: colors.$misty-rose;
-		border: 0;
+		background: none;
+		border: scales.space("4") solid colors.$misty-rose;
 		border-radius: 100px;
+
+		&:hover,
+		&:focus-visible {
+			background-color: colors.$misty-rose;
+		}
 
 		&.active {
 			color: colors.$white;
-			background-color: colors.$hint-of-chili;
+			background-color: colors.$cinereous;
+			border-color: colors.$cinereous;
 		}
 	}
 
@@ -140,7 +146,7 @@
 		border-radius: scales.space("16");
 
 		&.special {
-			border-color: colors.$hint-of-chili;
+			border-color: colors.$light-coral;
 		}
 
 		&.hidden {
@@ -162,7 +168,7 @@
 
 		.special & {
 			color: colors.$white;
-			background-color: colors.$hint-of-chili;
+			background-color: colors.$light-coral;
 		}
 	}
 
@@ -220,7 +226,7 @@
 		align-items: baseline;
 
 		a {
-			color: colors.$bloody-red;
+			color: colors.$fire-engine-red;
 		}
 
 		@include breakpoints.above-sm {

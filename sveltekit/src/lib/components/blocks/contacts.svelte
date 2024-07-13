@@ -70,6 +70,6 @@
 	}
 
 	a {
-		color: colors.$bloody-red;
+		color: colors.$fire-engine-red;
 	}
 </style>

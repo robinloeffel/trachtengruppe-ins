@@ -17,11 +17,11 @@
 			.url()
 	}));
 
-	let isLightboxOpen = false;
+	let show: VoidFunction;
 	let openLightboxElementIndex = -1;
 
 	const openLightbox = (index: number) => {
-		isLightboxOpen = true;
+		show();
 		openLightboxElementIndex = index;
 	};
 </script>
@@ -45,9 +45,9 @@
 </Grid>
 
 <Lightbox
-	bind:open={isLightboxOpen}
 	bind:index={openLightboxElementIndex}
 	bind:itemsCount={uiImages.length}
+	bind:show
 >
 	{#each uiImages as lightboxImage (lightboxImage._key)}
 		<li>

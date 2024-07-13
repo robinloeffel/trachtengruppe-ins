@@ -53,6 +53,9 @@
 			>
 				<Icon name="menu" size="medium" />
 				<Icon name="x-mark" size="medium" />
+				<span class="sr-only">
+					{`Navigation ${isMobileMenuOpen ? "schliessen" : "öffnen"}`}
+				</span>
 			</button>
 		</div>
 		<div class="navigation-menu">
@@ -98,7 +101,7 @@
 		inset: 0 0 auto;
 		z-index: 9;
 		background-color: colors.$white;
-		border-bottom: scales.space("4") solid colors.$hint-of-chili;
+		border-bottom: scales.space("4") solid colors.$light-coral;
 	}
 
 	.navigation-container {
@@ -226,7 +229,7 @@
 			display: none;
 			padding: scales.space("16");
 			background-color: colors.$white;
-			border: scales.space("4") solid colors.$hint-of-chili;
+			border: scales.space("4") solid colors.$light-coral;
 
 			.navigation-item:hover > &,
 			.navigation-item:focus-within > & {
@@ -260,7 +263,7 @@
 	}
 
 	.active {
-		color: colors.$bloody-red;
+		color: colors.$fire-engine-red;
 		text-decoration: underline scales.space("2");
 	}
 </style>

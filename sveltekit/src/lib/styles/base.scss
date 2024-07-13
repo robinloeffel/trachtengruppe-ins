@@ -22,7 +22,7 @@ html {
 body {
 	margin-top: 84px;
 	font-size: scales.font("20");
-	color: colors.$almost-black;
+	color: colors.$charcoal;
 	touch-action: manipulation;
 
 	@include breakpoints.above-sm {

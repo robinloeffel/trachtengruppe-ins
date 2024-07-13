@@ -44,7 +44,7 @@
 
 	.footer {
 		font-size: scales.font("18");
-		border-top: scales.space("4") solid colors.$hint-of-chili;
+		border-top: scales.space("4") solid colors.$light-coral;
 	}
 
 	.footer-content {

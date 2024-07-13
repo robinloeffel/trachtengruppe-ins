@@ -1,13 +1,22 @@
 <script lang="ts">
-	import { browser } from "$app/environment";
 	import { Icon } from "$components";
 
-	export let open = false;
 	export let index = -1;
 	export let itemsCount = 0;
 
-	const close = () => {
+	let dialog: HTMLDialogElement;
+	let open = false;
+
+	export const close = () => {
+		document.body.classList.remove("no-scroll");
+		dialog.close();
 		open = false;
+	};
+
+	export const show = () => {
+		document.body.classList.add("no-scroll");
+		dialog.showModal();
+		open = true;
 	};
 
 	const previous = () => {
@@ -20,10 +29,6 @@
 
 	const handleWindowKeydown = ({ key }: KeyboardEvent) => {
 		if (open) {
-			if (key === "Escape") {
-				close();
-			}
-
 			if (key === "ArrowLeft") {
 				previous();
 			}
@@ -33,57 +38,58 @@
 			}
 		}
 	};
-
-	$: if (browser) {
-		document.body.classList.toggle("no-scroll", open);
-	}
 </script>
 
 <svelte:window on:keydown={handleWindowKeydown} />
 
 <!-- eslint-disable-next-line svelte/no-inline-styles -->
-<div style:--item={index} class="lightbox" class:open>
+<dialog bind:this={dialog} style:--item={index} class="lightbox" title="Diashow">
 	<button class="lightbox-button" type="button" on:click={close}>
 		<Icon name="x-mark" size="medium" />
+		<span class="sr-only">Diashow schliessen</span>
 	</button>
-	<ul class="lightbox-content">
+	<ul class="lightbox-track">
 		<slot></slot>
 	</ul>
 	<div class="lightbox-navigation">
 		<button class="lightbox-button" type="button" on:click={previous}>
 			<Icon name="arrow-left" size="medium" />
+			<span class="sr-only">Zurück blättern</span>
 		</button>
 		<button class="lightbox-button" type="button" on:click={next}>
 			<Icon name="arrow-right" size="medium" />
+			<span class="sr-only">Weiter blättern</span>
 		</button>
 	</div>
-</div>
+</dialog>
 
 <style lang="scss">
 	@use "$styles/scales";
 	@use "$styles/colors";
 	@use "$styles/breakpoints";
 
+	:global(::backdrop) {
+		background: none;
+		backdrop-filter: blur(scales.space("64")) brightness(0.2);
+	}
+
 	.lightbox {
-		position: fixed;
-		inset: 0;
-		z-index: 9;
-		display: grid;
 		grid-template-rows: auto 1fr auto;
 		place-items: center;
-		pointer-events: none;
-		visibility: hidden;
-		backdrop-filter: blur(scales.space("64"));
-		opacity: 0;
+		width: 100%;
+		max-width: none;
+		height: 100%;
+		max-height: none;
+		overflow: hidden;
+		background: none;
+		border: 0;
 
-		&.open {
-			pointer-events: unset;
-			visibility: unset;
-			opacity: unset;
+		&[open] {
+			display: grid;
 		}
 	}
 
-	.lightbox-content {
+	.lightbox-track {
 		display: grid;
 		grid-auto-columns: 100%;
 		grid-auto-flow: column;
@@ -103,6 +109,7 @@
 	.lightbox-button {
 		display: inline-grid;
 		padding: scales.space("16");
+		color: colors.$white;
 		cursor: pointer;
 		background: 0;
 		border: 0;

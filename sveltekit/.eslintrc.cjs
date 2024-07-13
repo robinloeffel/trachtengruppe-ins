@@ -54,7 +54,9 @@ module.exports = defineConfig({
 			"svelte/no-store-async": "error",
 			"svelte/no-svelte-internal": "error",
 			"svelte/no-target-blank": "error",
-			"svelte/no-unused-class-name": "error",
+			"svelte/no-unused-class-name": [ "error", {
+				allowedClassNames: [ "sr-only", "no-scroll" ]
+			}],
 			"svelte/no-useless-mustaches": "error",
 			"svelte/prefer-class-directive": "error",
 			"svelte/prefer-destructured-store-props": "error",

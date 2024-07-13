@@ -3,7 +3,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { optimize } from "svgo";
 
-const files = await glob("src/lib/assets/icons/*.svg");
+const files = await glob("src/lib/icons/*.svg");
 const icons = await Promise.all(files.map(async file => {
 	const name = path.basename(file, ".svg");
 	const markup = await fs.readFile(file, "utf8");
