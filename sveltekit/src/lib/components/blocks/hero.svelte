@@ -24,6 +24,7 @@
 		alt=""
 		extraClasses={[ "hero-image" ]}
 		{height}
+		loading="eager"
 		src={imageSource}
 		{width}
 	/>
