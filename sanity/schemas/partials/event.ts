@@ -28,6 +28,52 @@ export const event = defineType({
 			validation: Rule => Rule.required()
 		}),
 		defineField({
+			name: "type",
+			title: "Typ",
+			description: "Der Typ des Ereignisses.",
+			type: "string",
+			options: {
+				list: [{
+					title: "Singen",
+					value: JSON.stringify({
+						label: "Singen",
+						value: "singing"
+					})
+				}, {
+					title: "Tanzen",
+					value: JSON.stringify({
+						label: "Tanzen",
+						value: "dancing"
+					})
+				}, {
+					title: "Kindertanzen",
+					value: JSON.stringify({
+						label: "Kindertanzen",
+						value: "dancing-for-kids"
+					})
+				}, {
+					title: "Unterhaltungsabend",
+					value: JSON.stringify({
+						label: "Unterhaltungsabend",
+						value: "entertainment-evening"
+					})
+				}, {
+					title: "Anlass",
+					value: JSON.stringify({
+						label: "Anlass",
+						value: "occasion"
+					})
+				}, {
+					title: "Anderes",
+					value: JSON.stringify({
+						label: "Anderes",
+						value: "other"
+					})
+				}]
+			},
+			validation: Rule => Rule.required()
+		}),
+		defineField({
 			name: "special",
 			title: "Speziell",
 			description: "Ein spezielles Ereignis, das hervorgehoben werden soll.",

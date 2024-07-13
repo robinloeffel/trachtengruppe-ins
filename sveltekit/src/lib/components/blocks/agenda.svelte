@@ -2,32 +2,33 @@
 	import { Grid, Icon } from "$components";
 	import type { Result } from "$sanity";
 	import { formatLongFullDate, formatShortFullDate } from "$utils";
+	import { uniqWith } from "es-toolkit";
+
+	interface EventType {
+		label: string;
+		value: string;
+	}
 
 	export let events: Result<"agenda", "events">;
 
-	let filteredEvents = events;
-	let activeFilter: "future" | "past" | null = null;
+	const uiEvents = events.map(event => ({
+		...event,
+		// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+		type: JSON.parse(event.type) as EventType
+	}));
 
-	const resetFilter = () => {
-		filteredEvents = events;
-		activeFilter = null;
-	};
+	const uniqueEventTypes = uniqWith(
+		uiEvents.map(event => event.type),
+		(a, b) => a.value === b.value
+	);
 
-	const filterPastItems = () => {
-		if (activeFilter === "past") {
-			resetFilter();
-		} else {
-			filteredEvents = events.filter(item => new Date(item.date) < new Date());
-			activeFilter = "past";
-		}
-	};
+	let activeFilter: string | null = null;
 
-	const filterFutureItems = () => {
-		if (activeFilter === "future") {
-			resetFilter();
-		} else {
-			filteredEvents = events.filter(item => new Date(item.date) > new Date());
-			activeFilter = "future";
+	const setFilter = ({ currentTarget }: MouseEvent) => {
+		if (currentTarget instanceof HTMLButtonElement && currentTarget.dataset.type) {
+			activeFilter = activeFilter === currentTarget.dataset.type
+				? null
+				: currentTarget.dataset.type;
 		}
 	};
 </script>
@@ -35,34 +36,25 @@
 <Grid tag="section">
 	<div class="agenda">
 		<ul class="agenda-filter">
-			<li class="agenda-filter-item">
-				<button
-					class="agenda-filter-button"
-					class:active={activeFilter === null}
-					type="button"
-					on:click={resetFilter}
-				>Alle</button>
-			</li>
-			<li class="agenda-filter-item">
-				<button
-					class="agenda-filter-button"
-					class:active={activeFilter === "past"}
-					type="button"
-					on:click={filterPastItems}
-				>Vergangene</button>
-			</li>
-			<li class="agenda-filter-item">
-				<button
-					class="agenda-filter-button"
-					class:active={activeFilter === "future"}
-					type="button"
-					on:click={filterFutureItems}
-				>Zukünftige</button>
-			</li>
+			{#each uniqueEventTypes as uniqueEventType (uniqueEventType.value)}
+				<li class="agenda-filter-item">
+					<button
+						class="agenda-filter-button"
+						class:active={uniqueEventType.value === activeFilter}
+						data-type={uniqueEventType.value}
+						type="button"
+						on:click={setFilter}
+					>{uniqueEventType.label}</button>
+				</li>
+			{/each}
 		</ul>
 		<ul class="agenda-list">
-			{#each filteredEvents as item (item._key)}
-				<li class="agenda-item" class:special={item.special}>
+			{#each uiEvents as item (item._key)}
+				<li
+					class="agenda-item"
+					class:hidden={activeFilter && item.type.value !== activeFilter}
+					class:special={item.special}
+				>
 					<div class="agenda-item-left">
 						{formatShortFullDate(item.date)}
 					</div>
@@ -149,6 +141,10 @@
 
 		&.special {
 			border-color: colors.$hint-of-chili;
+		}
+
+		&.hidden {
+			display: none;
 		}
 
 		@include breakpoints.above-sm {
