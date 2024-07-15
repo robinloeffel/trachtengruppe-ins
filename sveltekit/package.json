@@ -22,7 +22,7 @@
 		"@total-typescript/ts-reset": "^0.5.1",
 		"@types/node": "^20.14.10",
 		"browserslist": "^4.23.2",
-		"es-toolkit": "^1.9.0",
+		"es-toolkit": "^1.10.1",
 		"eslint": "^8.57.0",
 		"eslint-config-sweet": "^21.0.0",
 		"eslint-define-config": "^2.1.0",
