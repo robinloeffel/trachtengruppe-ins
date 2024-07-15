@@ -5,6 +5,7 @@ export const event = defineType({
 	name: "event",
 	type: "object",
 	title: "Event",
+	description: "Ein Ereignis, das in der Agenda dargestellt wird.",
 	fields: [
 		defineField({
 			name: "date",

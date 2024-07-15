@@ -22,8 +22,8 @@ export const settings = defineType({
 		}),
 		defineField({
 			name: "footerMail",
-			title: "E-Mail-Adresse im Footer",
-			description: "Die E-Mail-Adresse, die im Footer angezeigt wird.",
+			title: "E-Mail-Adresse in der Fusszeile",
+			description: "Die E-Mail-Adresse, die in der Fusszeile der Webseite angezeigt wird.",
 			type: "email",
 			validation: Rule => Rule.required()
 		})

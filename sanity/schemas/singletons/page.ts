@@ -11,16 +11,16 @@ export const page = defineType({
 			name: "name",
 			type: "string",
 			title: "Name",
-			description: "Der Name der Seite (in der Navigation).",
+			description: "Der Name der Seite (in Sanity und der Navigation).",
 			validation: Rule => Rule.required()
 		}),
 		defineField({
 			name: "slug",
-			title: "URL-Segment",
-			description: "Das URL-Segment, das in der Adressleiste des Browsers angezeigt wird.",
+			title: "Adress-Segment",
+			description: "Der Teil der Internetadresse, der nach «trachtengruppe-ins.ch» angezeigt wird.",
 			type: "slug",
 			options: {
-				source: "title",
+				source: "name",
 				maxLength: 96
 			},
 			validation: Rule => Rule.required()
@@ -28,7 +28,7 @@ export const page = defineType({
 		defineField({
 			name: "meta",
 			title: "Metadaten",
-			description: "Die Daten der Seite, die von Suchmaschinen verwendet werden.",
+			description: "Daten der Seite, die von Suchmaschinen verwendet werden.",
 			type: "object",
 			options: {
 				collapsible: true,
@@ -38,7 +38,7 @@ export const page = defineType({
 				defineField({
 					name: "description",
 					title: "Beschreibung",
-					description: "Die kurze Beschreibung der Seite, die auf Google angezeigt wird.",
+					description: "Eine kurze Beschreibung der Seite, die auf Google angezeigt wird.",
 					type: "text",
 					rows: 4,
 					validation: Rule => Rule.required()
@@ -63,7 +63,7 @@ export const page = defineType({
 					title: "Reihenfolge",
 					description: "Die Reihenfolge der Seite in der Navigation.",
 					type: "number",
-					initialValue: 1,
+					initialValue: 9,
 					validation: Rule => Rule.required()
 				})
 			],

@@ -6,11 +6,13 @@ export const agenda = defineType({
 	name: "agenda",
 	type: "object",
 	title: "Agenda",
+	description: "Eine Agenda mit mehreren Events.",
 	fields: [
 		defineField({
 			name: "events",
 			type: "array",
 			title: "Events",
+			description: "Die Liste von Events, die in der Agenda dargestellt werden.",
 			of: [
 				defineArrayMember({
 					type: "event"

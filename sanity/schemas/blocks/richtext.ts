@@ -6,6 +6,7 @@ export const richtext = defineType({
 	name: "richtext",
 	type: "object",
 	title: "Lauftext",
+	description: "Ein Textblock, der als Lauftext dargestellt wird.",
 	fields: [
 		defineField({
 			name: "text",

@@ -4,6 +4,7 @@ export const contact = defineType({
 	name: "contact",
 	type: "object",
 	title: "Kontakt",
+	description: "Ein Kontakt mit Name, E-Mail-Adresse und Telefonnummer.",
 	fields: [
 		defineField({
 			name: "name",

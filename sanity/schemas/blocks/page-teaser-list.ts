@@ -6,11 +6,13 @@ export const pageTeaserList = defineType({
 	name: "pageTeaserList",
 	type: "object",
 	title: "Seiten-Teaser-Liste",
+	description: "Eine Liste von Seiten-Teasern.",
 	fields: [
 		defineField({
 			name: "teasers",
 			type: "array",
 			title: "Teaser",
+			description: "Die Liste von Teasern, die in dargestellt werden.",
 			of: [
 				defineArrayMember({
 					type: "pageTeaser"

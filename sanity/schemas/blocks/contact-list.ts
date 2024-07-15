@@ -6,11 +6,13 @@ export const contactList = defineType({
 	name: "contactList",
 	type: "object",
 	title: "Kontakt-Liste",
+	description: "Eine Liste von Kontakten.",
 	fields: [
 		defineField({
 			name: "contacts",
 			type: "array",
 			title: "Kontakte",
+			description: "Die Liste von Kontakten, die in der Kontakt-Liste dargestellt werden.",
 			of: [
 				defineArrayMember({
 					type: "contact"

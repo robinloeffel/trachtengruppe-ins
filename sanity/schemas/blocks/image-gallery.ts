@@ -5,16 +5,19 @@ export const imageGallery = defineType({
 	name: "imageGallery",
 	type: "object",
 	title: "Bildergalerie",
+	description: "Eine Bildergalerie mit mehreren Bildern.",
 	fields: [
 		defineField({
 			name: "images",
 			type: "array",
 			title: "Bilder",
+			description: "Die Bilder, die in der Bildergalerie angezeigt werden.",
 			of: [
 				defineArrayMember({
 					name: "image",
 					type: "image",
 					title: "Bild",
+					description: "Das anzuzeigende Bild.",
 					options: {
 						hotspot: true
 					},
@@ -23,6 +26,7 @@ export const imageGallery = defineType({
 							name: "alt",
 							type: "string",
 							title: "Alternativtext",
+							description: "Eine kurze Beschreibung des Bildes für Screenreader.",
 							validation: Rule => Rule.required()
 						})
 					],
