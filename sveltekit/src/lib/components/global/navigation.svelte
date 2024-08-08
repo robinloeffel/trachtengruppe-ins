@@ -228,8 +228,13 @@
 			inset: 100% auto auto 0;
 			display: none;
 			padding: scales.space("16");
+			white-space: nowrap;
 			background-color: colors.$white;
 			border: scales.space("4") solid colors.$light-coral;
+
+			.navigation-item:last-child & {
+				inset: 100% 0 auto auto;
+			}
 
 			.navigation-item:hover > &,
 			.navigation-item:focus-within > & {

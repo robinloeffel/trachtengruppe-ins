@@ -25,7 +25,10 @@
 	let activeFilter: string | null = null;
 
 	const setFilter = ({ currentTarget }: MouseEvent) => {
-		if (currentTarget instanceof HTMLButtonElement && currentTarget.dataset.type) {
+		if (
+			currentTarget instanceof HTMLButtonElement
+			&& currentTarget.dataset.type
+		) {
 			activeFilter = activeFilter === currentTarget.dataset.type
 				? null
 				: currentTarget.dataset.type;

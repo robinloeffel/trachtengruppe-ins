@@ -34,6 +34,7 @@
 		display: grid;
 		grid-column: 1 / -1;
 		gap: scales.space("24");
+		place-items: start stretch;
 		list-style: none;
 
 		@include breakpoints.above-sm {
