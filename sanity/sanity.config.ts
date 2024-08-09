@@ -1,5 +1,6 @@
 import { deDELocale } from "@sanity/locale-de-de";
 import { defineConfig } from "sanity";
+import { media } from "sanity-plugin-media";
 import { structureTool } from "sanity/structure";
 import { types } from "./schemas";
 
@@ -9,7 +10,8 @@ export default defineConfig({
 	dataset: "production",
 	plugins: [
 		structureTool(),
-		deDELocale()
+		deDELocale(),
+		media()
 	],
 	scheduledPublishing: {
 		enabled: false
