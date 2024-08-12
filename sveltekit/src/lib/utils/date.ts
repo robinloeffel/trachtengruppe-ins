@@ -1,12 +1,4 @@
-export const formatShortFullDate = (dateFromSanity: string) => new Intl.DateTimeFormat("de-ch", {
-	day: "2-digit",
-	month: "short",
-	year: "numeric",
-	hour: "numeric",
-	minute: "numeric"
-}).format(new Date(dateFromSanity));
-
-export const formatLongFullDate = (dateFromSanity: string) => new Intl.DateTimeFormat("de-ch", {
+export const formatFullDate = (dateFromSanity: string) => new Intl.DateTimeFormat("de-ch", {
 	weekday: "long",
 	day: "2-digit",
 	month: "short",
@@ -16,7 +8,6 @@ export const formatLongFullDate = (dateFromSanity: string) => new Intl.DateTimeF
 }).format(new Date(dateFromSanity));
 
 export const formatDate = (dateFromSanity: string) => new Intl.DateTimeFormat("de-ch", {
-	weekday: "long",
 	day: "2-digit",
 	month: "2-digit",
 	year: "numeric"

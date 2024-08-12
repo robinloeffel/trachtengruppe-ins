@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Grid, Icon } from "$components";
 	import type { Result } from "$sanity";
-	import { formatLongFullDate, formatShortFullDate } from "$utils";
+	import { formatDate, formatFullDate, formatTime } from "$utils";
 	import { uniqWith } from "es-toolkit";
 
 	interface EventType {
@@ -59,13 +59,14 @@
 					class:special={item.special}
 				>
 					<div class="agenda-item-left">
-						{formatShortFullDate(item.date)}
+						<span>{formatDate(item.date)},</span>
+						<span>{formatTime(item.date)} Uhr</span>
 					</div>
 					<div class="agenda-item-right">
 						<h2 class="agenda-item-title">{item.title}</h2>
 						<span class="agenda-item-date">
 							<Icon name="calendar" />
-							<span>{formatLongFullDate(item.date)}</span>
+							<span>{formatFullDate(item.date)} Uhr</span>
 						</span>
 						<span class="agenda-item-place">
 							<Icon name="pin" />
@@ -163,7 +164,9 @@
 
 	.agenda-item-left {
 		display: grid;
-		place-items: center;
+		grid-template-columns: repeat(2, auto);
+		column-gap: 0.25rem;
+		place-content: center;
 		padding: scales.space("24");
 		font-size: scales.font("24");
 		text-align: center;
@@ -172,6 +175,10 @@
 		.special & {
 			color: colors.$white;
 			background-color: colors.$light-coral;
+		}
+
+		@include breakpoints.above-sm {
+			grid-template-columns: unset;
 		}
 	}
 
