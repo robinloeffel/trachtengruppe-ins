@@ -89,6 +89,7 @@
 	@use "$styles/scales";
 	@use "$styles/colors";
 	@use "$styles/breakpoints";
+	@use "$styles/utils";
 
 	.agenda {
 		@extend %component-gap;
@@ -139,12 +140,16 @@
 	}
 
 	.agenda-list {
+		@extend %prevent-blowout;
+
 		display: grid;
 		row-gap: scales.space("24");
 		list-style: none;
 	}
 
 	.agenda-item {
+		@extend %prevent-blowout;
+
 		display: grid;
 		border: scales.space("4") solid colors.$misty-rose;
 		border-radius: scales.space("16");
@@ -183,6 +188,8 @@
 	}
 
 	.agenda-item-right {
+		@extend %prevent-blowout;
+
 		display: grid;
 		gap: scales.space("16");
 		padding: scales.space("24") scales.space("32");
