@@ -19,6 +19,7 @@
     grid-column: 2 / -2;
     gap: 2rem;
     place-items: center;
+    margin: 2rem 0;
     text-align: center;
   }
 </style>

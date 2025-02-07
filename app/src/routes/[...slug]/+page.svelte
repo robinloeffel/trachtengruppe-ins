@@ -1,22 +1,26 @@
 <script lang="ts">
-  import { page } from "$app/stores";
   import { BlockRenderer } from "$components";
-  import type { PageServerData } from "./$types";
+  import type { PageProps } from "./$types";
 
-  export let data: PageServerData;
+  const { data }: PageProps = $props();
 
-  $: ({ slug = "" } = $page.params);
-  $: title = slug
-    ? `${data.page.name} — Trachtengruppe Ins und Umgebung`
-    : "Trachtengruppe Ins und Umgebung";
+  const blocks = $derived(data.page.pageBuilder);
+  const nofollow = $derived(data.page.hidden);
+  const title = $derived(
+    data.page.slug === "/"
+      ? "Trachtengruppe Ins und Umgebung"
+      : `${data.page.name} — Trachtengruppe Ins und Umgebung`
+  );
 </script>
 
 <svelte:head>
   <title>{title}</title>
   <meta name="description" content={data.page.meta.description} />
   <meta name="keywords" content={data.page.meta.keywords.join(", ")} />
-  <meta name="robots" content={data.page.hidden ? "noindex, nofollow" : "index, follow"} />
-  <link href={`https://trachtengruppe-ins.ch/${slug}`} rel="canonical" />
+
+  {#if nofollow}
+    <meta name="robots" content="noindex, nofollow" />
+  {/if}
 </svelte:head>
 
-<BlockRenderer blocks={data.page.pageBuilder} />
+<BlockRenderer {blocks} />
