@@ -1,5 +1,0 @@
-{
-  "schema": "schema.json",
-  "path": "../sveltekit/src/lib/sanity/queries.ts",
-  "generates": "../sveltekit/src/lib/generated/sanity-types.ts"
-}

@@ -4,7 +4,7 @@
 	"type": "module",
 	"scripts": {
 		"build": "vite build",
-		"cms": "cd ../sanity && npm run dev",
+		"cms": "cd ../cms && npm run dev",
 		"dev": "vite dev",
 		"icons": "tsx tasks/icons.ts",
 		"prepare": "svelte-kit sync && npm run icons",

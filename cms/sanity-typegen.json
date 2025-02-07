@@ -1,0 +1,5 @@
+{
+  "schema": "schema.json",
+  "path": "../app/src/lib/sanity/queries.ts",
+  "generates": "../app/src/lib/generated/sanity-types.ts"
+}
