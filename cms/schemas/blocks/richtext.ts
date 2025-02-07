@@ -3,31 +3,31 @@ import { defineArrayMember, defineField, defineType } from "sanity";
 import { truncate } from "../../utils/truncate";
 
 export const richtext = defineType({
-	name: "richtext",
-	type: "object",
-	title: "Lauftext",
-	description: "Ein Textblock, der als Lauftext dargestellt wird.",
-	fields: [
-		defineField({
-			name: "text",
-			type: "array",
-			title: "Textblöcke",
-			of: [
-				defineArrayMember({
-					type: "block"
-				})
-			],
-			validation: Rule => Rule.required()
-		})
-	],
-	preview: {
-		select: {
-			text0: "text.0.children.0.text"
-		},
-		prepare: ({ text0 }: Record<"text0", string>) => ({
-			title: truncate(text0),
-			subtitle: "Lauftext",
-			media: TextIcon
-		})
-	}
+  name: "richtext",
+  type: "object",
+  title: "Lauftext",
+  description: "Ein Textblock, der als Lauftext dargestellt wird.",
+  fields: [
+    defineField({
+      name: "text",
+      type: "array",
+      title: "Textblöcke",
+      of: [
+        defineArrayMember({
+          type: "block"
+        })
+      ],
+      validation: Rule => Rule.required()
+    })
+  ],
+  preview: {
+    select: {
+      text0: "text.0.children.0.text"
+    },
+    prepare: ({ text0 }: Record<"text0", string>) => ({
+      title: truncate(text0),
+      subtitle: "Lauftext",
+      media: TextIcon
+    })
+  }
 });

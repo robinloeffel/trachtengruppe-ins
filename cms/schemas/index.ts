@@ -11,15 +11,15 @@ import { page } from "./singletons/page";
 import { settings } from "./singletons/settings";
 
 export const types = [
-	agenda,
-	contactList,
-	hero,
-	imageGallery,
-	pageTeaserList,
-	richtext,
-	contact,
-	event,
-	pageTeaser,
-	page,
-	settings
+  agenda,
+  contactList,
+  hero,
+  imageGallery,
+  pageTeaserList,
+  richtext,
+  contact,
+  event,
+  pageTeaser,
+  page,
+  settings
 ];
