@@ -12,7 +12,7 @@
 
 <Grid tag="section">
   <div class="richtext">
-    <PortableText components={{}} value={text} />
+    <PortableText value={text} />
   </div>
 </Grid>
 
