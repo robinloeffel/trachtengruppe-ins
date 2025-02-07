@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Grid, Icon } from "$components";
   import type { Result } from "$cms";
+  import { Grid, Icon } from "$components";
   import { formatDate, formatFullDate, formatTime } from "$utils";
   import { uniqWith } from "es-toolkit";
 
@@ -9,29 +9,35 @@
     value: string;
   }
 
-  export let events: Result<"agenda", "events">;
+  interface Props {
+    events: Result<"agenda", "events">;
+  }
 
-  const uiEvents = events.map(event => ({
-    ...event,
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    type: JSON.parse(event.type) as EventType
-  }));
+  const { events }: Props = $props();
 
-  const uniqueEventTypes = uniqWith(
-    uiEvents.map(event => event.type),
-    (a, b) => a.value === b.value
+  const uiEvents = $derived(
+    events.map(event => ({
+      ...event,
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+      type: JSON.parse(event.type) as EventType
+    }))
   );
 
-  let activeFilter: string | null = null;
+  const uniqueEventTypes = $derived(
+    uniqWith(
+      uiEvents.map(event => event.type),
+      (a, b) => a.value === b.value
+    )
+  );
+
+  let activeFilter = $state<string | null>(null);
 
   const setFilter = ({ currentTarget }: MouseEvent) => {
-    if (
-      currentTarget instanceof HTMLButtonElement
-      && currentTarget.dataset.type
-    ) {
-      activeFilter = activeFilter === currentTarget.dataset.type
-        ? null
-        : currentTarget.dataset.type;
+    if (currentTarget instanceof HTMLButtonElement) {
+      activeFilter
+        = activeFilter === currentTarget.getAttribute("data-type")
+          ? null
+          : currentTarget.getAttribute("data-type");
     }
   };
 </script>
@@ -45,8 +51,8 @@
             class="agenda-filter-button"
             class:active={uniqueEventType.value === activeFilter}
             data-type={uniqueEventType.value}
+            onclick={setFilter}
             type="button"
-            on:click={setFilter}
           >{uniqueEventType.label}</button>
         </li>
       {/each}

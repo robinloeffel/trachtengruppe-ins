@@ -1,9 +1,16 @@
 <script lang="ts">
-  export let tag: "div" | "section" = "div";
+  import type { Snippet } from "svelte";
+
+  interface Props {
+    tag?: "div" | "section";
+    children?: Snippet;
+  }
+
+  const { tag = "div", children }: Props = $props();
 </script>
 
 <svelte:element this={tag} class="grid">
-  <slot></slot>
+  {@render children?.()}
 </svelte:element>
 
 <style lang="scss">

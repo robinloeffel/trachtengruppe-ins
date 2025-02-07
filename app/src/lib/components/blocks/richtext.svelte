@@ -1,9 +1,13 @@
 <script lang="ts">
-  import { Grid } from "$components";
   import type { Result } from "$cms";
+  import { Grid } from "$components";
   import { PortableText } from "@portabletext/svelte";
 
-  export let text: Result<"richtext", "text">;
+  interface Props {
+    text: Result<"richtext", "text">;
+  }
+
+  const { text }: Props = $props();
 </script>
 
 <Grid tag="section">

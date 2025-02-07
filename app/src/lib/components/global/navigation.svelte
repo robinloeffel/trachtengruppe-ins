@@ -1,25 +1,25 @@
-<script context="module" lang="ts">
+<script lang="ts">
+  import { page } from "$app/state";
+  import { Icon } from "$components";
+
   interface NavigationItem {
     _id: string;
     name: string;
     href: string;
   }
-</script>
 
-<script lang="ts">
-  import { page } from "$app/stores";
-  import { Icon } from "$components";
+  interface Props {
+    items: NavigationItem[];
+  }
 
-  export let items: NavigationItem[];
+  const { items }: Props = $props();
 
-  let slug: string;
-  let isMobileMenuOpen = false;
+  const logoItem = $derived(items.find(item => item.href === "/"));
+  const mainItems = $derived(items.filter(item => item.href !== "/" && !item.href.includes("/")));
+  const subItems = $derived(items.filter(item => item.href !== "/" && item.href.includes("/")));
+  const slug = $derived(page.params.slug);
 
-  const logoItem = items.find(item => item.href === "/");
-  const mainItems = items.filter(item => item.href !== "/" && !item.href.includes("/"));
-  const subItems = items.filter(item => item.href !== "/" && item.href.includes("/"));
-
-  $: ({ slug = "" } = $page.params);
+  let isMobileMenuOpen = $state(false);
 
   const toggleMobileMenu = () => {
     isMobileMenuOpen = !isMobileMenuOpen;
@@ -41,15 +41,15 @@
         class="navigation-link"
         class:active={slug === ""}
         href={logoItem?.href}
-        on:click={closeMobileMenu}
+        onclick={closeMobileMenu}
       >
         <img class="navigation-logo" alt="" src="/logo.svg" />
         <span>{logoItem?.name}</span>
       </a>
       <button
         class="navigation-menu-toggle"
+        onclick={toggleMobileMenu}
         type="button"
-        on:click={toggleMobileMenu}
       >
         <Icon name="menu" size="medium" />
         <Icon name="x-mark" size="medium" />
@@ -66,7 +66,7 @@
               class="navigation-link"
               class:active={slug.includes(item.href)}
               href={item.href}
-              on:click={closeMobileMenu}
+              onclick={closeMobileMenu}
             >
               {item.name}
             </a>
@@ -78,7 +78,7 @@
                       class="navigation-sublink"
                       class:active={slug === subItem.href}
                       href={subItem.href}
-                      on:click={closeMobileMenu}
+                      onclick={closeMobileMenu}
                     >{subItem.name}</a>
                   </li>
                 {/each}

@@ -1,8 +1,12 @@
 <script lang="ts">
-  import { Grid, Icon } from "$components";
   import type { Result } from "$cms";
+  import { Grid, Icon } from "$components";
 
-  export let contacts: Result<"contactList", "contacts">;
+  interface Props {
+    contacts: Result<"contactList", "contacts">;
+  }
+
+  const { contacts }: Props = $props();
 </script>
 
 <Grid tag="section">

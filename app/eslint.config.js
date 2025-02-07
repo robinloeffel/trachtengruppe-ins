@@ -16,6 +16,8 @@ export default [
     rules: {
       "@typescript-eslint/init-declarations": "off",
       "unicorn/prevent-abbreviations": "off",
+      "unicorn/prefer-dom-node-dataset": "off",
+      "unicorn/no-null": "off",
       "no-underscore-dangle": "off",
       "svelte/no-dom-manipulating": "error",
       "svelte/no-dupe-on-directives": "error",

@@ -1,25 +1,31 @@
 <script lang="ts">
-  import { Grid, Image } from "$components";
   import { urlFor, type Result } from "$cms";
+  import { Grid, Image } from "$components";
 
-  export let image: Result<"hero", "image">;
-  export let title: Result<"hero", "title">;
-  export let width = 1920;
+  interface Props {
+    image: Result<"hero", "image">;
+    title: Result<"hero", "title">;
+    width?: number;
+  }
 
-  let height: number;
-  let imageSource: string;
+  const { image, title, width = 1920 }: Props = $props();
 
-  $: height = image.small
-    ? Math.round(width * 1 / 3)
-    : Math.round(width * 1 / 2);
+  const small = $derived(image.small);
+  const height = $derived(
+    small
+      ? Math.round(width * 1 / 3)
+      : Math.round(width * 1 / 2)
+  );
 
-  $: imageSource = urlFor(image)
-    .auto("format")
-    .size(width, height)
-    .url();
+  const imageSource = $derived(
+    urlFor(image)
+      .auto("format")
+      .size(width, height)
+      .url()
+  );
 </script>
 
-<header class="hero" class:small={image.small}>
+<header class="hero" class:small>
   <Image
     alt=""
     extraClasses={["hero-image"]}
@@ -28,7 +34,6 @@
     src={imageSource}
     {width}
   />
-
   <Grid>
     <h1 class="hero-title">{title}</h1>
   </Grid>

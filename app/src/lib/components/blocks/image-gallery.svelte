@@ -1,21 +1,27 @@
 <script lang="ts">
-  import { Grid, Image, Lightbox } from "$components";
   import { urlFor, type Result } from "$cms";
+  import { Grid, Image, Lightbox } from "$components";
 
-  export let images: Result<"imageGallery", "images">;
+  interface Props {
+    images: Result<"imageGallery", "images">;
+  }
 
-  const uiImages = images.map(item => ({
-    _key: item._key,
-    alt: item.alt,
-    thumbnail: urlFor(item)
-      .auto("format")
-      .size(600, 600)
-      .url(),
-    full: urlFor(item)
-      .auto("format")
-      .width(1920)
-      .url()
-  }));
+  const { images }: Props = $props();
+
+  const uiImages = $derived(
+    images.map(item => ({
+      _key: item._key,
+      alt: item.alt,
+      thumbnail: urlFor(item)
+        .auto("format")
+        .size(600, 600)
+        .url(),
+      full: urlFor(item)
+        .auto("format")
+        .width(1920)
+        .url()
+    }))
+  );
 
   let show: VoidFunction;
   let openLightboxElementIndex = -1;
@@ -32,10 +38,8 @@
       <li class="image-gallery-item">
         <button
           class="image-gallery-thumb"
+          onclick={() => { openLightbox(index); }}
           type="button"
-          on:click={() => {
-            openLightbox(index);
-          }}
         >
           <Image alt={galleryImage.alt} src={galleryImage.thumbnail} />
         </button>

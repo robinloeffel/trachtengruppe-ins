@@ -1,8 +1,12 @@
 <script lang="ts">
-  import { Agenda, Contacts, Hero, ImageGallery, PageTeaserList, Richtext } from "$components";
   import type { PageBuilder } from "$cms";
+  import { Agenda, Contacts, Hero, ImageGallery, PageTeaserList, Richtext } from "$components";
 
-  export let blocks: PageBuilder;
+  interface Props {
+    blocks: PageBuilder;
+  }
+
+  const { blocks }: Props = $props();
 </script>
 
 {#each blocks as block (block._key)}

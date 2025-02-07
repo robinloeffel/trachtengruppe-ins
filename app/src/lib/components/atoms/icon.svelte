@@ -1,8 +1,12 @@
 <script lang="ts">
   import { icons } from "$generated/icons";
 
-  export let name: keyof typeof icons;
-  export let size: "large" | "medium" | "small" = "small";
+  interface Props {
+    name: keyof typeof icons;
+    size?: "large" | "medium" | "small";
+  }
+
+  const { name, size = "small" }: Props = $props();
 </script>
 
 <span class="icon {size}" aria-hidden="true" data-name={name}>

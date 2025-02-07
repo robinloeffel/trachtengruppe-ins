@@ -4,8 +4,8 @@
 
   import { dev } from "$app/environment";
   import { page } from "$app/state";
-  import { Footer, Navigation } from "$components";
   import { urlFor } from "$cms";
+  import { Footer, Navigation } from "$components";
   import type { LayoutProps } from "./$types";
 
   const { data, children }: LayoutProps = $props();
@@ -16,6 +16,10 @@
     href: record.slug.current
   })));
 
+  const footerItems = $derived(
+    navigationItems.filter(item => item.href === "/" || !item.href.includes("/"))
+  );
+
   const footerMail = $derived(
     data.settings?.footerMail ?? "info@trachtengruppe-ins.ch"
   );
@@ -25,6 +29,10 @@
       ? urlFor(data.settings.favicon).auto("format").size(64, 64).url()
       : "/favicon.png"
   );
+
+  const canonical = $derived(
+    `https://trachtengruppe-ins.ch${page.url.pathname}`
+  );
 </script>
 
 <svelte:head>
@@ -32,7 +40,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <base href="/" />
   <link href={favicon} rel="icon" />
-  <link href={`https://trachtengruppe-ins.ch${page.url.pathname}`} rel="canonical" />
+  <link href={canonical} rel="canonical" />
 
   {#if !dev}
     <script
@@ -50,4 +58,4 @@
   {@render children()}
 </main>
 
-<Footer email={footerMail} items={navigationItems} />
+<Footer email={footerMail} items={footerItems} />

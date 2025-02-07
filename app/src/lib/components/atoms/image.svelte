@@ -1,11 +1,23 @@
 <script lang="ts">
-  export let src: HTMLImageElement["src"];
-  export let alt: HTMLImageElement["alt"];
-  export let width: HTMLImageElement["width"] | null = null;
-  export let height: HTMLImageElement["height"] | null = null;
-  export let decoding: HTMLImageElement["decoding"] = "async";
-  export let loading: HTMLImageElement["loading"] = "lazy";
-  export let extraClasses: string[] | null = null;
+  interface Props {
+    src: HTMLImageElement["src"];
+    alt: HTMLImageElement["alt"];
+    width?: HTMLImageElement["width"];
+    height?: HTMLImageElement["height"];
+    decoding?: HTMLImageElement["decoding"];
+    loading?: HTMLImageElement["loading"];
+    extraClasses?: string[];
+  }
+
+  const {
+    src,
+    alt,
+    width,
+    height,
+    decoding,
+    loading,
+    extraClasses
+  }: Props = $props();
 </script>
 
 <img

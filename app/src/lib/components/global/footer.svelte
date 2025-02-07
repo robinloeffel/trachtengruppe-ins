@@ -1,23 +1,23 @@
-<script context="module" lang="ts">
-  interface NavigationItem {
+<script lang="ts">
+  interface FooterItem {
     _id: string;
     name: string;
     href: string;
   }
-</script>
 
-<script lang="ts">
-  export let items: NavigationItem[] = [];
-  export let email: string;
+  interface Props {
+    items: FooterItem[];
+    email: string;
+  }
 
-  const mainItems = items.filter(item => item.href === "/" || !item.href.includes("/"));
+  const { items, email }: Props = $props();
 </script>
 
 <footer class="footer">
   <div class="footer-content">
     <nav aria-label="Navigation in der Fusszeile">
       <ul class="footer-navigation-list">
-        {#each mainItems as item (item._id)}
+        {#each items as item (item._id)}
           <li class="footer-navigation-item">
             <a href={item.href}>{item.name}</a>
           </li>
