@@ -1,17 +1,17 @@
 .no-scroll {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 .sr-only {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip-path: circle(0);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: circle(0);
 }
 
 %prevent-blowout > * {
-	min-width: 0;
+  min-width: 0;
 }
