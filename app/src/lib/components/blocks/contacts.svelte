@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Grid, Icon } from "$components";
-  import type { Result } from "$sanity";
+  import type { Result } from "$cms";
 
   export let contacts: Result<"contactList", "contacts">;
 </script>

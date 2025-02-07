@@ -1,4 +1,4 @@
-import { allPages } from "$sanity";
+import { allPages } from "$cms";
 import { text } from "@sveltejs/kit";
 
 export const GET = async () => {

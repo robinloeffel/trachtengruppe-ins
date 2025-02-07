@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Grid } from "$components";
-  import type { Result } from "$sanity";
+  import type { Result } from "$cms";
   import { PortableText } from "@portabletext/svelte";
 
   export let text: Result<"richtext", "text">;

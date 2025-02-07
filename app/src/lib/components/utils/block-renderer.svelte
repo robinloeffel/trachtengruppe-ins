@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Agenda, Contacts, Hero, ImageGallery, PageTeaserList, Richtext } from "$components";
-  import type { PageBuilder } from "$sanity";
+  import type { PageBuilder } from "$cms";
 
   export let blocks: PageBuilder;
 </script>

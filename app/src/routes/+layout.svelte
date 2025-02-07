@@ -1,36 +1,38 @@
 <script lang="ts">
-  import { dev } from "$app/environment";
-  import { Footer, Navigation } from "$components";
-  import { urlFor } from "$sanity";
   import "$styles/base.scss";
   import "$styles/utils.scss";
-  import type { LayoutServerData } from "./$types";
 
-  export let data: LayoutServerData;
+  import { dev } from "$app/environment";
+  import { page } from "$app/state";
+  import { Footer, Navigation } from "$components";
+  import { urlFor } from "$cms";
+  import type { LayoutProps } from "./$types";
 
-  const navigationItems = data.pages.map(page => ({
-    _id: page._id,
-    name: page.name,
-    href: page.slug.current
-  }));
+  const { data, children }: LayoutProps = $props();
 
-  const favicon = data.settings?.favicon
-    && urlFor(data.settings.favicon)
-      .auto("format")
-      .size(64, 64)
-      .url();
+  const navigationItems = $derived(data.pages.map(record => ({
+    _id: record._id,
+    name: record.name,
+    href: record.slug.current
+  })));
 
-  const footerMail = data.settings?.footerMail ?? "info@trachtengruppe-ins.ch";
+  const footerMail = $derived(
+    data.settings?.footerMail ?? "info@trachtengruppe-ins.ch"
+  );
+
+  const favicon = $derived(
+    data.settings?.favicon
+      ? urlFor(data.settings.favicon).auto("format").size(64, 64).url()
+      : "/favicon.png"
+  );
 </script>
 
 <svelte:head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <base href="/" />
-
-  {#if favicon}
-    <link href={favicon} rel="icon" />
-  {/if}
+  <link href={favicon} rel="icon" />
+  <link href={`https://trachtengruppe-ins.ch${page.url.pathname}`} rel="canonical" />
 
   {#if !dev}
     <script
@@ -43,7 +45,9 @@
 </svelte:head>
 
 <Navigation items={navigationItems} />
+
 <main>
-  <slot></slot>
+  {@render children()}
 </main>
+
 <Footer email={footerMail} items={navigationItems} />

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Grid, Image, Lightbox } from "$components";
-  import { urlFor, type Result } from "$sanity";
+  import { urlFor, type Result } from "$cms";
 
   export let images: Result<"imageGallery", "images">;
 

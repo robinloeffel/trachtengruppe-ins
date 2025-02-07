@@ -1,4 +1,4 @@
-import { allPages, settings } from "$sanity";
+import { allPages, settings } from "$cms";
 import type { LayoutServerLoad } from "./$types";
 
 export const load: LayoutServerLoad = async () => ({

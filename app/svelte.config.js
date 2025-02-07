@@ -22,7 +22,7 @@ export default {
     alias: {
       $styles: "./src/lib/styles",
       $components: "./src/lib/components/index.ts",
-      $sanity: "./src/lib/sanity/index.ts",
+      $cms: "./src/lib/cms/index.ts",
       $utils: "./src/lib/utils/index.ts",
       $generated: "./src/lib/generated"
     }
