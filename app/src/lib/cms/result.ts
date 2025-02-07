@@ -1,8 +1,7 @@
 import type { GetPageBySlugResult } from "$generated/sanity-types";
 
 export type PageBuilder = NonNullable<GetPageBySlugResult>["pageBuilder"];
-
-type PageBuilderBlock = PageBuilder[number];
+export type PageBuilderBlock = PageBuilder[number];
 
 export type Result<
   T extends PageBuilderBlock["_type"],

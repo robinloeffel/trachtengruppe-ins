@@ -1,7 +1,6 @@
 import { dev } from "$app/environment";
-import { createClient } from "@sanity/client";
-
 import type { GetAllPagesResult, GetPageBySlugResult, GetSettingsResult } from "$generated/sanity-types";
+import { createClient } from "@sanity/client";
 import { getAllPages, getPageBySlug, getSettings } from "./queries";
 
 export const client = createClient({
