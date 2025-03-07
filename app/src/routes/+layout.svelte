@@ -26,7 +26,9 @@
 
   const favicon = $derived(
     data.settings?.favicon
-      ? urlFor(data.settings.favicon).auto("format").size(64, 64).url()
+      ? urlFor(data.settings.favicon).auto("format")
+          .size(64, 64)
+          .url()
       : "/favicon.png"
   );
 

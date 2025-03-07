@@ -5,27 +5,29 @@ import ts from "typescript-eslint";
 /** @type {import("eslint").Linter.Config[]} */
 export default [
   ...sweet,
-  ...svelte.configs["flat/recommended"],
+  ...svelte.configs.recommended,
   {
-    files: ["**/*.svelte"],
+    files: ["**/*.svelte", "**/*.svelte.ts"],
     languageOptions: {
       parserOptions: {
         parser: ts.parser
       }
     },
     rules: {
-      "@typescript-eslint/init-declarations": "off",
-      "unicorn/prevent-abbreviations": "off",
-      "unicorn/prefer-dom-node-dataset": "off",
-      "unicorn/no-null": "off",
-      "no-underscore-dangle": "off",
-      "svelte/no-dom-manipulating": "error",
-      "svelte/no-dupe-on-directives": "error",
-      "svelte/no-dupe-use-directives": "error",
+      "no-underscore-dangle": [
+        "error", {
+          allow: ["_id", "_key", "_type"]
+        }
+      ],
+      "unicorn/prevent-abbreviations": [
+        "error", {
+          allowList: {
+            Props: true
+          }
+        }
+      ],
+
       "svelte/no-target-blank": "error",
-      "svelte/no-raw-special-elements": "error",
-      "svelte/no-useless-children-snippet": "error",
-      "svelte/no-useless-mustaches": "error",
       "svelte/button-has-type": "error",
       "svelte/prefer-const": "error",
       "svelte/block-lang": [
@@ -53,8 +55,6 @@ export default [
     }
   },
   {
-    ignores: [
-      "src/lib/generated"
-    ]
+    ignores: ["src/lib/generated"]
   }
 ];

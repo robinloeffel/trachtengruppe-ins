@@ -38,8 +38,8 @@
     display: grid;
     place-items: center;
     background-color: color-mix(in srgb, colors.$charcoal 95%, transparent);
-    backdrop-filter: blur(scales.space("32"));
     opacity: 0;
+    backdrop-filter: blur(scales.space("32"));
     transition: opacity 0.5s;
 
     &.visible {

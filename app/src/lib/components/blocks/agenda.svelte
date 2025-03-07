@@ -35,9 +35,9 @@
   const setFilter = ({ currentTarget }: MouseEvent) => {
     if (currentTarget instanceof HTMLButtonElement) {
       activeFilter
-        = activeFilter === currentTarget.getAttribute("data-type")
+        = activeFilter === currentTarget.dataset.type
           ? null
-          : currentTarget.getAttribute("data-type");
+          : currentTarget.dataset.type;
     }
   };
 </script>
@@ -75,7 +75,7 @@
               <span>{formatFullDate(item.date)} Uhr</span>
             </span>
             <span class="agenda-item-place">
-              <Icon name="pin" />
+              <Icon name="map-pin" />
               <span>{item.place}</span>
             </span>
             {#if item.link}

@@ -6,7 +6,7 @@ export const GET = async () => {
   const pages = await allPages();
   const paths = pages
     .map(page => page.slug.current)
-    .map(slug => slug === "/" ? `${base}\n` : `${base}/${slug}\n`)
+    .map(slug => (slug === "/" ? `${base}\n` : `${base}/${slug}\n`))
     .sort((a, b) => a.localeCompare(b))
     .join("");
 

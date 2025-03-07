@@ -1,22 +1,50 @@
 import { glob } from "glob";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { optimize } from "svgo";
+import { optimize, type CustomPlugin } from "svgo";
 
-const files = await glob("src/lib/icons/*.svg");
+const customSvgoStuff: CustomPlugin = {
+  name: "customSvgoStuff",
+  fn: () => ({
+    element: {
+      enter: (node) => {
+        node.attributes["stroke-width"] &&= "2.5";
+      }
+    }
+  })
+};
+
+const names = [
+  "arrow-left",
+  "arrow-right",
+  "arrow-up-right",
+  "calendar",
+  "clock",
+  "mail",
+  "menu",
+  "phone",
+  "map-pin",
+  "x-mark"
+];
+
+const files = await glob(
+  names.map(name => path.join(import.meta.dirname, `../node_modules/iconoir/icons/regular/${name}.svg`))
+);
+
 const icons = await Promise.all(files.map(async (file) => {
   const name = path.basename(file, ".svg");
   const markup = await fs.readFile(file, "utf8");
   const optimized = optimize(markup, {
     multipass: true,
-    plugins: [{
-      name: "removeDimensions"
-    }, {
-      name: "convertColors",
-      params: {
-        currentColor: true
-      }
-    }]
+    plugins: [
+      {
+        name: "removeDimensions"
+      },
+      {
+        name: "mergePaths"
+      },
+      customSvgoStuff
+    ]
   }).data;
 
   return [name, optimized];
