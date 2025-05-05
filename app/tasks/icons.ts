@@ -1,7 +1,7 @@
 import { glob } from "glob";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { optimize, type CustomPlugin } from "svgo";
+import { type CustomPlugin, optimize } from "svgo";
 
 const customSvgoStuff: CustomPlugin = {
   name: "customSvgoStuff",
@@ -24,7 +24,7 @@ const names = [
   "menu",
   "phone",
   "map-pin",
-  "x-mark"
+  "xmark"
 ];
 
 const files = await glob(

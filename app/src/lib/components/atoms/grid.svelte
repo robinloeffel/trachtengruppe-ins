@@ -3,14 +3,14 @@
 
   interface Props {
     tag?: "div" | "section";
-    children?: Snippet;
+    children: Snippet;
   }
 
   const { tag = "div", children }: Props = $props();
 </script>
 
 <svelte:element this={tag} class="grid">
-  {@render children?.()}
+  {@render children()}
 </svelte:element>
 
 <style lang="scss">

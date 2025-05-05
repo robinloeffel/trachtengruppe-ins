@@ -2,10 +2,9 @@ import sweet from "eslint-config-sweet";
 import svelte from "eslint-plugin-svelte";
 import ts from "typescript-eslint";
 
-/** @type {import("eslint").Linter.Config[]} */
-export default [
-  ...sweet,
-  ...svelte.configs.recommended,
+export default ts.config(
+  sweet,
+  svelte.configs.recommended,
   {
     files: ["**/*.svelte", "**/*.svelte.ts"],
     languageOptions: {
@@ -16,13 +15,18 @@ export default [
     rules: {
       "no-underscore-dangle": [
         "error", {
-          allow: ["_id", "_key", "_type"]
+          allow: [
+            "_id",
+            "_key",
+            "_type"
+          ]
         }
       ],
       "unicorn/prevent-abbreviations": [
         "error", {
           allowList: {
-            Props: true
+            Props: true,
+            Ref: true
           }
         }
       ],
@@ -57,4 +61,4 @@ export default [
   {
     ignores: ["src/lib/generated"]
   }
-];
+);

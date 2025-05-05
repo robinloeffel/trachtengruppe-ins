@@ -8,6 +8,7 @@ export { default as Hero } from "./blocks/hero.svelte";
 export { default as ImageGallery } from "./blocks/image-gallery.svelte";
 export { default as PageTeaserList } from "./blocks/page-teaser-list.svelte";
 export { default as Richtext } from "./blocks/richtext.svelte";
+export { default as BackLink } from "./global/back-link.svelte";
 export { default as Footer } from "./global/footer.svelte";
 export { default as Navigation } from "./global/navigation.svelte";
 export { default as BlockRenderer } from "./utils/block-renderer.svelte";

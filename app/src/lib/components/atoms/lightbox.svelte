@@ -21,7 +21,7 @@
 
 <div class="lightbox" class:visible>
   <button onclick={close} type="button">
-    <Icon name="x-mark" size="medium" />
+    <Icon name="xmark" size="medium" />
     <span class="sr-only">Schliessen</span>
   </button>
   <img class="image" alt={image.alt} onload={show} src={image.src} />

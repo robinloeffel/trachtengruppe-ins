@@ -1,7 +1,8 @@
 import { allPages } from "$cms";
 import { text } from "@sveltejs/kit";
+import type { RequestHandler } from "./$types";
 
-export const GET = async () => {
+export const GET: RequestHandler = async () => {
   const base = "https://trachtengruppe-ins.ch";
   const pages = await allPages();
   const paths = pages

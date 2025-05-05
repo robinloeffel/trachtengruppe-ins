@@ -5,10 +5,12 @@
   import { dev } from "$app/environment";
   import { page } from "$app/state";
   import { urlFor } from "$cms";
-  import { Footer, Navigation } from "$components";
+  import { BackLink, Footer, Grid, Navigation } from "$components";
   import type { LayoutProps } from "./$types";
 
   const { data, children }: LayoutProps = $props();
+
+  const isSubPage = $derived(Boolean(page.params.slug));
 
   const navigationItems = $derived(data.pages.map(record => ({
     _id: record._id,
@@ -58,6 +60,12 @@
 
 <main>
   {@render children()}
+
+  {#if isSubPage}
+    <Grid tag="section">
+      <BackLink />
+    </Grid>
+  {/if}
 </main>
 
 <Footer email={footerMail} items={footerItems} />

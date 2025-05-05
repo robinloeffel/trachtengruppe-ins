@@ -1,6 +1,6 @@
 import vercel from "@sveltejs/adapter-vercel";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
-import { toMerged } from "es-toolkit/compat";
+import { toMerged } from "es-toolkit";
 
 /** @type {import('@sveltejs/kit').Config} */
 export default {
@@ -16,12 +16,11 @@ export default {
       })
     },
     alias: {
-      $styles: "./src/lib/styles",
-      $icons: "./src/lib/icons",
-      $components: "./src/lib/components/index.ts",
       $cms: "./src/lib/cms/index.ts",
-      $utils: "./src/lib/utils/index.ts",
-      $generated: "./src/lib/generated"
+      $components: "./src/lib/components/index.ts",
+      $generated: "./src/lib/generated",
+      $styles: "./src/lib/styles",
+      $utils: "./src/lib/utils/index.ts"
     }
   }
 };

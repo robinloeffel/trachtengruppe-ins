@@ -52,7 +52,7 @@
         type="button"
       >
         <Icon name="menu" size="medium" />
-        <Icon name="x-mark" size="medium" />
+        <Icon name="xmark" size="medium" />
         <span class="sr-only">
           {`Navigation ${isMobileMenuOpen ? "schliessen" : "öffnen"}`}
         </span>
@@ -64,7 +64,7 @@
           <li class="navigation-item">
             <a
               class="navigation-link"
-              class:active={slug.includes(item.href)}
+              class:active={slug?.includes(item.href)}
               href={item.href}
               onclick={closeMobileMenu}
             >
@@ -148,7 +148,7 @@
       transition: scale 0.3s ease-in-out;
     }
 
-    :global(.icon[data-name="x-mark"]) {
+    :global(.icon[data-name="xmark"]) {
       scale: 0;
     }
 
@@ -157,7 +157,7 @@
         scale: 0;
       }
 
-      :global(.icon[data-name="x-mark"]) {
+      :global(.icon[data-name="xmark"]) {
         scale: 1;
       }
     }
@@ -220,8 +220,7 @@
   }
 
   .navigation-subitems {
-    padding: 0 scales.space("16");
-    list-style: none;
+    display: none;
 
     @include breakpoints.above-sm {
       position: absolute;
@@ -229,6 +228,7 @@
       display: none;
       padding: scales.space("16");
       white-space: nowrap;
+      list-style: none;
       background-color: colors.$white;
       border: scales.space("4") solid colors.$light-coral;
 

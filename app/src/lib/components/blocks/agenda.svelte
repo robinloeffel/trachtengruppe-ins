@@ -30,15 +30,10 @@
     )
   );
 
-  let activeFilter = $state<string | null>(null);
+  let activeFilter = $state<string>("");
 
-  const setFilter = ({ currentTarget }: MouseEvent) => {
-    if (currentTarget instanceof HTMLButtonElement) {
-      activeFilter
-        = activeFilter === currentTarget.dataset.type
-          ? null
-          : currentTarget.dataset.type;
-    }
+  const setFilter = (eventType: string) => {
+    activeFilter = activeFilter === eventType ? "" : eventType;
   };
 </script>
 
@@ -50,8 +45,9 @@
           <button
             class="agenda-filter-button"
             class:active={uniqueEventType.value === activeFilter}
-            data-type={uniqueEventType.value}
-            onclick={setFilter}
+            onclick={() => {
+              setFilter(uniqueEventType.value);
+            }}
             type="button"
           >{uniqueEventType.label}</button>
         </li>
@@ -95,7 +91,6 @@
   @use "$styles/scales";
   @use "$styles/colors";
   @use "$styles/breakpoints";
-  @use "$styles/utils";
 
   .agenda {
     @extend %component-gap;
@@ -256,5 +251,9 @@
       grid-row: 3 / 4;
       grid-column: 2 / 3;
     }
+  }
+
+  %prevent-blowout > * {
+    min-width: 0;
   }
 </style>
