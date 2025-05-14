@@ -6,6 +6,7 @@
   import { page } from "$app/state";
   import { urlFor } from "$cms";
   import { BackLink, Footer, Grid, Navigation } from "$components";
+  import font from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2";
   import type { LayoutProps } from "./$types";
 
   const { data, children }: LayoutProps = $props();
@@ -28,9 +29,10 @@
 
   const favicon = $derived(
     data.settings?.favicon
-      ? urlFor(data.settings.favicon).auto("format")
-          .size(64, 64)
-          .url()
+      ? urlFor(data.settings.favicon)
+        .format("webp")
+        .size(64, 64)
+        .url()
       : "/favicon.png"
   );
 
@@ -40,6 +42,7 @@
 </script>
 
 <svelte:head>
+  <link as="font" crossorigin="anonymous" href={font} rel="peload" type="font/woff2" />
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <base href="/" />

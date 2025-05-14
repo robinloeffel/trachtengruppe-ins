@@ -13,11 +13,11 @@
       _key: record._key,
       alt: record.alt,
       thumb: urlFor(record)
-        .auto("format")
+        .format("webp")
         .size(600, 600)
         .url(),
       full: urlFor(record)
-        .auto("format")
+        .format("webp")
         .width(1920)
         .url()
     }))

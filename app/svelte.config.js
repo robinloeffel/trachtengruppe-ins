@@ -10,6 +10,9 @@ export default {
     prerender: {
       entries: ["/"]
     },
+    paths: {
+      relative: false
+    },
     typescript: {
       config: config => toMerged(config, {
         include: ["../tasks/**/*.ts"]

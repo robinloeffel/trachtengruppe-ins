@@ -14,7 +14,7 @@
   const height = $derived(small ? Math.round(width * 1 / 3) : Math.round(width * 1 / 2));
   const imageSource = $derived(
     urlFor(image)
-      .auto("format")
+      .format("webp")
       .size(width, height)
       .url()
   );
