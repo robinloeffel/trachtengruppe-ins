@@ -1,6 +1,6 @@
-import type { GetPageBySlugResult } from "$generated/sanity-types";
+import type { GetPageBySlugQueryResult } from "$generated/sanity-types";
 
-export type PageBuilder = NonNullable<GetPageBySlugResult>["pageBuilder"];
+export type PageBuilder = NonNullable<GetPageBySlugQueryResult>["pageBuilder"];
 export type PageBuilderBlock = PageBuilder[number];
 
 export type Result<

@@ -22,4 +22,4 @@ export const types = [
   pageTeaser,
   page,
   settings
-];
+] as const;

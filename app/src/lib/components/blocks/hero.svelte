@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { urlFor, type Result } from "$cms";
+  import { type Result, urlFor } from "$cms";
   import { Grid, Image } from "$components";
 
   interface Props {
@@ -11,12 +11,7 @@
   const { image, title, width = 1920 }: Props = $props();
 
   const small = $derived(image.small);
-  const height = $derived(
-    small
-      ? Math.round(width * 1 / 3)
-      : Math.round(width * 1 / 2)
-  );
-
+  const height = $derived(small ? Math.round(width * 1 / 3) : Math.round(width * 1 / 2));
   const imageSource = $derived(
     urlFor(image)
       .auto("format")

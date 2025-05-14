@@ -18,10 +18,12 @@
           <Icon name="mail" />
           <a href="mailto:{contact.email}">Email</a>
         </span>
-        <span class="contact-phone">
-          <Icon name="phone" />
-          <a href="tel:{contact.phone}">Telefon</a>
-        </span>
+        {#if contact.phone}
+          <span class="contact-phone">
+            <Icon name="phone" />
+            <a href="tel:{contact.phone}">Telefon</a>
+          </span>
+        {/if}
       </li>
     {/each}
   </ul>

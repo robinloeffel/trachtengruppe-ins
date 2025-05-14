@@ -11,19 +11,20 @@
   },
   "dependencies": {
     "@sanity/icons": "^3.7.0",
-    "@sanity/locale-de-de": "^1.1.17",
-    "@sanity/vision": "^3.78.1",
-    "@types/react": "^18.3.18",
-    "eslint": "^9.21.0",
-    "eslint-config-sweet": "^24.0.0",
-    "eslint-define-config": "^2.1.0",
-    "prettier": "^3.5.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "@sanity/locale-de-de": "^1.1.20",
+    "@sanity/vision": "^3.88.3",
+    "@types/react": "^19.1.4",
+    "eslint": "^9.26.0",
+    "eslint-config-sweet": "^25.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "robins-tsconfig": "^2.0.0",
-    "sanity": "^3.78.1",
-    "sanity-plugin-media": "^2.4.1",
-    "styled-components": "^6.1.15",
-    "typescript": "^5.8.2"
+    "sanity": "^3.88.3",
+    "sanity-plugin-media": "^3.0.2",
+    "styled-components": "^6.1.18",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": "^22"
   }
 }

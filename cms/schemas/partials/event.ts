@@ -1,5 +1,6 @@
 import { CalendarIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
+import { formatDate } from "../../utils/date";
 
 export const event = defineType({
   name: "event",
@@ -34,43 +35,50 @@ export const event = defineType({
       description: "Der Typ des Ereignisses.",
       type: "string",
       options: {
-        list: [{
-          title: "Singen",
-          value: JSON.stringify({
-            label: "Singen",
-            value: "singing"
-          })
-        }, {
-          title: "Tanzen",
-          value: JSON.stringify({
-            label: "Tanzen",
-            value: "dancing"
-          })
-        }, {
-          title: "Kindertanzen",
-          value: JSON.stringify({
-            label: "Kindertanzen",
-            value: "dancing-for-kids"
-          })
-        }, {
-          title: "Unterhaltungsabend",
-          value: JSON.stringify({
-            label: "Unterhaltungsabend",
-            value: "entertainment-evening"
-          })
-        }, {
-          title: "Anlass",
-          value: JSON.stringify({
-            label: "Anlass",
-            value: "occasion"
-          })
-        }, {
-          title: "Anderes",
-          value: JSON.stringify({
-            label: "Anderes",
-            value: "other"
-          })
-        }]
+        list: [
+          {
+            title: "Singen",
+            value: JSON.stringify({
+              label: "Singen",
+              value: "singing"
+            })
+          },
+          {
+            title: "Tanzen",
+            value: JSON.stringify({
+              label: "Tanzen",
+              value: "dancing"
+            })
+          },
+          {
+            title: "Kindertanzen",
+            value: JSON.stringify({
+              label: "Kindertanzen",
+              value: "dancing-for-kids"
+            })
+          },
+          {
+            title: "Unterhaltungsabend",
+            value: JSON.stringify({
+              label: "Unterhaltungsabend",
+              value: "entertainment-evening"
+            })
+          },
+          {
+            title: "Anlass",
+            value: JSON.stringify({
+              label: "Anlass",
+              value: "occasion"
+            })
+          },
+          {
+            title: "Anderes",
+            value: JSON.stringify({
+              label: "Anderes",
+              value: "other"
+            })
+          }
+        ]
       },
       validation: Rule => Rule.required()
     }),
@@ -90,11 +98,12 @@ export const event = defineType({
   ],
   preview: {
     select: {
-      title: "title"
+      title: "title",
+      date: "date"
     },
-    prepare: ({ title }: Record<"title", string>) => ({
+    prepare: ({ title, date }: Record<"title" | "date", string>) => ({
       title,
-      subtitle: "Event",
+      subtitle: formatDate(date),
       media: CalendarIcon
     })
   }

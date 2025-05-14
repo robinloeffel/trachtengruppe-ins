@@ -45,5 +45,10 @@
     :global(a) {
       color: inherit;
     }
+
+    :global(ul),
+    :global(ol) {
+      margin-left: 1em;
+    }
   }
 </style>

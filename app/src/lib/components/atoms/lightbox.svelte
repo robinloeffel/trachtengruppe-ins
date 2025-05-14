@@ -1,31 +1,30 @@
-<script lang="ts">
-  import { Icon } from "$components";
-
-  interface LightboxImage {
+<script lang="ts" module>
+  export interface LightboxImage {
     src: string;
     alt: string;
   }
+</script>
+
+<script lang="ts">
+  import { Icon } from "$components";
 
   interface Props {
-    image: LightboxImage;
-    close: () => void;
+    image?: LightboxImage | undefined;
+    close: VoidFunction;
   }
 
   const { image, close }: Props = $props();
-  let visible = $state(false);
-
-  const show = () => {
-    visible = true;
-  };
 </script>
 
-<div class="lightbox" class:visible>
-  <button onclick={close} type="button">
-    <Icon name="xmark" size="medium" />
-    <span class="sr-only">Schliessen</span>
-  </button>
-  <img class="image" alt={image.alt} onload={show} src={image.src} />
-</div>
+{#if image}
+  <div class="lightbox">
+    <button onclick={close} type="button">
+      <Icon name="xmark" size="medium" />
+      <span class="sr-only">Schliessen</span>
+    </button>
+    <img class="image" alt={image.alt} src={image.src} />
+  </div>
+{/if}
 
 <style lang="scss">
   @use "$styles/colors";
@@ -38,13 +37,7 @@
     display: grid;
     place-items: center;
     background-color: color-mix(in srgb, colors.$charcoal 95%, transparent);
-    opacity: 0;
     backdrop-filter: blur(scales.space("32"));
-    transition: opacity 0.5s;
-
-    &.visible {
-      opacity: 1;
-    }
   }
 
   img {

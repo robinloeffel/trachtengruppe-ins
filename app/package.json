@@ -5,36 +5,42 @@
   "scripts": {
     "build": "vite build",
     "cms": "cd ../cms && node --run dev",
-    "dev": "vite dev",
+    "dev": "vite dev --host",
     "icons": "node --experimental-strip-types tasks/icons.ts",
     "prepare": "svelte-kit sync && node --run icons",
     "preview": "vite preview",
-    "start": "vite dev"
+    "start": "node --run dev"
   },
   "dependencies": {
     "@fontsource-utils/scss": "^0.2.1",
     "@fontsource-variable/inter": "^5.2.5",
     "@portabletext/svelte": "^3.0.0",
-    "@sanity/client": "^7.0.0",
+    "@sanity/client": "^7.2.1",
     "@sanity/image-url": "^1.1.0",
-    "@sveltejs/adapter-vercel": "^5.7.1",
-    "@sveltejs/kit": "^2.20.8",
+    "@sveltejs/adapter-vercel": "^5.7.2",
+    "@sveltejs/kit": "^2.21.0",
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
-    "@types/node": "^22.15.3",
+    "@types/node": "^22.15.18",
+    "browserslist": "^4.24.5",
     "es-toolkit": "^1.37.2",
     "eslint": "^9.26.0",
     "eslint-config-sweet": "^25.0.0",
-    "eslint-plugin-svelte": "^3.5.1",
+    "eslint-plugin-svelte": "^3.6.0",
     "glob": "^11.0.2",
-    "groq": "^3.87.1",
+    "groq": "^3.88.3",
     "iconoir": "^7.11.0",
+    "postcss-load-config": "^6.0.1",
+    "postcss-preset-env": "^10.1.6",
     "robins-tsconfig": "^2.0.0",
-    "sass": "^1.87.0",
+    "sass": "^1.88.0",
     "stylelint": "^16.19.1",
     "stylelint-config-sweet": "^5.1.0",
-    "svelte": "^5.28.2",
+    "svelte": "^5.28.6",
     "svgo": "^3.3.2",
     "typescript": "^5.8.3",
     "vite": "^6.3.5"
+  },
+  "engines": {
+    "node": "^22"
   }
 }

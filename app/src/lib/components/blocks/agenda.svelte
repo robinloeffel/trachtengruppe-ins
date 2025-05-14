@@ -1,8 +1,8 @@
 <script lang="ts">
   import type { Result } from "$cms";
   import { Grid, Icon } from "$components";
-  import { formatDate, formatFullDate, formatTime } from "$utils";
-  import { uniqWith } from "es-toolkit";
+  import { dateTimeLong, dateTimeShort } from "$utils";
+  import { toMerged, uniqWith } from "es-toolkit";
 
   interface EventType {
     label: string;
@@ -16,11 +16,10 @@
   const { events }: Props = $props();
 
   const uiEvents = $derived(
-    events.map(event => ({
-      ...event,
+    events.map(event => toMerged(event, {
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       type: JSON.parse(event.type) as EventType
-    }))
+    })).filter(event => new Date(event.date) >= new Date())
   );
 
   const uniqueEventTypes = $derived(
@@ -30,7 +29,7 @@
     )
   );
 
-  let activeFilter = $state<string>("");
+  let activeFilter = $state("");
 
   const setFilter = (eventType: string) => {
     activeFilter = activeFilter === eventType ? "" : eventType;
@@ -61,14 +60,13 @@
           class:special={item.special}
         >
           <div class="agenda-item-left">
-            <span>{formatDate(item.date)},</span>
-            <span>{formatTime(item.date)} Uhr</span>
+            <span>{dateTimeShort(item.date)} Uhr</span>
           </div>
           <div class="agenda-item-right">
             <h2 class="agenda-item-title">{item.title}</h2>
             <span class="agenda-item-date">
               <Icon name="calendar" />
-              <span>{formatFullDate(item.date)} Uhr</span>
+              <span>{dateTimeLong(item.date)} Uhr</span>
             </span>
             <span class="agenda-item-place">
               <Icon name="map-pin" />

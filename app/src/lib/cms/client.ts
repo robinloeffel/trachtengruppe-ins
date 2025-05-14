@@ -1,5 +1,9 @@
 import { dev } from "$app/environment";
-import type { GetAllPagesResult, GetPageBySlugResult, GetSettingsResult } from "$generated/sanity-types";
+import type {
+  GetAllPagesQueryResult,
+  GetPageBySlugQueryResult,
+  GetSettingsQueryResult
+} from "$generated/sanity-types";
 import { createClient } from "@sanity/client";
 import { getAllPagesQuery, getPageBySlugQuery, getSettingsQuery } from "./queries";
 
@@ -10,6 +14,6 @@ export const client = createClient({
   useCdn: !dev
 });
 
-export const allPages = async () => await client.fetch<GetAllPagesResult>(getAllPagesQuery);
-export const pageBySlug = async (slug: string) => await client.fetch<GetPageBySlugResult>(getPageBySlugQuery, { slug });
-export const settings = async () => await client.fetch<GetSettingsResult>(getSettingsQuery);
+export const allPages = async () => await client.fetch<GetAllPagesQueryResult>(getAllPagesQuery);
+export const pageBySlug = async (slug: string) => await client.fetch<GetPageBySlugQueryResult>(getPageBySlugQuery, { slug });
+export const settings = async () => await client.fetch<GetSettingsQueryResult>(getSettingsQuery);

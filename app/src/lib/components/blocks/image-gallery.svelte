@@ -1,9 +1,6 @@
 <script lang="ts">
-  import { urlFor, type Result } from "$cms";
-  import { Grid, Image, Lightbox } from "$components";
-  import type { ComponentProps } from "svelte";
-
-  type LightboxImage = ComponentProps<typeof Lightbox>["image"];
+  import { type Result, urlFor } from "$cms";
+  import { type LightboxImage, Grid, Image, Lightbox } from "$components";
 
   interface Props {
     images: Result<"imageGallery", "images">;
@@ -26,24 +23,24 @@
     }))
   );
 
-  let lightboxImage = $state<LightboxImage | null>(null);
+  let lightboxImage = $state<LightboxImage>();
   let bodyRef: HTMLElement;
 
   $effect(() => {
     bodyRef.classList.toggle("no-scroll", Boolean(lightboxImage));
   });
 
-  const setLightbox = (image: LightboxImage) => {
+  const setLightbox = (image?: LightboxImage) => {
     lightboxImage = image;
   };
 
-  const closeLightbox = () => {
-    lightboxImage = null;
+  const handleCloseLightbox = () => {
+    setLightbox();
   };
 
   const handleWindowKeydown = ({ key }: KeyboardEvent) => {
     if (lightboxImage && key === "Escape") {
-      closeLightbox();
+      setLightbox();
     }
   };
 </script>
@@ -68,12 +65,7 @@
   </ul>
 </Grid>
 
-{#if lightboxImage}
-  <Lightbox
-    close={closeLightbox}
-    image={lightboxImage}
-  />
-{/if}
+<Lightbox close={handleCloseLightbox} image={lightboxImage} />
 
 <style lang="scss">
   @use "$styles/scales";
@@ -99,8 +91,7 @@
   }
 
   .image-gallery-button {
-    display: grid;
-    place-items: center;
+    display: block;
     overflow: hidden;
     cursor: pointer;
     background: 0;

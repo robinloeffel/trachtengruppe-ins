@@ -24,8 +24,7 @@ export const contact = defineType({
       name: "phone",
       title: "Telefon",
       description: "Die Telefonnummer des Kontakts.",
-      type: "string",
-      validation: Rule => Rule.required()
+      type: "string"
     })
   ],
   preview: {
@@ -38,9 +37,13 @@ export const contact = defineType({
       name,
       email,
       phone
-    }: Record<"email" | "name" | "phone", string>) => ({
+    }: {
+      name: string;
+      email: string;
+      phone?: string;
+    }) => ({
       title: name,
-      subtitle: `${email} / ${phone}`
+      subtitle: phone ? `${email} / ${phone}` : email
     })
   }
 });

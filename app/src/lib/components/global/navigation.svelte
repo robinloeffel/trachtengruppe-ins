@@ -110,9 +110,9 @@
     margin: 0 auto;
 
     @include breakpoints.above-sm {
-      display: flex;
+      display: grid;
+      grid-template-columns: auto 1fr;
       align-items: center;
-      justify-content: space-between;
     }
   }
 
@@ -124,6 +124,7 @@
 
     @include breakpoints.above-sm {
       display: inline-flex;
+      justify-content: start;
     }
   }
 
@@ -175,6 +176,10 @@
 
     .is-mobile-open & {
       grid-template-rows: 1fr;
+    }
+
+    @include breakpoints.above-sm {
+      justify-content: end;
     }
   }
 

@@ -13,23 +13,9 @@ export default ts.config(
       }
     },
     rules: {
-      "no-underscore-dangle": [
-        "error", {
-          allow: [
-            "_id",
-            "_key",
-            "_type"
-          ]
-        }
-      ],
-      "unicorn/prevent-abbreviations": [
-        "error", {
-          allowList: {
-            Props: true,
-            Ref: true
-          }
-        }
-      ],
+      "no-underscore-dangle": 0,
+      "unicorn/prevent-abbreviations": 0,
+      "@typescript-eslint/init-declarations": 0,
 
       "svelte/no-target-blank": "error",
       "svelte/button-has-type": "error",

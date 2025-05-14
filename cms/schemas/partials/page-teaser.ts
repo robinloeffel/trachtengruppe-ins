@@ -26,9 +26,11 @@ export const pageTeaser = defineType({
       type: "reference",
       title: "Link",
       description: "Die Seite, auf die der Teaser zeigt.",
-      to: [{
-        type: "page"
-      }],
+      to: [
+        {
+          type: "page"
+        }
+      ],
       validation: Rule => Rule.required()
     })
   ],

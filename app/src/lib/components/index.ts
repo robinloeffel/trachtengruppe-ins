@@ -1,7 +1,7 @@
 export { default as Grid } from "./atoms/grid.svelte";
 export { default as Icon } from "./atoms/icon.svelte";
 export { default as Image } from "./atoms/image.svelte";
-export { default as Lightbox } from "./atoms/lightbox.svelte";
+export { type LightboxImage, default as Lightbox } from "./atoms/lightbox.svelte";
 export { default as Agenda } from "./blocks/agenda.svelte";
 export { default as Contacts } from "./blocks/contacts.svelte";
 export { default as Hero } from "./blocks/hero.svelte";
