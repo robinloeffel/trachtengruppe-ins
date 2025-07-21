@@ -4,9 +4,9 @@ import ts from "typescript-eslint";
 
 export default ts.config(
   sweet,
-  svelte.configs.recommended,
   {
     files: ["**/*.svelte", "**/*.svelte.ts"],
+    extends: [svelte.configs.recommended],
     languageOptions: {
       parserOptions: {
         parser: ts.parser
@@ -34,10 +34,13 @@ export default ts.config(
       "svelte/html-quotes": "error",
       "svelte/html-self-closing": "error",
       "svelte/mustache-spacing": "error",
+      "svelte/no-add-event-listener": "error",
       "svelte/no-extra-reactive-curlies": "error",
       "svelte/no-spaces-around-equal-signs-in-attribute": "error",
+      "svelte/no-top-level-browser-globals": "error",
       "svelte/prefer-class-directive": "error",
       "svelte/prefer-style-directive": "error",
+      "svelte/require-event-prefix": "error",
       "svelte/shorthand-attribute": "error",
       "svelte/shorthand-directive": "error",
       "svelte/sort-attributes": "error",

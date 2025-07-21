@@ -6,7 +6,7 @@
 </script>
 
 <script lang="ts">
-  import { Icon } from "$components";
+  import { Icon, Image } from "$components";
 
   interface Props {
     image?: LightboxImage | undefined;
@@ -22,7 +22,12 @@
       <Icon name="xmark" size="medium" />
       <span class="sr-only">Schliessen</span>
     </button>
-    <img class="image" alt={image.alt} src={image.src} />
+    <Image
+      alt={image.alt}
+      extraClasses={["image"]}
+      fetchPriority="high"
+      src={image.src}
+    />
   </div>
 {/if}
 
@@ -40,7 +45,7 @@
     backdrop-filter: blur(scales.space("32"));
   }
 
-  img {
+  :global(.lightbox .image) {
     inset: 0;
     padding: scales.space("32");
   }

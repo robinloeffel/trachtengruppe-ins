@@ -1,12 +1,8 @@
 <script lang="ts">
-  import type { Result } from "$cms";
+  import type { Block } from "$cms";
   import { Grid } from "$components";
 
-  interface Props {
-    teasers: Result<"pageTeaserList", "teasers">;
-  }
-
-  const { teasers }: Props = $props();
+  const { teasers }: Block<"pageTeaserList"> = $props();
 </script>
 
 <Grid tag="section">

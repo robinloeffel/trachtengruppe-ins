@@ -25,10 +25,13 @@ const names = [
   "phone",
   "map-pin",
   "xmark"
-];
+] as const;
 
 const files = await glob(
-  names.map(name => path.join(import.meta.dirname, `../node_modules/iconoir/icons/regular/${name}.svg`))
+  names.map(name => path.join(
+    import.meta.dirname,
+    `../node_modules/iconoir/icons/regular/${name}.svg`
+  ))
 );
 
 const icons = await Promise.all(files.map(async (file) => {
@@ -50,7 +53,7 @@ const icons = await Promise.all(files.map(async (file) => {
   return [name, optimized];
 }));
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+// eslint-disable-next-line @typescript-eslint/consistent-type-assertions, @typescript-eslint/no-unsafe-type-assertion
 const map = Object.fromEntries(icons) as Record<string, string>;
 
 await fs.mkdir("src/lib/generated", { recursive: true });

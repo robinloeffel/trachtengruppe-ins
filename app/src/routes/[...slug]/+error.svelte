@@ -9,7 +9,7 @@
 <Grid>
   <div>
     <h1>Die gesuchte Seite gibt es nicht</h1>
-    <Image alt="" src="https://i.giphy.com/12p3JXHJBgqqCk.webp" />
+    <Image alt="" loading="lazy" src="https://i.giphy.com/12p3JXHJBgqqCk.webp" />
   </div>
 </Grid>
 

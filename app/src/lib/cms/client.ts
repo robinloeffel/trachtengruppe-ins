@@ -9,7 +9,7 @@ import { getAllPagesQuery, getPageBySlugQuery, getSettingsQuery } from "./querie
 
 export const client = createClient({
   projectId: "kcm0835a",
-  apiVersion: "2024-04-01",
+  apiVersion: "2025-07-22",
   dataset: "production",
   useCdn: !dev
 });

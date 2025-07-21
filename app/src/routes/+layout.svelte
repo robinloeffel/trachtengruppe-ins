@@ -30,7 +30,7 @@
   const favicon = $derived(
     data.settings?.favicon
       ? urlFor(data.settings.favicon)
-        .format("webp")
+        .auto("format")
         .size(64, 64)
         .url()
       : "/favicon.png"

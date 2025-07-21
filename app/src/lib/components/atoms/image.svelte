@@ -1,11 +1,8 @@
 <script lang="ts">
-  interface Props {
-    src: HTMLImageElement["src"];
-    alt: HTMLImageElement["alt"];
-    width?: HTMLImageElement["width"];
-    height?: HTMLImageElement["height"];
-    decoding?: HTMLImageElement["decoding"];
-    loading?: HTMLImageElement["loading"];
+  interface Props extends Partial<
+    // eslint-disable-next-line svelte/no-top-level-browser-globals
+    Pick<HTMLImageElement, "src" | "alt" | "width" | "height" | "loading" | "fetchPriority">
+  > {
     extraClasses?: string[];
   }
 
@@ -14,8 +11,8 @@
     alt,
     width,
     height,
-    decoding,
     loading,
+    fetchPriority,
     extraClasses
   }: Props = $props();
 </script>
@@ -23,7 +20,7 @@
 <img
   class={extraClasses?.join(" ")}
   {alt}
-  {decoding}
+  fetchpriority={fetchPriority}
   {height}
   {loading}
   {src}

@@ -1,10 +1,8 @@
 <script lang="ts">
-  import { type Result, urlFor } from "$cms";
+  import { type Block, urlFor } from "$cms";
   import { Grid, Image } from "$components";
 
-  interface Props {
-    image: Result<"hero", "image">;
-    title: Result<"hero", "title">;
+  interface Props extends Block<"hero"> {
     width?: number;
   }
 
@@ -14,18 +12,18 @@
   const height = $derived(small ? Math.round(width * 1 / 3) : Math.round(width * 1 / 2));
   const imageSource = $derived(
     urlFor(image)
-      .format("webp")
+      .auto("format")
       .size(width, height)
       .url()
   );
 </script>
 
-<header class="hero" class:small>
+<header class={["hero", { small }]}>
   <Image
     alt=""
     extraClasses={["hero-image"]}
+    fetchPriority="high"
     {height}
-    loading="eager"
     src={imageSource}
     {width}
   />

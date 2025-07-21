@@ -31,15 +31,23 @@
 </script>
 
 <nav
-  class="navigation"
-  class:is-mobile-open={isMobileMenuOpen}
+  class={[
+    "navigation",
+    {
+      "is-mobile-open": isMobileMenuOpen
+    }
+  ]}
   aria-label="Hauptnavigation"
 >
   <div class="navigation-container">
     <div class="navigation-bar">
       <a
-        class="navigation-link"
-        class:active={slug === ""}
+        class={[
+          "navigation-link",
+          {
+            active: slug === ""
+          }
+        ]}
         href={logoItem?.href}
         onclick={closeMobileMenu}
       >
@@ -63,8 +71,12 @@
         {#each mainItems as item (item._id)}
           <li class="navigation-item">
             <a
-              class="navigation-link"
-              class:active={slug?.includes(item.href)}
+              class={[
+                "navigation-link",
+                {
+                  active: slug?.includes(item.href)
+                }
+              ]}
               href={item.href}
               onclick={closeMobileMenu}
             >
@@ -75,8 +87,12 @@
                 {#each subItems.filter(subItem => subItem.href.includes(item.href)) as subItem (subItem._id)}
                   <li class="navigation-subitem">
                     <a
-                      class="navigation-sublink"
-                      class:active={slug === subItem.href}
+                      class={[
+                        "navigation-sublink",
+                        {
+                          active: slug === subItem.href
+                        }
+                      ]}
                       href={subItem.href}
                       onclick={closeMobileMenu}
                     >{subItem.name}</a>

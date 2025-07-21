@@ -1,23 +1,19 @@
 <script lang="ts">
-  import { type Result, urlFor } from "$cms";
+  import { type Block, urlFor } from "$cms";
   import { type LightboxImage, Grid, Image, Lightbox } from "$components";
 
-  interface Props {
-    images: Result<"imageGallery", "images">;
-  }
-
-  const { images }: Props = $props();
+  const { images }: Block<"imageGallery"> = $props();
 
   const uiImages = $derived(
     images.map(record => ({
       _key: record._key,
       alt: record.alt,
       thumb: urlFor(record)
-        .format("webp")
+        .auto("format")
         .size(600, 600)
         .url(),
       full: urlFor(record)
-        .format("webp")
+        .auto("format")
         .width(1920)
         .url()
     }))
@@ -58,7 +54,7 @@
           }}
           type="button"
         >
-          <Image alt={image.alt} src={image.thumb} />
+          <Image alt={image.alt} loading="lazy" src={image.thumb} />
         </button>
       </li>
     {/each}

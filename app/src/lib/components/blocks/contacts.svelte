@@ -1,12 +1,8 @@
 <script lang="ts">
-  import type { Result } from "$cms";
+  import type { Block } from "$cms";
   import { Grid, Icon } from "$components";
 
-  interface Props {
-    contacts: Result<"contactList", "contacts">;
-  }
-
-  const { contacts }: Props = $props();
+  const { contacts }: Block<"contactList"> = $props();
 </script>
 
 <Grid tag="section">

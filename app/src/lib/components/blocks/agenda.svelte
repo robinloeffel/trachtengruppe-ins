@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Result } from "$cms";
+  import type { Block } from "$cms";
   import { Grid, Icon } from "$components";
   import { dateTimeLong, dateTimeShort } from "$utils";
   import { toMerged, uniqWith } from "es-toolkit";
@@ -9,15 +9,11 @@
     value: string;
   }
 
-  interface Props {
-    events: Result<"agenda", "events">;
-  }
-
-  const { events }: Props = $props();
+  const { events }: Block<"agenda"> = $props();
 
   const uiEvents = $derived(
     events.map(event => toMerged(event, {
-      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions, @typescript-eslint/no-unsafe-type-assertion
       type: JSON.parse(event.type) as EventType
     })).filter(event => new Date(event.date) >= new Date())
   );
@@ -42,8 +38,12 @@
       {#each uniqueEventTypes as uniqueEventType (uniqueEventType.value)}
         <li class="agenda-filter-item">
           <button
-            class="agenda-filter-button"
-            class:active={uniqueEventType.value === activeFilter}
+            class={[
+              "agenda-filter-button",
+              {
+                active: uniqueEventType.value === activeFilter
+              }
+            ]}
             onclick={() => {
               setFilter(uniqueEventType.value);
             }}
@@ -55,9 +55,13 @@
     <ul class="agenda-list">
       {#each uiEvents as item (item._key)}
         <li
-          class="agenda-item"
-          class:hidden={activeFilter && item.type.value !== activeFilter}
-          class:special={item.special}
+          class={[
+            "agenda-item",
+            {
+              special: item.special,
+              hidden: activeFilter && activeFilter !== item.type.value
+            }
+          ]}
         >
           <div class="agenda-item-left">
             <span>{dateTimeShort(item.date)} Uhr</span>
