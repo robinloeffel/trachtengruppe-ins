@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Block } from "$cms";
-  import { Grid, Icon } from "$components";
+  import { ContactLink, Grid, Icon } from "$components";
 
   const { contacts }: Block<"contactList"> = $props();
 </script>
@@ -12,12 +12,12 @@
         <h2 class="contact-title">{contact.name}</h2>
         <span class="contact-email">
           <Icon name="mail" />
-          <a href="mailto:{contact.email}">Email</a>
+          <ContactLink href={`mailto:${contact.email}`} label="Email" />
         </span>
         {#if contact.phone}
           <span class="contact-phone">
             <Icon name="phone" />
-            <a href="tel:{contact.phone}">Telefon</a>
+            <ContactLink href={`tel:${contact.phone}`} label="Telefon" />
           </span>
         {/if}
       </li>
@@ -72,7 +72,7 @@
     margin-right: scales.space("8");
   }
 
-  a {
+  :global .contacts .contact-link {
     color: colors.$fire-engine-red;
   }
 </style>

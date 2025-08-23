@@ -1,3 +1,4 @@
+export { default as ContactLink } from "./atoms/contact-link.svelte";
 export { default as Grid } from "./atoms/grid.svelte";
 export { default as Icon } from "./atoms/icon.svelte";
 export { default as Image } from "./atoms/image.svelte";

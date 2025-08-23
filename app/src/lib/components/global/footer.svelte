@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { ContactLink } from "$components";
+
   interface FooterItem {
     _id: string;
     name: string;
@@ -24,7 +26,7 @@
         {/each}
       </ul>
     </nav>
-    <a href={`mailto:${email}`}>{email}</a>
+    <ContactLink href={`mailto:${email}`} label={email} />
   </div>
 </footer>
 
@@ -32,7 +34,8 @@
   @use "$styles/colors";
   @use "$styles/scales";
 
-  a {
+  a,
+  :global .footer .contact-link {
     color: inherit;
     text-decoration: none;
 
