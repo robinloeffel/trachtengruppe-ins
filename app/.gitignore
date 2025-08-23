@@ -1,5 +1,5 @@
 node_modules
 .svelte-kit
-.vercel
+build
 src/lib/generated
 .DS_Store

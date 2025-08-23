@@ -1,12 +1,15 @@
-import { pageBySlug } from "$cms";
-import type { PageServerLoad } from "./$types";
+import { allPages, pageBySlug } from "$cms";
+import { error } from "@sveltejs/kit";
+import type { EntryGenerator, PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ params }) => {
   const page = await pageBySlug(params.slug || "/");
+  return page ? { page } : error(404, { message: "not found" });
+};
 
-  if (page) {
-    return { page };
-  }
-
-  throw new Error(`Not found: ${params.slug}`);
+export const entries: EntryGenerator = async () => {
+  const pages = await allPages();
+  return pages.map(page => ({
+    slug: page.slug.current === "/" ? "" : page.slug.current
+  })).sort((a, b) => a.slug.localeCompare(b.slug));
 };

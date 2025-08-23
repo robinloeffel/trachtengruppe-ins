@@ -1,4 +1,4 @@
-import vercel from "@sveltejs/adapter-vercel";
+import adapter from "@sveltejs/adapter-static";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 import { toMerged } from "es-toolkit";
 
@@ -6,10 +6,7 @@ import { toMerged } from "es-toolkit";
 export default {
   preprocess: vitePreprocess(),
   kit: {
-    adapter: vercel(),
-    prerender: {
-      entries: ["/"]
-    },
+    adapter: adapter(),
     paths: {
       relative: false
     },

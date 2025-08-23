@@ -1,12 +1,10 @@
 <script lang="ts">
-  import "$styles/base.scss";
-  import "$styles/utils.scss";
-
   import { dev } from "$app/environment";
   import { page } from "$app/state";
   import { urlFor } from "$cms";
   import { BackLink, Footer, Grid, Navigation } from "$components";
-  import font from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2";
+  import "$styles/base.scss";
+  import "$styles/utils.scss";
   import type { LayoutProps } from "./$types";
 
   const { data, children }: LayoutProps = $props();
@@ -30,10 +28,10 @@
   const favicon = $derived(
     data.settings?.favicon
       ? urlFor(data.settings.favicon)
-        .auto("format")
-        .size(64, 64)
-        .url()
-      : "/favicon.png"
+          .auto("format")
+          .size(64, 64)
+          .url()
+      : "/favicon.avif"
   );
 
   const canonical = $derived(
@@ -42,7 +40,6 @@
 </script>
 
 <svelte:head>
-  <link as="font" crossorigin="anonymous" href={font} rel="peload" type="font/woff2" />
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <base href="/" />
@@ -51,9 +48,9 @@
 
   {#if !dev}
     <script
-      async
-      data-domains="trachtengruppe-ins.ch"
       data-website-id="7a19e2b9-ca47-4df6-b786-ac63f6170246"
+      defer
+      fetchpriority="low"
       src="/stats/script.js"
     ></script>
   {/if}
