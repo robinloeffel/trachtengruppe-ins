@@ -3,8 +3,8 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { type CustomPlugin, optimize } from "svgo";
 
-const customSvgoStuff: CustomPlugin = {
-  name: "customSvgoStuff",
+const overrideStrokeWidth: CustomPlugin = {
+  name: "overrideStrokeWidth",
   fn: () => ({
     element: {
       enter: (node) => {
@@ -46,7 +46,7 @@ const icons = await Promise.all(files.map(async (file) => {
       {
         name: "mergePaths"
       },
-      customSvgoStuff
+      overrideStrokeWidth
     ]
   }).data;
 

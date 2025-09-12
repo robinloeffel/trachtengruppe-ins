@@ -8,7 +8,7 @@ export const GET: RequestHandler = async () => {
   const paths = pages
     .map(page => (page.slug.current === "/" ? "" : page.slug.current))
     .map(slug => `${base}/${slug}\n`)
-    .sort((a, b) => a.localeCompare(b))
+    .toSorted((a, b) => a.localeCompare(b))
     .join("");
 
   return text(paths);

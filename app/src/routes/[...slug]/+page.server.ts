@@ -11,5 +11,5 @@ export const entries: EntryGenerator = async () => {
   const pages = await allPages();
   return pages.map(page => ({
     slug: page.slug.current === "/" ? "" : page.slug.current
-  })).sort((a, b) => a.slug.localeCompare(b.slug));
+  })).toSorted((a, b) => a.slug.localeCompare(b.slug));
 };

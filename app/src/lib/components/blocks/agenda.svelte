@@ -25,7 +25,7 @@
     )
   );
 
-  let activeFilter = $state("");
+  let activeFilter = $state.raw("");
 
   const setFilter = (eventType: string) => {
     activeFilter = activeFilter === eventType ? "" : eventType;
