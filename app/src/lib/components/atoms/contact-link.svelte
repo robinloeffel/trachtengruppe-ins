@@ -15,8 +15,6 @@
 <a class="contact-link" aria-label={label} href="#!" {onclick}></a>
 
 <style lang="scss">
-  @use "$styles/colors";
-
   .contact-link::after {
     content: attr(aria-label);
   }

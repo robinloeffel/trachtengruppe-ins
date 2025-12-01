@@ -51,7 +51,7 @@
       data-website-id="7a19e2b9-ca47-4df6-b786-ac63f6170246"
       defer
       fetchpriority="low"
-      src="/stats/script.js"
+      src="https://cloud.umami.is/script.js"
     ></script>
   {/if}
 </svelte:head>

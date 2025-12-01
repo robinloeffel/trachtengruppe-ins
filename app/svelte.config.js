@@ -7,20 +7,17 @@ export default {
   preprocess: vitePreprocess(),
   kit: {
     adapter: adapter(),
-    paths: {
-      relative: false
-    },
     typescript: {
       config: config => toMerged(config, {
         include: ["../tasks/**/*.ts"]
       })
     },
     alias: {
-      $cms: "./src/lib/cms/index.ts",
-      $components: "./src/lib/components/index.ts",
+      $cms: "./src/lib/cms",
+      $components: "./src/lib/components",
       $generated: "./src/lib/generated",
       $styles: "./src/lib/styles",
-      $utils: "./src/lib/utils/index.ts"
+      $utils: "./src/lib/utils"
     },
     prerender: {
       handleMissingId: ({ id }) => {
