@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { type Block, urlFor } from "$cms";
+  import type { Block } from "$cms";
   import { Grid, Image } from "$components";
 
   interface Props extends Block<"hero"> {
@@ -10,21 +10,16 @@
 
   const small = $derived(image.small);
   const height = $derived(small ? Math.round(width * 1 / 3) : Math.round(width * 1 / 2));
-  const imageSource = $derived(
-    urlFor(image)
-      .auto("format")
-      .size(width, height)
-      .url()
-  );
 </script>
 
 <header class={["hero", { small }]}>
   <Image
+    class="hero-image"
     alt=""
-    extraClasses={["hero-image"]}
-    fetchPriority="high"
+    fetchpriority="high"
     {height}
-    src={imageSource}
+    {image}
+    sizes="100vw"
     {width}
   />
   <Grid>
@@ -41,7 +36,7 @@
     @extend %component-gap;
   }
 
-  :global(.hero-image) {
+  .hero :global(.hero-image) {
     @extend %component-gap;
 
     width: 100%;
@@ -49,11 +44,11 @@
     aspect-ratio: 2 / 1;
     object-fit: cover;
     border-bottom: scales.space("4") solid colors.$light-coral;
+  }
 
-    .small & {
-      max-height: 40vh;
-      aspect-ratio: 3 / 1;
-    }
+  .hero.small :global(.hero-image) {
+    max-height: 40vh;
+    aspect-ratio: 3 / 1;
   }
 
   .hero-title {

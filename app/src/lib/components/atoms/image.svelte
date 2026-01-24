@@ -1,28 +1,58 @@
 <script lang="ts">
-  interface Props extends Partial<
-    // eslint-disable-next-line svelte/no-top-level-browser-globals
-    Pick<HTMLImageElement, "src" | "alt" | "width" | "height" | "loading" | "fetchPriority">
-  > {
-    extraClasses?: string[];
+  import { imageSrcset } from "$cms";
+  import type {
+    ImageUrlBuilderOptionsWithAliases,
+    SanityImageSource
+  } from "@sanity/image-url";
+  import type { HTMLImgAttributes } from "svelte/elements";
+
+  interface Props extends Exclude<HTMLImgAttributes, "src" | "width" | "height" | "sizes"> {
+    image: SanityImageSource;
+    width: number;
+    height: number;
+    options?: ImageUrlBuilderOptionsWithAliases;
   }
 
   const {
-    src,
-    alt,
+    image,
     width,
     height,
-    loading,
-    fetchPriority,
-    extraClasses
+    options = {},
+    ...props
   }: Props = $props();
+
+  const srcset = $derived(width ? imageSrcset(image, width, options) : null);
+  const derivedSizes = $derived(props.sizes ?? `(max-width: ${String(width)}px) 100vw, ${String(width)}px`);
+
+  const {
+    class: extraClasses,
+    ...attributes
+  } = $derived<HTMLImgAttributes>({
+    ...props,
+    width,
+    height
+  });
 </script>
 
 <img
-  class={extraClasses?.join(" ")}
-  {alt}
-  fetchpriority={fetchPriority}
-  {height}
-  {loading}
-  {src}
-  {width}
+  class={["image", extraClasses]}
+  sizes={derivedSizes}
+  {srcset}
+  {...attributes}
 />
+
+<style lang="scss">
+  .strict {
+    width: 100%;
+    height: auto;
+  }
+
+  .loose {
+    width: auto;
+    min-width: 0;
+    max-width: 100%;
+    height: auto;
+    min-height: 0;
+    max-height: 100%;
+  }
+</style>

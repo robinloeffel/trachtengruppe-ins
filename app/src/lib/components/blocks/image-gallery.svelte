@@ -1,27 +1,13 @@
 <script lang="ts">
-  import { type Block, urlFor } from "$cms";
+  import type { Block } from "$cms";
   import { Grid, Icon, Image } from "$components";
   import type { KeyboardEventHandler } from "svelte/elements";
 
   const { images }: Block<"imageGallery"> = $props();
 
   let bodyRef: HTMLBodyElement;
-  const uiImages = $derived(
-    images.map(record => ({
-      _key: record._key,
-      alt: record.alt,
-      thumb: urlFor(record)
-        .auto("format")
-        .size(600, 600)
-        .url(),
-      full: urlFor(record)
-        .auto("format")
-        .width(1920)
-        .url()
-    }))
-  );
-  let lightboxImageIndex = $state.raw<number>(-1);
-  const lightboxImage = $derived<typeof uiImages[number] | undefined>(uiImages[lightboxImageIndex]);
+  let lightboxImageIndex = $state.raw(-1);
+  const lightboxImage = $derived(images[lightboxImageIndex]);
 
   $effect(() => {
     bodyRef.classList.toggle("no-scroll", Boolean(lightboxImage));
@@ -32,11 +18,11 @@
   };
 
   const goToNextImage = () => {
-    lightboxImageIndex = (lightboxImageIndex + 1) % uiImages.length;
+    lightboxImageIndex = (lightboxImageIndex + 1) % images.length;
   };
 
   const goToPrevImage = () => {
-    lightboxImageIndex = (uiImages.length + lightboxImageIndex - 1) % uiImages.length;
+    lightboxImageIndex = (images.length + lightboxImageIndex - 1) % images.length;
   };
 
   const handleWindowKeydown: KeyboardEventHandler<Window> = ({ key }) => {
@@ -67,7 +53,7 @@
 
 <Grid tag="section">
   <ul class="image-gallery">
-    {#each uiImages as image, index (image._key)}
+    {#each images as image, index (image._key)}
       <li class="image-gallery-item">
         <button
           class="image-gallery-button"
@@ -76,7 +62,16 @@
           }}
           type="button"
         >
-          <Image alt={image.alt} loading="lazy" src={image.thumb} />
+          <Image
+            class="image-gallery-image strict"
+            alt={image.alt}
+            fetchpriority="low"
+            height={600}
+            {image}
+            loading="lazy"
+            sizes="(width > 1024px) 310px, (width > 600px) 33vw, 50vw"
+            width={600}
+          />
         </button>
       </li>
     {/each}
@@ -113,14 +108,18 @@
         <span class="sr-only">Nächstes Bild</span>
       </button>
 
-      <img
-        class="image-gallery-lightbox-image"
+      <Image
+        class="image-gallery-lightbox-image loose"
         alt={lightboxImage.alt}
-        src={lightboxImage.full}
+        fetchpriority="high"
+        height={1080}
+        image={lightboxImage}
+        sizes="calc(100vw - 8rem)"
+        width={1920}
       />
 
       <span class="image-gallery-lightbox-nav">
-        {lightboxImageIndex + 1} von {uiImages.length}
+        {lightboxImageIndex + 1} von {images.length}
       </span>
     {/if}
   </div>

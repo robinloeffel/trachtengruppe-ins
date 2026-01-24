@@ -1,7 +1,6 @@
 <script lang="ts">
   import { dev } from "$app/environment";
   import { page } from "$app/state";
-  import { urlFor } from "$cms";
   import { BackLink, Footer, Grid, Navigation } from "$components";
   import "$styles/base.scss";
   import "$styles/utils.scss";
@@ -25,15 +24,6 @@
     data.settings?.footerMail ?? "info@trachtengruppe-ins.ch"
   );
 
-  const favicon = $derived(
-    data.settings?.favicon
-      ? urlFor(data.settings.favicon)
-          .auto("format")
-          .size(64, 64)
-          .url()
-      : "/favicon.avif"
-  );
-
   const canonical = $derived(
     `https://trachtengruppe-ins.ch${page.url.pathname}`
   );
@@ -43,8 +33,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <base href="/" />
-  <link href={favicon} rel="icon" />
+  <link href="/favicon.avif" rel="icon" />
   <link href={canonical} rel="canonical" />
+  <link crossorigin="anonymous" href="https://cdn.sanity.io" rel="preconnect" />
 
   {#if !dev}
     <script
