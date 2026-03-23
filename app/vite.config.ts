@@ -5,9 +5,7 @@ export default defineConfig({
   plugins: [sveltekit()],
   css: {
     preprocessorOptions: {
-      scss: {
-        quietDeps: true
-      }
+      scss: { quietDeps: true }
     }
   }
 });
