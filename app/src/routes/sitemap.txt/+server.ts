@@ -1,4 +1,4 @@
-import { allPages } from "$cms";
+import { allPages } from "$cms/client";
 import { text } from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
 

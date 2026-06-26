@@ -1,6 +1,8 @@
 <script lang="ts">
-  import type { Block } from "$cms";
-  import { ContactLink, Grid, Icon } from "$components";
+  import type { Block } from "$cms/block";
+  import ContactLink from "$components/atoms/contact-link.svelte";
+  import Grid from "$components/atoms/grid.svelte";
+  import Icon from "$components/atoms/icon.svelte";
 
   const { contacts }: Block<"contactList"> = $props();
 </script>

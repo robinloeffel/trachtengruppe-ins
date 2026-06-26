@@ -1,6 +1,7 @@
 <script lang="ts">
+  import { afterNavigate } from "$app/navigation";
   import { page } from "$app/state";
-  import { Icon } from "$components";
+  import Icon from "$components/atoms/icon.svelte";
 
   interface NavigationItem {
     _id: string;
@@ -17,7 +18,7 @@
   const logoItem = $derived(items.find(item => item.href === "/"));
   const mainItems = $derived(items.filter(item => item.href !== "/" && !item.href.includes("/")));
   const subItems = $derived(items.filter(item => item.href !== "/" && item.href.includes("/")));
-  const slug = $derived(page.params.slug);
+  const slug = $derived(page.params["slug"]);
 
   let isMobileMenuOpen = $state(false);
 
@@ -28,6 +29,10 @@
   const closeMobileMenu = () => {
     isMobileMenuOpen = false;
   };
+
+  afterNavigate(() => {
+    closeMobileMenu();
+  });
 </script>
 
 <nav

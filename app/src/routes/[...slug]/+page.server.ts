@@ -1,4 +1,4 @@
-import { allPages, pageBySlug } from "$cms";
+import { allPages, pageBySlug } from "$cms/client";
 import { error } from "@sveltejs/kit";
 import type { EntryGenerator, PageServerLoad } from "./$types";
 

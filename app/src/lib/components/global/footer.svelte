@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ContactLink } from "$components";
+  import ContactLink from "$components/atoms/contact-link.svelte";
 
   interface FooterItem {
     _id: string;

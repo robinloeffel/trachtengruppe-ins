@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { Grid, Image } from "$components";
+  import Grid from "$components/atoms/grid.svelte";
 </script>
 
 <svelte:head>
-  <title>404 - Seite nicht gefunden</title>
+  <title>Seite nicht gefunden &ndash; Trachtengruppe Ins und Umgebung</title>
 </svelte:head>
 
 <Grid>
   <div>
     <h1>Die gesuchte Seite gibt es nicht</h1>
-    <Image alt="" loading="lazy" src="https://i.giphy.com/12p3JXHJBgqqCk.webp" />
+    <img alt="" height="239" src="https://i.giphy.com/12p3JXHJBgqqCk.webp" width="287" />
   </div>
 </Grid>
 

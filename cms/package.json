@@ -11,17 +11,17 @@
   },
   "dependencies": {
     "@sanity/icons": "3.7.4",
-    "@sanity/locale-de-de": "1.1.30",
-    "@sanity/vision": "5.17.1",
-    "@types/react": "19.2.14",
-    "eslint": "9.39.4",
-    "eslint-config-sweet": "31.0.0",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
-    "robins-tsconfig": "3.0.0",
-    "sanity": "5.17.1",
-    "sanity-plugin-media": "4.1.1",
-    "styled-components": "6.3.12",
-    "typescript": "5.9.3"
+    "@sanity/locale-de-de": "1.1.32",
+    "@sanity/vision": "6.1.0",
+    "@types/react": "19.2.17",
+    "eslint": "10.5.0",
+    "eslint-config-sweet": "33.0.0",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "robins-tsconfig": "5.0.0",
+    "sanity": "6.1.0",
+    "sanity-plugin-media": "5.0.0",
+    "styled-components": "6.4.2",
+    "typescript": "6.0.3"
   }
 }

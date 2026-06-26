@@ -1,7 +1,8 @@
 <script lang="ts">
-  import type { Block } from "$cms";
-  import { Grid, Icon } from "$components";
-  import { dateTimeLong, dateTimeShort } from "$utils";
+  import type { Block } from "$cms/block";
+  import Grid from "$components/atoms/grid.svelte";
+  import Icon from "$components/atoms/icon.svelte";
+  import { dateTimeLong, dateTimeShort } from "$utils/date";
   import { toMerged, uniqWith } from "es-toolkit";
 
   interface EventType {

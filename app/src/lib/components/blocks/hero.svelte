@@ -1,6 +1,7 @@
 <script lang="ts">
-  import type { Block } from "$cms";
-  import { Grid, Image } from "$components";
+  import type { Block } from "$cms/block";
+  import Grid from "$components/atoms/grid.svelte";
+  import Image from "$components/atoms/image.svelte";
 
   interface Props extends Block<"hero"> {
     width?: number;

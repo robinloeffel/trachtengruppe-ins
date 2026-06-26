@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { Block } from "$cms";
-  import { Grid } from "$components";
+  import type { Block } from "$cms/block";
+  import Grid from "$components/atoms/grid.svelte";
 
   const { teasers }: Block<"pageTeaserList"> = $props();
 </script>

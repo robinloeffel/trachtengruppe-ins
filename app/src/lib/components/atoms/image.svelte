@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { imageSrcset } from "$cms";
+  import { imageSrcset } from "$cms/image";
   import type {
     ImageUrlBuilderOptionsWithAliases,
     SanityImageSource
   } from "@sanity/image-url";
   import type { HTMLImgAttributes } from "svelte/elements";
 
-  interface Props extends Exclude<HTMLImgAttributes, "src" | "width" | "height" | "sizes"> {
+  interface Props extends Omit<HTMLImgAttributes, "src" | "width" | "height"> {
     image: SanityImageSource;
     width: number;
     height: number;

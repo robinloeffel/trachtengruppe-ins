@@ -2,4 +2,4 @@ user-agent: *
 allow: /
 content-signal: search=yes, ai-train=no, ai-input=no
 
-sitemap: https://swissplant.ch/sitemap.txt
+sitemap: https://trachtengruppe-ins.ch/sitemap.txt

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from "$app/state";
-  import { Icon } from "$components";
+  import Icon from "$components/atoms/icon.svelte";
 
   const link = $derived(
     page.url.pathname

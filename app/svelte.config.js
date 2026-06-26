@@ -18,13 +18,6 @@ export default {
       $generated: "./src/lib/generated",
       $styles: "./src/lib/styles",
       $utils: "./src/lib/utils"
-    },
-    prerender: {
-      handleMissingId: ({ id }) => {
-        if (id !== "!") {
-          throw new Error(`encountered missing id during prerender: ${id}`);
-        }
-      }
     }
   }
 };

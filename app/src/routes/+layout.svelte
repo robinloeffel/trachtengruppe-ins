@@ -1,14 +1,16 @@
 <script lang="ts">
-  import { dev } from "$app/environment";
   import { page } from "$app/state";
-  import { BackLink, Footer, Grid, Navigation } from "$components";
+  import Grid from "$components/atoms/grid.svelte";
+  import BackLink from "$components/global/back-link.svelte";
+  import Footer from "$components/global/footer.svelte";
+  import Navigation from "$components/global/navigation.svelte";
   import "$styles/base.scss";
   import "$styles/utils.scss";
   import type { LayoutProps } from "./$types";
 
   const { data, children }: LayoutProps = $props();
 
-  const isSubPage = $derived(Boolean(page.params.slug));
+  const isSubPage = $derived(Boolean(page.params["slug"]));
 
   const navigationItems = $derived(data.pages.map(record => ({
     _id: record._id,
@@ -23,29 +25,7 @@
   const footerMail = $derived(
     data.settings?.footerMail ?? "info@trachtengruppe-ins.ch"
   );
-
-  const canonical = $derived(
-    `https://trachtengruppe-ins.ch${page.url.pathname}`
-  );
 </script>
-
-<svelte:head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <base href="/" />
-  <link href="/favicon.avif" rel="icon" />
-  <link href={canonical} rel="canonical" />
-  <link crossorigin="anonymous" href="https://cdn.sanity.io" rel="preconnect" />
-
-  {#if !dev}
-    <script
-      data-website-id="7a19e2b9-ca47-4df6-b786-ac63f6170246"
-      defer
-      fetchpriority="low"
-      src="https://cloud.umami.is/script.js"
-    ></script>
-  {/if}
-</svelte:head>
 
 <Navigation items={navigationItems} />
 

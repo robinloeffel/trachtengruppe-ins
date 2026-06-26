@@ -44,21 +44,6 @@ export const page = defineType({
           validation: Rule => Rule.required()
         }),
         defineField({
-          name: "keywords",
-          title: "Schlüsselwörter",
-          description: "Eine Liste von kurzen Wörtern, die beschreiben, worum es auf der Seite geht.",
-          type: "array",
-          of: [
-            defineArrayMember({
-              type: "string"
-            })
-          ],
-          options: {
-            layout: "tags"
-          },
-          validation: Rule => Rule.required()
-        }),
-        defineField({
           name: "order",
           title: "Reihenfolge",
           description: "Die Reihenfolge der Seite in der Navigation.",

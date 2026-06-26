@@ -1,16 +1,24 @@
 <script lang="ts">
-  import type { Block } from "$cms";
-  import { Grid, Icon, Image } from "$components";
+  import type { Block } from "$cms/block";
+  import Grid from "$components/atoms/grid.svelte";
+  import Icon from "$components/atoms/icon.svelte";
+  import Image from "$components/atoms/image.svelte";
   import type { KeyboardEventHandler } from "svelte/elements";
 
   const { images }: Block<"imageGallery"> = $props();
 
-  let bodyRef: HTMLBodyElement;
   let lightboxImageIndex = $state.raw(-1);
   const lightboxImage = $derived(images[lightboxImageIndex]);
+  let closeButtonRef = $state<HTMLButtonElement>();
 
   $effect(() => {
-    bodyRef.classList.toggle("no-scroll", Boolean(lightboxImage));
+    document.body.classList.toggle("no-scroll", Boolean(lightboxImage));
+  });
+
+  $effect(() => {
+    if (lightboxImage) {
+      closeButtonRef?.focus();
+    }
   });
 
   const closeImageGallery = () => {
@@ -48,7 +56,6 @@
   };
 </script>
 
-<svelte:body bind:this={bodyRef} />
 <svelte:window onkeydown={handleWindowKeydown} />
 
 <Grid tag="section">
@@ -76,9 +83,15 @@
       </li>
     {/each}
   </ul>
-  <div class="image-gallery-lightbox">
+  <div
+    class="image-gallery-lightbox"
+    aria-label="Bildvorschau"
+    aria-modal="true"
+    role="dialog"
+  >
     {#if lightboxImage}
       <button
+        bind:this={closeButtonRef}
         class="image-gallery-lightbox-button"
         data-action="close"
         onclick={closeImageGallery}

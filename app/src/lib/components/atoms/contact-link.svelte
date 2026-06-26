@@ -5,14 +5,9 @@
   }
 
   const { label, href }: Props = $props();
-
-  const onclick = (event: MouseEvent) => {
-    event.preventDefault();
-    globalThis.location.href = href;
-  };
 </script>
 
-<a class="contact-link" aria-label={label} href="#!" {onclick}></a>
+<a class="contact-link" aria-label={label} {href}></a>
 
 <style lang="scss">
   .contact-link::after {

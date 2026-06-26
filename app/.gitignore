@@ -1,5 +1,7 @@
-node_modules
-.svelte-kit
-build
-src/lib/generated
+node_modules/
+src/lib/generated/
+build/
+.svelte-kit/
+
 .DS_Store
+*.local.*
